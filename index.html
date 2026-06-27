@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Act w praktyce — wykład + studium przypadku Vet-Eye SmartScan AI</title>
+
+<!-- reveal.js (CDN) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+<style>
+/* ============================================================
+   edulab — Colors & Type foundation (injected tokens)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-display: 'Bricolage Grotesque', 'Hanken Grotesk', system-ui, sans-serif;
+  --font-sans:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono:    'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --paper:    #FBF7F0;
+  --paper-2:  #F4EDDF;
+  --paper-3:  #ECE1CF;
+  --surface:  #FFFFFF;
+
+  --ink:      #211E1A;
+  --ink-2:    #5B554D;
+  --ink-3:    #938A7C;
+  --line:     #E7DCCB;
+  --line-2:   #D6C8B2;
+
+  --marigold:      #E8920C;
+  --marigold-600:  #CE800A;
+  --marigold-soft: #FBE7C2;
+  --marigold-ink:  #8A4F00;
+
+  --teal:      #0E8C7F;
+  --teal-600:  #0B7468;
+  --teal-soft: #D2EBE6;
+  --teal-ink:  #0A5A52;
+
+  --coral:      #EF5B3F;
+  --coral-600:  #D44A30;
+  --coral-soft: #FBDDD4;
+  --coral-ink:  #9A2E1B;
+
+  --sky:      #2E78C9;
+  --sky-soft: #D9E7F6;
+  --sky-ink:  #1B4E88;
+
+  --success:      #2F8F5B;  --success-soft: #D7EEDD;  --success-ink: #1C6A3E;
+  --warning:      #C9810A;  --warning-soft: #FBEAC6;  --warning-ink: #855207;
+  --danger:       #D8412A;  --danger-soft:  #FAD9D2;  --danger-ink:  #97271A;
+  --info:         #2E78C9;  --info-soft:    #D9E7F6;  --info-ink:    #1B4E88;
+
+  --bg:        var(--paper);
+  --fg:        var(--ink);
+  --primary:   var(--marigold);
+  --on-primary:#FFFFFF;
+  --focus-ring: 0 0 0 3px rgba(232,146,12,.38);
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  --r-xs: 6px; --r-sm: 10px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(33,30,26,.06), 0 1px 1px rgba(33,30,26,.04);
+  --shadow-md: 0 4px 16px rgba(33,30,26,.08), 0 1px 3px rgba(33,30,26,.05);
+  --shadow-lg: 0 16px 40px rgba(33,30,26,.12), 0 3px 8px rgba(33,30,26,.06);
+  --shadow-marigold: 0 8px 22px rgba(232,146,12,.28);
+}
+
+/* ============================================================
+   reveal.js theme override → edulab tokens
+   ============================================================ */
+:root {
+  --r-background-color: var(--paper);
+  --r-main-font: var(--font-sans);
+  --r-main-font-size: 24px;
+  --r-main-color: var(--ink-2);
+  --r-heading-font: var(--font-display);
+  --r-heading-color: var(--ink);
+  --r-heading-font-weight: 700;
+  --r-heading1-text-shadow: none;
+  --r-link-color: var(--teal);
+  --r-link-color-hover: var(--teal-600);
+  --r-selection-background-color: var(--marigold-soft);
+  --r-selection-color: var(--ink);
+  --r-overlay-element-bg-color: 33, 30, 26;
+}
+
+html, body { background: var(--paper); }
+
+.reveal { font-family: var(--font-sans); color: var(--ink-2); font-size: var(--r-main-font-size); }
+.reveal .slides { text-align: left; }
+.reveal .slides section { line-height: 1.4; }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 var(--sp-5) 0;
+}
+.reveal h1 { font-size: 2.2em; font-weight: 700; }
+.reveal h2 { font-size: 1.72em; font-weight: 700; }
+.reveal h3 { font-size: 1.28em; font-weight: 600; letter-spacing: -0.01em; }
+.reveal p  { color: var(--ink-2); }
+.reveal strong { color: var(--ink); font-weight: 700; }
+.reveal em { color: var(--ink-2); font-style: italic; }
+
+.reveal a { color: var(--teal); text-decoration: none; }
+
+/* Progress bar + controls in marigold */
+.reveal .progress { color: var(--marigold); height: 5px; background: rgba(33,30,26,.08); }
+.reveal .controls { color: var(--marigold); }
+.reveal .slide-number { background: transparent; color: var(--ink-3); font-family: var(--font-mono); font-size: 13px; }
+
+/* ============================================================
+   Branded top bar (persistent edulab chrome)
+   ============================================================ */
+.edu-topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 52px;
+  z-index: 60;
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: 0 var(--sp-6);
+  background: rgba(251,247,240,.82);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.edu-topbar .mark { width: 26px; height: 26px; flex: 0 0 auto; }
+.edu-topbar .wordmark {
+  font-family: var(--font-display); font-weight: 700; font-size: 19px;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.edu-topbar .tag {
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--teal-ink);
+  background: var(--teal-soft); border-radius: var(--r-pill);
+  padding: 5px 12px;
+}
+.reveal .slides { margin-top: 14px; } /* breathing room under the bar */
+
+/* ============================================================
+   edulab content primitives
+   ============================================================ */
+.eyebrow {
+  font-family: var(--font-mono); font-weight: 500; font-size: 0.52em;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--marigold-ink);
+  margin: 0 0 var(--sp-4) 0;
+}
+.lead { font-size: 1.12em; color: var(--ink-2); max-width: 24em; }
+.mono { font-family: var(--font-mono); }
+.legal-ref {
+  font-family: var(--font-mono); font-size: 0.62em; letter-spacing: 0.04em;
+  color: var(--teal-ink); background: var(--teal-soft);
+  padding: 3px 9px; border-radius: var(--r-pill); white-space: nowrap;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--sp-6) var(--sp-8);
+}
+.cards { display: grid; gap: var(--sp-5); }
+.cards.two { grid-template-columns: 1fr 1fr; }
+.cards.three { grid-template-columns: repeat(3, 1fr); }
+
+/* Callouts */
+.callout {
+  border-radius: var(--r-md);
+  padding: var(--sp-4) var(--sp-5);
+  font-size: 0.94em; line-height: 1.45;
+  border: 1px solid transparent;
+}
+.callout .ico { font-style: normal; margin-right: .4em; }
+.callout.warn   { background: var(--coral-soft);   color: var(--coral-ink);   border-color: #f3c3b8; }
+.callout.lesson { background: var(--teal-soft);    color: var(--teal-ink);    border-color: #b6dcd5; }
+.callout.key    { background: var(--marigold-soft);color: var(--marigold-ink);border-color: #f1d49a; }
+.callout strong { color: inherit; }
+
+/* Verdict chips */
+.verdict {
+  display: inline-flex; align-items: center; gap: .4em;
+  font-family: var(--font-display); font-weight: 700;
+  border-radius: var(--r-pill); padding: 6px 18px; font-size: .82em;
+}
+.verdict.yes { background: var(--success-soft); color: var(--success-ink); }
+.verdict.no  { background: var(--paper-3);      color: var(--ink-2); }
+
+/* Lists */
+.reveal ul, .reveal ol { display: block; margin-left: 1.1em; }
+.reveal li { margin: .32em 0; line-height: 1.4; }
+.reveal ul li::marker { color: var(--marigold); }
+.reveal ol li::marker { color: var(--teal); font-family: var(--font-mono); }
+.tick li { list-style: none; position: relative; padding-left: 1.5em; }
+.tick li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+.cross li { list-style: none; position: relative; padding-left: 1.5em; }
+.cross li::before { content: "✕"; position: absolute; left: 0; color: var(--coral); font-weight: 700; }
+
+/* Tables */
+.reveal table { border-collapse: collapse; width: 100%; font-size: .82em; box-shadow: var(--shadow-sm); border-radius: var(--r-md); overflow: hidden; }
+.reveal table th, .reveal table td { border: 1px solid var(--line); padding: .55em .7em; text-align: left; vertical-align: top; background: var(--surface); }
+.reveal table thead th { background: var(--paper-2); color: var(--ink); font-family: var(--font-display); font-weight: 600; }
+.reveal table td.refcell { font-family: var(--font-mono); font-size: .9em; color: var(--teal-ink); white-space: nowrap; }
+
+/* ============================================================
+   Title / divider slides
+   ============================================================ */
+.slide-title { text-align: center; }
+.slide-title h1 { font-size: 2.7em; margin-bottom: var(--sp-4); }
+.slide-title .subtitle { font-size: 1.15em; color: var(--ink-2); font-family: var(--font-display); font-weight: 500; max-width: 18em; margin: 0 auto var(--sp-8); letter-spacing: -0.01em; }
+.slide-title .meta { font-family: var(--font-mono); font-size: .6em; color: var(--ink-3); letter-spacing: 0.08em; }
+.case-pill {
+  display: inline-block; margin-top: var(--sp-6);
+  background: var(--marigold-soft); color: var(--marigold-ink);
+  font-family: var(--font-mono); font-size: .58em; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 8px 18px; border-radius: var(--r-pill);
+}
+
+.divider { text-align: center; }
+.divider .big-num {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 5.5em; line-height: 1; color: var(--marigold);
+  letter-spacing: -0.04em;
+}
+.divider h2 { font-size: 1.9em; margin-top: var(--sp-4); }
+.divider .sub { color: var(--ink-2); font-size: .95em; }
+
+/* ============================================================
+   Risk pyramid
+   ============================================================ */
+.pyramid { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.tier {
+  position: relative;
+  color: #fff; font-family: var(--font-display); font-weight: 600;
+  display: flex; align-items: center; justify-content: center; gap: .5em;
+  border-radius: var(--r-sm);
+  padding: 12px 18px; text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: opacity .35s ease, filter .35s ease, transform .35s ease;
+}
+.tier .tier-label { font-size: .82em; }
+.tier .tier-note  { font-family: var(--font-sans); font-weight: 400; font-size: .58em; opacity: .92; }
+.tier.t1 { width: 38%; background: var(--coral); }
+.tier.t2 { width: 56%; background: var(--marigold); }
+.tier.t3 { width: 74%; background: var(--warning); }
+.tier.t4 { width: 92%; background: var(--teal); }
+
+/* pyramid legend (slide 6) */
+.pyramid-legend { font-size: .68em; }
+.pyramid-legend li { margin: .35em 0; }
+
+/* descent animation (slide 19): driven by reveal fragment .visible state.
+   Override reveal's default (which hides fragments) so tiers stay visible at rest. */
+.reveal .fragment.elim,
+.reveal .fragment.land { opacity: 1; visibility: visible; }
+.reveal .fragment.elim.visible { opacity: .32; filter: grayscale(.45); }
+.reveal .fragment.elim.visible .tier-label { text-decoration: line-through; }
+.reveal .fragment.land.visible {
+  transform: scale(1.04);
+  box-shadow: var(--shadow-lg), 0 0 0 4px var(--marigold-soft);
+  outline: 3px solid var(--marigold);
+}
+
+/* layout helpers */
+.row { display: grid; gap: var(--sp-6); }
+.row.c2 { grid-template-columns: 1fr 1fr; }
+.row.c2-wide { grid-template-columns: 1.1fr .9fr; align-items: center; }
+.center-narrow { max-width: 60%; margin: 0 auto; }
+.small { font-size: .92em; }
+.smaller { font-size: .82em; }
+.muted { color: var(--ink-3); }
+.tight li { margin: .18em 0; }
+
+/* step header for case slides */
+.step-head { display: flex; align-items: baseline; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-4); }
+.step-head .knum {
+  font-family: var(--font-mono); font-size: .6em; letter-spacing: .1em; text-transform: uppercase;
+  color: #fff; background: var(--teal); padding: 4px 11px; border-radius: var(--r-pill);
+}
+
+.reveal section img { max-width: 100%; }
+
+/* content shell — fill the slide width */
+.reveal .slides section { max-width: 1240px; width: 100%; box-sizing: border-box; }
+/* wider gutters between columns now that we have more room */
+.row.c2 { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
+.row.c2-wide { gap: var(--sp-10); }
+
+/* Fill the slide vertically: each leaf slide is a full-height flex column —
+   the title sits at the top, the main content block grows to fill the rest,
+   and any trailing callout lands near the bottom. Title / divider / closing
+   slides stay centred (.centerme). */
+.reveal .slides section.present:not(:has(> section)) {
+  min-height: 720px;
+  display: flex !important; /* override reveal's inline display:block on the present slide */
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 26px 6px 14px;
+}
+.reveal .slides section.present.centerme:not(:has(> section)) {
+  justify-content: center;
+  align-items: center;
+}
+/* the principal content area expands to consume free vertical space */
+.reveal .slides section:not(.centerme):not(:has(> section)) > .row,
+.reveal .slides section:not(.centerme):not(:has(> section)) > table,
+.reveal .slides section:not(.centerme):not(:has(> section)) > ol,
+.reveal .slides section:not(.centerme):not(:has(> section)) > ul {
+  flex: 1 1 auto;
+  width: 100%;
+}
+/* vertically centre column / list content inside the grown area */
+.reveal .slides section:not(.centerme):not(:has(> section)) > .row { align-content: center; }
+.reveal .slides section:not(.centerme):not(:has(> section)) > ol,
+.reveal .slides section:not(.centerme):not(:has(> section)) > ul { display: flex; flex-direction: column; justify-content: center; }
+/* columns + cards stretch to equal height */
+.row.c2, .row.c2-wide { align-items: stretch; }
+.row.c2 > .card, .row.c2-wide > .card { display: flex; flex-direction: column; justify-content: center; }
+/* give list rows a little more air when they own the slide */
+.reveal .slides section:not(:has(> section)) > ol > li,
+.reveal .slides section:not(:has(> section)) > ul > li { margin: .5em 0; }
+</style>
+</head>
+<body class="edu">
+
+<!-- Persistent branded top bar -->
+<div class="edu-topbar">
+  <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+    <rect x="2" y="2" width="28" height="28" rx="9" fill="#0E8C7F"/>
+    <path d="M16 8 L24 12 L16 16 L8 12 Z" fill="#fff"/>
+    <path d="M11 14.5 V18.5 C11 20.4 13.2 21.8 16 21.8 C18.8 21.8 21 20.4 21 18.5 V14.5" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  </svg>
+  <span class="wordmark">edulab</span>
+  <span class="tag">AI Act · wykład</span>
+</div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- 1 · TITLE -->
+<section class="centerme" data-auto-animate>
+  <div class="slide-title">
+    <p class="eyebrow">Materiał wykładowy · podejście oparte na ryzyku</p>
+    <h1>AI&nbsp;Act w&nbsp;praktyce</h1>
+    <p class="subtitle">Od ogólnych ram regulacyjnych do kwalifikacji systemu wspierającego diagnostykę</p>
+    <p class="meta">Rozporządzenie (UE) 2024/1689</p>
+    <div><span class="case-pill">Case study · Vet-Eye SmartScan AI</span></div>
+  </div>
+</section>
+
+<!-- 2 · AGENDA -->
+<section>
+  <p class="eyebrow">Agenda</p>
+  <h2>Plan wykładu</h2>
+  <div class="row c2">
+    <div class="card">
+      <h3 style="color:var(--marigold-ink)">Część I — AI Act ogólnie</h3>
+      <ol class="tight small">
+        <li>Czym jest AI Act i po co powstał</li>
+        <li>Definicja systemu AI</li>
+        <li>Piramida ryzyka — cztery kategorie</li>
+        <li>Role: dostawca vs podmiot stosujący</li>
+        <li>Obowiązki przekrojowe (AI literacy, transparentność)</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--teal-ink)">Część II — Case: diagnostyka</h3>
+      <ol class="tight small" start="6">
+        <li>Subsumpcja: czy to system AI?</li>
+        <li>Kwalifikacja ryzyka — krok po kroku</li>
+        <li>Role i obowiązki w konkretnym wdrożeniu</li>
+        <li>Wnioski i pułapki rekwalifikacji</li>
+      </ol>
+    </div>
+  </div>
+  <p class="callout key small" style="margin-top:var(--sp-5)"><span class="ico">💡</span>Część II nie wprowadza nowych przepisów — <strong>stosuje</strong> te z Części I do konkretnego produktu.</p>
+</section>
+
+<!-- 3 · DIVIDER I -->
+<section class="centerme" data-background-color="#F4EDDF">
+  <div class="divider">
+    <div class="big-num">I</div>
+    <h2>AI Act — ogólne ramy regulacyjne</h2>
+    <p class="sub">Mapa regulacji: czym jest, jak klasyfikuje, kto za co odpowiada</p>
+  </div>
+</section>
+
+<!-- 4 · CZYM JEST AI ACT -->
+<section>
+  <p class="eyebrow">Część I · 1</p>
+  <h2>Czym jest AI Act?</h2>
+  <div class="row c2-wide">
+    <div>
+      <ul class="small">
+        <li><strong>Rozporządzenie UE</strong> — pierwszy na świecie kompleksowy reżim prawny dla AI</li>
+        <li>Obowiązuje <strong>bezpośrednio</strong> we wszystkich państwach członkowskich (nie wymaga implementacji jak dyrektywa)</li>
+        <li>Logika: <strong>product safety + prawa podstawowe</strong> — reguluje <em>ryzyko zastosowań</em>, nie „AI jako taką"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="eyebrow" style="margin-bottom:var(--sp-3)">Kluczowa idea</p>
+      <h3>Podejście oparte na ryzyku</h3>
+      <p class="small">Im wyższe ryzyko dla zdrowia, bezpieczeństwa i praw podstawowych, tym surowsze obowiązki. Większość systemów AI podlega obowiązkom <strong>niewielkim albo żadnym</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · DEFINICJA -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 2</p>
+    <span class="legal-ref">art. 3 pkt 1</span>
+  </div>
+  <h2>Definicja systemu AI</h2>
+  <div class="row c2-wide">
+    <div>
+      <p class="small">System AI to <strong>system maszynowy</strong>, który:</p>
+      <ul class="small tight">
+        <li>działa z <strong>różnym poziomem autonomii</strong>,</li>
+        <li>może wykazywać <strong>adaptacyjność</strong> po wdrożeniu,</li>
+        <li><strong>wnioskuje</strong> z danych wejściowych, jak generować wyniki: <em>przewidywania, treści, rekomendacje, decyzje</em>,</li>
+        <li>a wyniki <strong>wpływają na środowiska fizyczne lub wirtualne</strong>.</li>
+      </ul>
+      <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Słowo <strong>„wnioskuje"</strong> (<em>infers</em>) odróżnia system AI od zwykłego oprogramowania regułowego.</p>
+    </div>
+    <div class="card">
+      <p class="eyebrow" style="margin-bottom:var(--sp-3)">Test praktyczny — 5 pytań</p>
+      <ol class="smaller tight mono" style="color:var(--ink)">
+        <li>system maszynowy?</li>
+        <li>przetwarza wejście?</li>
+        <li>generuje wynik (predykcja / treść / rekomendacja)?</li>
+        <li>wynik wpływa na rzeczywistość?</li>
+        <li>zawiera komponent uczący się / wnioskujący?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · PIRAMIDA RYZYKA -->
+<section>
+  <p class="eyebrow">Część I · 3</p>
+  <h2>Piramida ryzyka — cztery kategorie</h2>
+  <div class="row c2-wide">
+    <div class="pyramid">
+      <div class="tier t1"><span class="tier-label">🔴 Niedopuszczalne</span></div>
+      <div class="tier t2"><span class="tier-label">🟠 Wysokie ryzyko</span></div>
+      <div class="tier t3"><span class="tier-label">🟡 Ograniczone</span></div>
+      <div class="tier t4"><span class="tier-label">🟢 Minimalne</span></div>
+    </div>
+    <div>
+      <ul class="pyramid-legend" style="list-style:none;margin-left:0">
+        <li><strong style="color:var(--coral-ink)">Niedopuszczalne</strong> — praktyki zakazane (art. 5) → <strong>zakaz</strong></li>
+        <li><strong style="color:var(--marigold-ink)">Wysokie</strong> — art. 6 + Zał. I i III → pełny reżim (art. 8–17, 72)</li>
+        <li><strong style="color:var(--warning-ink)">Ograniczone</strong> — art. 50 → <strong>obowiązki transparentności</strong></li>
+        <li><strong style="color:var(--teal-ink)">Minimalne</strong> — reszta → brak obowiązków szczególnych</li>
+      </ul>
+      <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Nasz case przejdzie tę piramidę <strong>od góry do dołu</strong> metodą eliminacji.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · PRAKTYKI ZAKAZANE -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 3a</p>
+    <span class="legal-ref">art. 5</span>
+  </div>
+  <h2>Praktyki zakazane</h2>
+  <p class="small">Bezwzględny zakaz — nieusuwalne ryzyko dla <strong>godności, autonomii i praw podstawowych</strong>:</p>
+  <div class="row c2">
+    <ul class="cross smaller tight">
+      <li>techniki <strong>podprogowe</strong> / manipulacyjne</li>
+      <li>wykorzystywanie <strong>szczególnej podatności</strong> osób</li>
+      <li><strong>scoring społeczny</strong> (<em>social scoring</em>)</li>
+      <li>zdalna <strong>identyfikacja biometryczna</strong> w czasie rzeczywistym</li>
+    </ul>
+    <ul class="cross smaller tight">
+      <li><strong>kategoryzacja biometryczna</strong> osób</li>
+      <li><strong>rozpoznawanie emocji</strong> w pracy i edukacji</li>
+      <li>predykcja przestępczości (<em>predictive policing</em>)</li>
+      <li><strong>bazy biometryczne</strong> ze scrapowanych obrazów</li>
+    </ul>
+  </div>
+  <p class="callout key small" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Wspólny mianownik: wszystkie dotyczą <strong>ludzi</strong>. W case'ie weterynaryjnym brak „człowieka jako przedmiotu oceny" będzie kluczowy.</p>
+</section>
+
+<!-- 8 · WYSOKIE RYZYKO -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 3b</p>
+    <span class="legal-ref">art. 6 + Zał. I i III</span>
+  </div>
+  <h2>Systemy wysokiego ryzyka</h2>
+  <p class="small">System jest wysokiego ryzyka, gdy spełnia <strong>jedną z dwóch ścieżek</strong>:</p>
+  <div class="row c2">
+    <div class="card">
+      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 1 — Załącznik I</p>
+      <h3>Produktowa</h3>
+      <p class="smaller">System jest <strong>komponentem bezpieczeństwa</strong> produktu objętego unijnym prawem harmonizacyjnym (np. MDR 2017/745, IVDR 2017/746) <strong>lub sam jest takim produktem</strong>.</p>
+    </div>
+    <div class="card">
+      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 2 — Załącznik III</p>
+      <h3>Obszarowa</h3>
+      <p class="smaller">System działa w obszarze wysokiego ryzyka dla <strong>osób fizycznych</strong>: biometria, infrastruktura krytyczna, edukacja, zatrudnienie, dostęp do świadczeń / kredytu / ochrony zdrowia, ściganie, migracja, sądownictwo, procesy demokratyczne.</p>
+    </div>
+  </div>
+  <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Obie ścieżki chronią <strong>ludzi</strong>. „Technicznie mogłoby działać u ludzi" to za mało.</p>
+</section>
+
+<!-- 9 · OGRANICZONE RYZYKO -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 3c</p>
+    <span class="legal-ref">art. 50</span>
+  </div>
+  <h2>Ograniczone ryzyko — transparentność</h2>
+  <p class="small">Nawet jeśli system nie jest wysokiego ryzyka, art. 50 nakłada <strong>obowiązki informacyjne</strong>, gdy system:</p>
+  <div class="row c2">
+    <div class="card">
+      <h3>🗣 Bezpośrednia interakcja</h3>
+      <p class="smaller">Przeznaczony do interakcji z osobami fizycznymi → trzeba je poinformować, że rozmawiają z AI (chyba że to oczywiste).</p>
+    </div>
+    <div class="card">
+      <h3>🏷 Treści syntetyczne</h3>
+      <p class="smaller">Generuje obraz / dźwięk / tekst / wideo → muszą być oznaczone jako wygenerowane przez AI, w formacie <strong>maszynowo czytelnym</strong>.</p>
+    </div>
+  </div>
+  <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>To „trzecia półka" piramidy — <strong>nie</strong> „brak obowiązków". Tu osadzi się nasz case.</p>
+</section>
+
+<!-- 10 · ROLE -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 4</p>
+    <span class="legal-ref">art. 3 pkt 3 i 4</span>
+  </div>
+  <h2>Role: dostawca vs podmiot stosujący</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>Dostawca <span class="mono smaller">(provider)</span></th><th>Podmiot stosujący <span class="mono smaller">(deployer)</span></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Kto</strong></td><td>rozwija system i <strong>wprowadza do obrotu</strong> pod własną marką</td><td><strong>używa</strong> systemu i sprawuje nad nim <strong>kontrolę</strong></td></tr>
+      <tr><td><strong>Przykład</strong></td><td>producent oprogramowania, SaaS</td><td>firma / klinika korzystająca z narzędzia</td></tr>
+      <tr><td><strong>Wyłączenie</strong></td><td>—</td><td>użycie w ramach <strong>osobistej działalności pozazawodowej</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Gdy deployerem jest osoba prawna, <em>poszczególni pracownicy</em> <strong>nie są</strong> odrębnymi deployerami (Wytyczne Komisji, pkt 2.4). Najwięcej obowiązków spoczywa na dostawcy.</p>
+</section>
+
+<!-- 11 · AI LITERACY -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 5</p>
+    <span class="legal-ref">art. 4</span>
+  </div>
+  <h2>Obowiązki przekrojowe — AI literacy</h2>
+  <p class="small">Niezależnie od kategorii ryzyka, <strong>dostawcy i deployerzy</strong> zapewniają <strong>odpowiedni poziom kompetencji AI</strong> u personelu. Personel powinien rozumieć:</p>
+  <div class="row c2">
+    <ul class="small tight">
+      <li>zasady działania i <strong>ograniczenia</strong> modelu,</li>
+      <li>znaczenie <strong>wskaźnika pewności / prawdopodobieństwa</strong>,</li>
+      <li>ryzyko wyników <strong>fałszywie dodatnich i ujemnych</strong>,</li>
+    </ul>
+    <ul class="small tight">
+      <li>ryzyko <strong>automation bias</strong> (nadmiernego zaufania do AI),</li>
+      <li>zasady <strong>eskalacji błędów</strong> i komunikowania ograniczeń.</li>
+    </ul>
+  </div>
+  <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>Art. 4 obowiązuje od lutego 2025 i dotyczy <strong>wszystkich</strong> kategorii — także ograniczonego ryzyka. Częsty „ślepy punkt".</p>
+</section>
+
+<!-- 12 · ZAKRES ZASTOSOWANIA -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 6</p>
+    <span class="legal-ref">art. 2</span>
+  </div>
+  <h2>Zakres zastosowania</h2>
+  <div class="row c2">
+    <div>
+      <p class="small">AI Act stosuje się m.in. do:</p>
+      <ul class="small tight">
+        <li><strong>dostawców</strong> wprowadzających systemy AI do obrotu w UE,</li>
+        <li><strong>producentów produktów</strong>, którzy pod własną marką wraz z produktem wprowadzają system AI <span class="mono smaller">(art. 2 ust. 1 lit. e)</span>,</li>
+        <li><strong>deployerów</strong> mających siedzibę lub działających w UE.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Wyłączenia do sprawdzenia</p>
+      <ul class="smaller tight">
+        <li>prywatne, nieprofesjonalne użycie,</li>
+        <li>czynności <strong>B+R przed</strong> wprowadzeniem na rynek <span class="muted">(ale nie testy w warunkach rzeczywistych ani komercyjne udostępnianie)</span>.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Lit. e to brama, przez którą „producent + dołączony software AI" wpada pod rozporządzenie — to ścieżka naszego case'a.</p>
+</section>
+
+<!-- 13 · DIVIDER II (vertical stack root) -->
+<section>
+  <section class="centerme" data-background-color="#D2EBE6">
+    <div class="divider">
+      <div class="big-num" style="color:var(--teal)">II</div>
+      <h2>Case: system wspierający diagnostykę</h2>
+      <p class="sub"><strong>Vet-Eye SmartScan AI</strong> / Vet-View — oprogramowanie AI do analizy obrazów USG w weterynarii</p>
+      <p class="smaller muted" style="margin-top:var(--sp-4)">↓ ścieżka subsumpcji: czy to system AI → kategoria ryzyka → role → obowiązki</p>
+    </div>
+  </section>
+
+  <!-- 14 · OPIS PRODUKTU -->
+  <section>
+    <p class="eyebrow">Case · opis produktu</p>
+    <h2>Vet-Eye SmartScan AI</h2>
+    <div class="row c2-wide">
+      <div>
+        <p class="small">Oprogramowanie <strong>SaaS</strong> (Vet-View S.A.) wspierające lekarzy weterynarii. Z obrazu USG system:</p>
+        <ul class="small tight">
+          <li>lokalizuje zmianę (ramka → maska / kontur / heatmapa),</li>
+          <li>proponuje <strong>klasyfikację</strong> zmiany,</li>
+          <li>podaje <strong>prawdopodobieństwo</strong> / wskaźnik pewności,</li>
+          <li>generuje <strong>opis tekstowy</strong> do dokumentacji klinicznej.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="eyebrow" style="margin-bottom:var(--sp-3)">Zakres przeznaczenia</p>
+        <ul class="smaller tight" style="list-style:none;margin-left:0">
+          <li>🐕 gatunek — <strong>pies</strong></li>
+          <li>🫘 narząd — <strong>nerki</strong></li>
+          <li>📡 badanie — <strong>USG przezpowłokowe</strong></li>
+        </ul>
+        <p class="smaller muted" style="margin-top:var(--sp-3)">Model trenowany / walidowany na danych klientów; śledzenie historii badań w czasie.</p>
+      </div>
+    </div>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">💡</span>Wynik jest <strong>pomocniczy</strong> — decyduje lekarz weterynarii.</p>
+  </section>
+
+  <!-- 15 · KROK 0 -->
+  <section>
+    <div class="step-head"><span class="knum">Krok 0</span><span class="legal-ref">art. 3 pkt 1</span></div>
+    <h2>Czy to w ogóle system AI?</h2>
+    <div class="row c2-wide">
+      <ul class="small tick tight">
+        <li>jest <strong>systemem maszynowym</strong></li>
+        <li>przetwarza <strong>dane wejściowe</strong> = obrazy USG</li>
+        <li><strong>generuje wyniki</strong>: lokalizacja, maska, heatmapa, klasyfikacja, prawdopodobieństwo, opis</li>
+        <li>wynik <strong>wpływa</strong> na proces diagnostyczny lekarza</li>
+        <li>zawiera <strong>komponent AI</strong> trenowany na danych</li>
+      </ul>
+      <div style="text-align:center">
+        <span class="verdict yes">✅ TAK — to system AI</span>
+        <p class="smaller muted" style="margin-top:var(--sp-3)">Pozytywna odpowiedź otwiera pytanie o kategorię ryzyka.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · KROK 1 -->
+  <section>
+    <div class="step-head"><span class="knum">Krok 1</span><span class="legal-ref">art. 5</span></div>
+    <h2>Czy zakazany?</h2>
+    <div class="row c2-wide">
+      <ul class="small cross tight">
+        <li>techniki podprogowe / manipulacja? <strong>nie</strong></li>
+        <li>scoring społeczny? <strong>nie</strong></li>
+        <li>identyfikacja / kategoryzacja biometryczna ludzi? <strong>nie</strong></li>
+        <li>rozpoznawanie emocji, predykcja przestępczości? <strong>nie</strong></li>
+      </ul>
+      <div style="text-align:center">
+        <span class="verdict no">NIE jest zakazany</span>
+        <p class="smaller muted" style="margin-top:var(--sp-3)">Wszystkie zakazy z art. 5 dotyczą ludzi — tu „obiektem" jest nerka psa. Schodzimy piętro niżej.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · KROK 2 produktowa -->
+  <section>
+    <div class="step-head"><span class="knum">Krok 2 · ścieżka produktowa</span><span class="legal-ref">art. 3 pkt 14 + art. 6</span></div>
+    <h2>Czy wysokiego ryzyka?</h2>
+    <div class="row c2">
+      <div class="card">
+        <h3>Komponent bezpieczeństwa USG? <span style="color:var(--coral-ink)">NIE</span></h3>
+        <ul class="cross smaller tight">
+          <li>nie steruje bezpieczeństwem aparatu,</li>
+          <li>nie zapobiega niebezpiecznej pracy urządzenia,</li>
+          <li>nie kontroluje emisji ultradźwięków,</li>
+          <li>jedynie <strong>lokalizuje i klasyfikuje</strong> zmianę — informacja pomocnicza.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Wyrób medyczny (MDR/IVDR)? <span style="color:var(--coral-ink)">NIE</span></h3>
+        <p class="smaller">To oprogramowanie do USG <strong>wyłącznie weterynaryjnego</strong>. Fakt, że <em>technicznie analogiczny</em> software mógłby działać u ludzi, <strong>nie</strong> czyni go wyrobem medycznym.</p>
+      </div>
+    </div>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Kwalifikacja idzie za <strong>przeznaczeniem</strong> (<em>intended purpose</em>), nie za „teoretyczną możliwością".</p>
+  </section>
+
+  <!-- 18 · KROK 2 obszarowa -->
+  <section>
+    <div class="step-head"><span class="knum">Krok 2 · ścieżka obszarowa</span><span class="legal-ref">Załącznik III</span></div>
+    <h2>Czy wysokiego ryzyka?</h2>
+    <p class="small">Załącznik III chroni <strong>osoby fizyczne i ich prawa</strong>. Vet-Eye SmartScan AI:</p>
+    <div class="row c2">
+      <ul class="cross smaller tight">
+        <li>nie identyfikuje ani nie kategoryzuje <strong>ludzi</strong>,</li>
+        <li>nie rozpoznaje emocji osób,</li>
+        <li>nie dotyczy infrastruktury krytycznej, edukacji, zatrudnienia,</li>
+      </ul>
+      <ul class="cross smaller tight">
+        <li>nie decyduje o dostępie ludzi do świadczeń, kredytu, ochrony zdrowia,</li>
+        <li>nie używają go organy ścigania, migracyjne ani sądy,</li>
+        <li>nie wpływa na procesy demokratyczne.</li>
+      </ul>
+    </div>
+    <div style="text-align:center;margin-top:var(--sp-4)"><span class="verdict no">System dotyczy zwierząt → NIE jest wysokiego ryzyka</span></div>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Rozstrzygnął <strong>kontekst — zwierzęta, nie ludzie</strong>. Ta sama architektura w USG dla ludzi → wyrób medyczny → potencjalnie wysokie ryzyko.</p>
+  </section>
+
+  <!-- 19 · KROK 3 descent -->
+  <section>
+    <div class="step-head"><span class="knum">Krok 3 · kwalifikacja końcowa</span><span class="legal-ref">art. 50</span></div>
+    <h2>Ląduje na: ograniczone ryzyko</h2>
+    <div class="row c2-wide">
+      <div class="pyramid">
+        <div class="tier t1 fragment elim" data-fragment-index="1"><span class="tier-label">🔴 Niedopuszczalne</span></div>
+        <div class="tier t2 fragment elim" data-fragment-index="2"><span class="tier-label">🟠 Wysokie ryzyko</span></div>
+        <div class="tier t3 fragment land" data-fragment-index="3"><span class="tier-label">🟡 Ograniczone — art. 50</span></div>
+        <div class="tier t4"><span class="tier-label">🟢 Minimalne</span></div>
+      </div>
+      <div>
+        <p class="small">System trafia do kategorii <strong><em>other AI systems</em></strong> — ale <strong>nie</strong> jest czysto minimalnego ryzyka, bo aktualizują się przesłanki art. 50:</p>
+        <ul class="small tick tight">
+          <li><strong>bezpośrednia interakcja</strong> z osobami fizycznymi (lekarzami weterynarii),</li>
+          <li><strong>treści syntetyczne</strong>: ramki, maski / heatmapy, opisy tekstowe.</li>
+        </ul>
+        <p class="callout key small fragment" data-fragment-index="3" style="margin-top:var(--sp-3)"><span class="ico">➡</span><strong>Ograniczone ryzyko</strong> — z obowiązkami transparentności.</p>
+      </div>
+    </div>
+    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>Dostawca musi <strong>stale monitorować zmiany funkcjonalne</strong> pod kątem możliwej rekwalifikacji.</p>
+  </section>
+
+  <!-- 20 · ROLE W WDROŻENIU -->
+  <section>
+    <div class="step-head"><span class="knum">Role w wdrożeniu</span><span class="legal-ref">art. 3 pkt 3 i 4</span></div>
+    <h2>Kto jest kim?</h2>
+    <div class="row c2">
+      <div class="card" style="border-top:4px solid var(--marigold)">
+        <p class="eyebrow" style="margin-bottom:var(--sp-2)">art. 3 pkt 3</p>
+        <h3>Vet-View S.A. = DOSTAWCA</h3>
+        <ul class="smaller tight">
+          <li>sam rozwija moduł AI,</li>
+          <li>oferuje produkt jako <strong>SaaS pod własną marką</strong>,</li>
+          <li>udostępnia go gabinetom i klinikom w UE.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:4px solid var(--teal)">
+        <p class="eyebrow" style="margin-bottom:var(--sp-2)">art. 3 pkt 4</p>
+        <h3>Klienci = DEPLOYERZY</h3>
+        <p class="smaller">Gabinety, lecznice, kliniki, laboratoria używają systemu i sprawują nad nim kontrolę.</p>
+        <p class="smaller muted">→ Poszczególni weterynarze <strong>nie są</strong> odrębnymi deployerami — działają w ramach podmiotu.</p>
+      </div>
+    </div>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Większość obowiązków spoczywa na <strong>dostawcy</strong> — Vet-View S.A.</p>
+  </section>
+
+  <!-- 21 · OBOWIĄZKI 1/3 -->
+  <section>
+    <div class="step-head"><span class="knum">Obowiązki dostawcy · 1/3</span><span class="legal-ref">art. 4 + art. 50</span></div>
+    <h2>AI literacy i transparentność</h2>
+    <div class="row c2">
+      <div class="card">
+        <h3>AI literacy <span class="mono smaller">(art. 4)</span></h3>
+        <p class="smaller">Przeszkolić nie tylko R&D, ale i <strong>sprzedaż oraz serwis</strong>; materiały dla klientów i weterynarzy; aktualizacja wiedzy po każdej istotnej zmianie modelu.</p>
+      </div>
+      <div class="card">
+        <h3>Transparentność <span class="mono smaller">(art. 50)</span></h3>
+        <ol class="smaller tight">
+          <li><strong>interfejs</strong> — „wygenerowane przez AI, pomocnicze, nie zastępuje diagnozy, wymaga weryfikacji",</li>
+          <li><strong>dokumentacja</strong> — przeznaczenie, zakres, ograniczenia, human oversight, zgłaszanie błędów,</li>
+          <li><strong>wynik</strong> — oznaczyć heatmapę, kontur i opis jako warstwy AI (maszynowo czytelnie).</li>
+        </ol>
+      </div>
+    </div>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Poziom 3 to wprost obowiązek oznaczania treści syntetycznych. „Prawdopodobieństwo = parametr modelu, nie potwierdzenie diagnozy".</p>
+  </section>
+
+  <!-- 22 · OBOWIĄZKI 2/3 -->
+  <section>
+    <div class="step-head"><span class="knum">Obowiązki dostawcy · 2/3</span><span class="legal-ref">art. 3 pkt 12</span></div>
+    <h2>Utrzymanie przeznaczenia (intended purpose)</h2>
+    <p class="small">Pełna <strong>spójność komunikatu</strong> między: dokumentacją techniczną, instrukcją, regulaminem SaaS, umową, marketingiem, stroną www, prezentacjami i komunikatami w aplikacji.</p>
+    <div class="callout warn small" style="margin-top:var(--sp-3)">
+      <p style="margin:0 0 .4em"><span class="ico">🚫</span><strong>Zakazane sformułowania</strong> (przesuwające produkt w stronę wyrobu medycznego):</p>
+      <ul class="smaller tight" style="margin-left:1.4em">
+        <li>„system diagnozuje choroby nerek", „automatyczna diagnoza"</li>
+        <li>„zastępuje lekarza", „wykrywa nowotwory"</li>
+        <li>„medyczny system AI", „dla USG" (bez dookreślenia: <strong>weterynaryjnego</strong>)</li>
+      </ul>
+    </div>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span><em>Język marketingu</em> ma skutki prawne — nieostrożny copywriting może zmienić kwalifikację produktu.</p>
+  </section>
+
+  <!-- 23 · OBOWIĄZKI 3/3 -->
+  <section>
+    <div class="step-head"><span class="knum">Obowiązki dostawcy · 3/3</span></div>
+    <h2>Zarządzanie zmianami modelu</h2>
+    <p class="small">AI Act <strong>nie</strong> nakłada pełnego <em>lifecycle compliance</em> poza wysokim ryzykiem — ale przy modelu SaaS trenowanym na danych klientów dostawca powinien prowadzić <strong>kontrolę zmian</strong> i dokumentować:</p>
+    <div class="row c2">
+      <ul class="smaller tight">
+        <li>wersję modelu, daty wdrożeń, zmiany architektury i zbiorów treningowych,</li>
+        <li>zmiany progów decyzyjnych i kategorii klasyfikacji,</li>
+      </ul>
+      <ul class="smaller tight">
+        <li>wpływ na dokładność, czułość, swoistość,</li>
+        <li>wpływ na porównywalność wyników historycznych, procedurę <strong>rollback</strong>, komunikację do klientów.</li>
+      </ul>
+    </div>
+    <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>System ma umożliwiać <strong>śledzenie historii badań w czasie</strong> — zmiana modelu między badaniami może ograniczyć porównywalność wyników.</p>
+  </section>
+
+</section><!-- /vertical stack -->
+
+<!-- 24 · PODSUMOWANIE ANALIZY -->
+<section>
+  <p class="eyebrow">Podsumowanie analizy</p>
+  <h2>Ścieżka subsumpcji w jednej tabeli</h2>
+  <table>
+    <thead>
+      <tr><th>Krok</th><th>Pytanie</th><th>Podstawa prawna</th><th>Wniosek</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Czy to system AI?</td><td class="refcell">art. 3 pkt 1</td><td><strong>Tak</strong></td></tr>
+      <tr><td>2a</td><td>Czy zakazany?</td><td class="refcell">art. 5</td><td>Nie</td></tr>
+      <tr><td>2b</td><td>Czy wysokiego ryzyka?</td><td class="refcell">art. 6, zał. I i III</td><td>Nie</td></tr>
+      <tr><td>2c</td><td>Która kategoria?</td><td class="refcell">art. 50</td><td><strong>Ograniczone ryzyko</strong></td></tr>
+      <tr><td>3</td><td>Kto jest kim?</td><td class="refcell">art. 3 pkt 3 i 4</td><td>Dostawca = Vet-View S.A.; deployer = klinika</td></tr>
+      <tr><td>4</td><td>Czy AI Act ma zastosowanie?</td><td class="refcell">art. 2 ust. 1 lit. e</td><td><strong>Tak</strong>, bez wyłączeń</td></tr>
+      <tr><td>5</td><td>Jakie obowiązki?</td><td class="refcell">art. 4, 50, 3 pkt 12</td><td>Literacy, transparentność, intended purpose, kontrola zmian</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 25 · WNIOSKI -->
+<section>
+  <p class="eyebrow">Wnioski</p>
+  <h2>Czego uczy ten case</h2>
+  <ol class="small">
+    <li class="fragment"><strong>Metoda zawsze ta sama:</strong> system AI? → kategoria ryzyka (eliminacja od góry) → role → obowiązki.</li>
+    <li class="fragment"><strong>Kwalifikacja idzie za przeznaczeniem</strong>, nie za technicznymi możliwościami („mogłoby działać u ludzi" ≠ wyrób medyczny).</li>
+    <li class="fragment"><strong>„Ograniczone ryzyko" ≠ brak obowiązków</strong> — transparentność (art. 50) + AI literacy (art. 4) obowiązują.</li>
+    <li class="fragment"><strong>Język produktu ma skutki prawne</strong> — marketing może przesunąć produkt w górę piramidy.</li>
+    <li class="fragment"><strong>Kwalifikacja jest dynamiczna</strong> — nowe funkcje (ocena ludzi, profilowanie) mogą wymagać rekwalifikacji.</li>
+  </ol>
+</section>
+
+<!-- 26 · PYTANIA DO DYSKUSJI -->
+<section>
+  <p class="eyebrow">Pytania do dyskusji</p>
+  <h2>Do przemyślenia</h2>
+  <ol class="small tight">
+    <li>Co zmieniłoby się w analizie, gdyby produkt był przeznaczony dla <strong>ludzi</strong> (USG medyczne)?</li>
+    <li>Jakie funkcje przesunęłyby produkt do kategorii <strong>wysokiego ryzyka</strong> lub <strong>zakazanej</strong>?</li>
+    <li>Trenowanie modelu na danych klientów — jakie obowiązki rodzi to dodatkowo na gruncie <strong>RODO</strong>?</li>
+    <li>Jak technicznie oznaczyć heatmapę i opis jako <strong>treść wygenerowaną przez AI</strong> (format maszynowo czytelny)?</li>
+    <li>Kto odpowiada, gdy lekarz bezkrytycznie zaufa błędnemu wynikowi (<em>automation bias</em>) — dostawca czy deployer?</li>
+  </ol>
+</section>
+
+<!-- 27 · ZAMKNIĘCIE -->
+<section class="centerme" data-background-color="#211E1A">
+  <div class="slide-title" style="color:var(--paper)">
+    <p class="eyebrow" style="color:var(--marigold)">Dziękuję za uwagę</p>
+    <h1 style="color:var(--paper);font-size:2.2em">Compliance to proces, nie<br>jednorazowa czynność</h1>
+    <p class="smaller" style="color:var(--marigold-soft);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: rozporządzenie (UE) 2024/1689 (AI Act)</p>
+    <p class="smaller" style="color:var(--ink-3)">Materiał dydaktyczny · przykład ilustracyjny · nie stanowi porady prawnej</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    controls: true,
+    progress: true,
+    center: false,
+    transition: 'slide',
+    transitionSpeed: 'default',
+    overview: true,
+    width: 1360,
+    height: 765,
+    margin: 0.035,
+    minScale: 0.2,
+    maxScale: 2.0,
+  });
+</script>
+</body>
+</html>
