@@ -387,7 +387,7 @@ html, body { background: var(--paper); }
 .reveal section img { max-width: 100%; }
 
 /* content shell – fill the slide width */
-.reveal .slides section { max-width: 1240px; width: 100%; box-sizing: border-box; }
+.reveal .slides section { width: 100%; box-sizing: border-box; }
 /* wider gutters between columns now that we have more room */
 .row.c2 { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
 .row.c2-wide { gap: var(--sp-10); }
@@ -422,6 +422,24 @@ html, body { background: var(--paper); }
 /* columns + cards stretch to equal height */
 .row.c2, .row.c2-wide { align-items: stretch; }
 .row.c2 > .card, .row.c2-wide > .card { display: flex; flex-direction: column; justify-content: center; }
+/* Titles stay left-aligned; everything after the heading is centred on the page:
+   blocks shrink to their content width and sit in the middle, prose is centred,
+   list items and table cells keep left alignment for readability. */
+.reveal .slides section:not(.centerme):not(:has(> section)) > :not(h1):not(h2):not(h3):not(.eyebrow):not(.step-head) {
+  margin-left: auto; margin-right: auto; text-align: center;
+}
+.reveal .slides section:not(.centerme):not(:has(> section)) > .row,
+.reveal .slides section:not(.centerme):not(:has(> section)) > table { max-width: 1120px; }
+.reveal .slides section:not(.centerme):not(:has(> section)) > ol,
+.reveal .slides section:not(.centerme):not(:has(> section)) > ul { max-width: 1000px; width: auto; }
+.reveal .slides section:not(.centerme):not(:has(> section)) > .callout,
+.reveal .slides section:not(.centerme):not(:has(> section)) > p { max-width: 1000px; width: fit-content; }
+.reveal .slides section:not(.centerme):not(:has(> section)) li,
+.reveal .slides section:not(.centerme):not(:has(> section)) td,
+.reveal .slides section:not(.centerme):not(:has(> section)) th { text-align: left; }
+.reveal .slides section:not(.centerme):not(:has(> section)) .row > * { text-align: center; }
+.reveal .slides section:not(.centerme):not(:has(> section)) .row ul,
+.reveal .slides section:not(.centerme):not(:has(> section)) .row ol { display: inline-block; text-align: left; }
 /* give list rows a little more air when they own the slide */
 .reveal .slides section:not(:has(> section)) > ol > li,
 .reveal .slides section:not(:has(> section)) > ul > li { margin: .5em 0; }
