@@ -10,67 +10,183 @@
 
 <style>
 /* ============================================================
-   edulab – Colors & Type foundation (injected tokens)
+   edulab — Colors & Type foundation
+   Fonts loaded from Google Fonts (CDN). See README "Visual
+   Foundations" for substitution notes.
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
 
 :root {
-  --font-display: 'Bricolage Grotesque', 'Hanken Grotesk', system-ui, sans-serif;
-  --font-sans:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
-  --font-mono:    'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* ---- Brand fonts ---- */
+  --font-display: 'Outfit', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-sans:    'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'Roboto Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --paper:    #FBF7F0;
-  --paper-2:  #F4EDDF;
-  --paper-3:  #ECE1CF;
-  --surface:  #FFFFFF;
+  /* ============================================================
+     RAW COLOR TOKENS
+     ============================================================ */
 
-  --ink:      #211E1A;
-  --ink-2:    #5B554D;
-  --ink-3:    #938A7C;
-  --line:     #E7DCCB;
-  --line-2:   #D6C8B2;
+  /* Paper — page background is white; the sand steps are wells/alternating sections */
+  --paper:    #FFFFFF;   /* page background (white)    */
+  --paper-2:  #FBF7E6;   /* alternating section        */
+  --paper-3:  #F5EDCB;   /* deepest sand / wells       */
+  --surface:  #FFFFFF;   /* cards & sheets             */
 
-  --marigold:      #E8920C;
-  --marigold-600:  #CE800A;
-  --marigold-soft: #FBE7C2;
-  --marigold-ink:  #8A4F00;
+  /* Ink — warm near-black text & lines */
+  --ink:      #1C1917;   /* primary text               */
+  --ink-2:    #57534E;   /* secondary text             */
+  --ink-3:    #948C82;   /* muted / placeholder        */
+  --line:     #EDE7D2;   /* hairline borders           */
+  --line-2:   #DDD4B6;   /* stronger borders           */
 
-  --teal:      #0E8C7F;
-  --teal-600:  #0B7468;
-  --teal-soft: #D2EBE6;
-  --teal-ink:  #0A5A52;
+  /* ---- Brand: Yellow main · Blue + Green secondary · Red danger ----
+     Plain saturated colours. A "-soft" tint IS the saturated colour
+     (panels and chips are solid), "-ink" is the text colour ON it:
+     white on blue/green/red, dark ink on yellow. Never colour-on-colour
+     (no green text on green); the saturated colour itself goes only on
+     white or black. */
 
-  --coral:      #EF5B3F;
-  --coral-600:  #D44A30;
-  --coral-soft: #FBDDD4;
-  --coral-ink:  #9A2E1B;
+  /* Yellow — primary (buttons, progress, values on dark panels) */
+  --yellow:      #FFD500;
+  --yellow-600:  #F0C800;  /* hover / press          */
+  --yellow-soft: #FFD500;  /* chip / panel fill      */
+  --yellow-ink:  #1C1917;  /* text on yellow         */
 
-  --sky:      #2E78C9;
-  --sky-soft: #D9E7F6;
-  --sky-ink:  #1B4E88;
+  /* Blue — secondary (panels, chips, correct / selected state) */
+  --blue:      #1E8FC2;
+  --blue-600:  #177AA8;
+  --blue-soft: #1E8FC2;
+  --blue-ink:  #FFFFFF;
 
-  --success:      #2F8F5B;  --success-soft: #D7EEDD;  --success-ink: #1C6A3E;
-  --warning:      #C9810A;  --warning-soft: #FBEAC6;  --warning-ink: #855207;
-  --danger:       #D8412A;  --danger-soft:  #FAD9D2;  --danger-ink:  #97271A;
-  --info:         #2E78C9;  --info-soft:    #D9E7F6;  --info-ink:    #1B4E88;
+  /* Green — secondary support (chips, success) */
+  --green:      #00A651;
+  --green-600:  #009444;
+  --green-soft: #00A651;
+  --green-ink:  #FFFFFF;
 
+  /* Red — danger / important / wrong (use sparingly) */
+  --red:      #E5322D;
+  --red-600:  #C92823;
+  --red-soft: #E5322D;
+  --red-ink:  #FFFFFF;
+
+  /* Legacy role aliases — older edulab apps use these names */
+  --marigold: var(--yellow); --marigold-600: var(--yellow-600); --marigold-soft: var(--yellow-soft); --marigold-ink: var(--yellow-ink);
+  --teal:     var(--blue);   --teal-600:     var(--blue-600);   --teal-soft:     var(--blue-soft);   --teal-ink:     var(--blue-ink);
+  --sky:      var(--green);                                     --sky-soft:      var(--green-soft);  --sky-ink:      var(--green-ink);
+  --coral:    var(--red);    --coral-600:    var(--red-600);    --coral-soft:    var(--red-soft);    --coral-ink:    var(--red-ink);
+
+  /* Play palette — subject/category colours in the kids app */
+  --play-sun:    #FFD500;
+  --play-grass:  #00A651;
+  --play-berry:  #C6478B;
+  --play-grape:  #7A5AC2;
+  --play-sky:    #1E8FC2;
+  --play-coral:  #E5322D;
+
+  /* ---- Semantic ---- */
+  --success:      #00A651;  --success-soft: #00A651;  --success-ink: #FFFFFF;
+  --warning:      #FFD500;  --warning-soft: #FFD500;  --warning-ink: #1C1917;
+  --danger:       #E5322D;  --danger-soft:  #E5322D;  --danger-ink:  #FFFFFF;
+  --info:         #1E8FC2;  --info-soft:    #1E8FC2;  --info-ink:    #FFFFFF;
+
+  /* ---- Functional aliases ---- */
   --bg:        var(--paper);
   --fg:        var(--ink);
-  --primary:   var(--marigold);
-  --on-primary:#FFFFFF;
-  --focus-ring: 0 0 0 3px rgba(232,146,12,.38);
+  --fg-muted:  var(--ink-2);
+  --primary:   var(--yellow);
+  --on-primary:#1C1917;      /* dark text on yellow */
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--yellow) 45%, transparent);
 
+  /* ============================================================
+     SPACING  (4pt base)
+     ============================================================ */
   --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
   --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
   --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
 
+  /* ---- Radii (friendly, generous) ---- */
   --r-xs: 6px; --r-sm: 10px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
 
+  /* ---- Elevation — warm, low, soft ---- */
   --shadow-sm: 0 1px 2px rgba(33,30,26,.06), 0 1px 1px rgba(33,30,26,.04);
   --shadow-md: 0 4px 16px rgba(33,30,26,.08), 0 1px 3px rgba(33,30,26,.05);
   --shadow-lg: 0 16px 40px rgba(33,30,26,.12), 0 3px 8px rgba(33,30,26,.06);
-  --shadow-marigold: 0 8px 22px rgba(232,146,12,.28);
+  --shadow-primary:  0 8px 22px color-mix(in srgb, var(--yellow) 30%, transparent);
+  --shadow-marigold: var(--shadow-primary);   /* legacy alias */
+
+  /* ============================================================
+     TYPE SCALE (semantic sizes)
+     ============================================================ */
+  --display-font:  clamp(48px, 6vw, 72px);
+  --h1: 44px; --h2: 33px; --h3: 25px; --h4: 19px;
+  --body-lg: 18px; --body: 16px; --body-sm: 14px;
+  --caption: 13px; --overline: 12px;
 }
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   Apply via element selectors or .edu-prose wrapper.
+   ============================================================ */
+
+.edu-display, .edu h1.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--display-font);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+.edu h1, .edu-h1 {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: var(--h1);
+  line-height: 1.06; letter-spacing: -0.02em; color: var(--ink);
+}
+.edu h2, .edu-h2 {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: var(--h2);
+  line-height: 1.12; letter-spacing: -0.015em; color: var(--ink);
+}
+.edu h3, .edu-h3 {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: var(--h3);
+  line-height: 1.2; letter-spacing: -0.01em; color: var(--ink);
+}
+.edu h4, .edu-h4 {
+  font-family: var(--font-sans);
+  font-weight: 700; font-size: var(--h4);
+  line-height: 1.3; color: var(--ink);
+}
+.edu p, .edu-p, .edu-body {
+  font-family: var(--font-sans);
+  font-weight: 400; font-size: var(--body);
+  line-height: 1.6; color: var(--ink-2);
+}
+.edu-body-lg { font-family: var(--font-sans); font-size: var(--body-lg); line-height: 1.6; color: var(--ink-2); }
+.edu-small  { font-family: var(--font-sans); font-size: var(--body-sm); line-height: 1.5; color: var(--ink-2); }
+.edu-caption{ font-family: var(--font-sans); font-size: var(--caption); line-height: 1.45; color: var(--ink-3); }
+
+/* Overline — mono, tracked; functional labels only (never above page/section titles) */
+.edu-overline {
+  font-family: var(--font-mono);
+  font-weight: 500; font-size: var(--overline);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink);
+}
+.edu code, .edu-mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em; color: var(--ink);
+  background: var(--paper-3); padding: 0.12em 0.4em; border-radius: var(--r-xs);
+}
+
+/* Solid colour blocks (callouts, stat cards, chips): set background: var(--X-soft) and
+   color: var(--X-ink) on the block, add .edu-block, and every heading/paragraph inside
+   inherits that text colour instead of the default ink. */
+.edu-block, .edu-block h1, .edu-block h2, .edu-block h3, .edu-block h4, .edu-block p,
+.edu-block li, .edu-block small { color: inherit; }
+
+body.edu { background: var(--paper); color: var(--ink); font-family: var(--font-sans); }
 
 /* ============================================================
    reveal.js theme override → edulab tokens
@@ -84,11 +200,11 @@
   --r-heading-color: var(--ink);
   --r-heading-font-weight: 700;
   --r-heading1-text-shadow: none;
-  --r-link-color: var(--teal);
-  --r-link-color-hover: var(--teal-600);
-  --r-selection-background-color: var(--marigold-soft);
+  --r-link-color: var(--blue);
+  --r-link-color-hover: var(--blue-600);
+  --r-selection-background-color: var(--yellow);
   --r-selection-color: var(--ink);
-  --r-overlay-element-bg-color: 33, 30, 26;
+  --r-overlay-element-bg-color: 28, 25, 23;
 }
 
 html, body { background: var(--paper); }
@@ -108,59 +224,38 @@ html, body { background: var(--paper); }
 .reveal h1 { font-size: 2.2em; font-weight: 700; }
 .reveal h2 { font-size: 1.72em; font-weight: 700; }
 .reveal h3 { font-size: 1.28em; font-weight: 600; letter-spacing: -0.01em; }
+.reveal h3 .mono { display: block; font-size: .5em; font-weight: 500; color: var(--ink-3); letter-spacing: .04em; margin-top: .35em; }
 .reveal p  { color: var(--ink-2); }
 .reveal strong { color: var(--ink); font-weight: 700; }
 .reveal em { color: var(--ink-2); font-style: italic; }
 
-.reveal a { color: var(--teal); text-decoration: none; }
+.reveal a { color: var(--blue); text-decoration: none; }
 
-/* Progress bar + controls in marigold */
-.reveal .progress { color: var(--marigold); height: 5px; background: rgba(33,30,26,.08); }
-.reveal .controls { color: var(--marigold); }
+/* Progress bar + controls in yellow */
+.reveal .progress { color: var(--yellow); height: 5px; background: var(--paper-3); }
+.reveal .controls { color: var(--yellow-600); }
 .reveal .slide-number { background: transparent; color: var(--ink-3); font-family: var(--font-mono); font-size: 13px; }
-
-/* ============================================================
-   Branded top bar (persistent edulab chrome)
-   ============================================================ */
-.edu-topbar {
-  position: fixed; top: 0; left: 0; right: 0; height: 52px;
-  z-index: 60;
-  display: flex; align-items: center; gap: var(--sp-3);
-  padding: 0 var(--sp-6);
-  background: rgba(251,247,240,.82);
-  backdrop-filter: saturate(160%) blur(10px);
-  -webkit-backdrop-filter: saturate(160%) blur(10px);
-  border-bottom: 1px solid var(--line);
-}
-.edu-topbar .mark { width: 26px; height: 26px; flex: 0 0 auto; }
-.edu-topbar .wordmark {
-  font-family: var(--font-display); font-weight: 700; font-size: 19px;
-  color: var(--ink); letter-spacing: -0.02em;
-}
-.edu-topbar .tag {
-  margin-left: auto;
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--teal-ink);
-  background: var(--teal-soft); border-radius: var(--r-pill);
-  padding: 5px 12px;
-}
-.reveal .slides { margin-top: 14px; } /* breathing room under the bar */
 
 /* ============================================================
    edulab content primitives
    ============================================================ */
 .eyebrow {
   font-family: var(--font-mono); font-weight: 500; font-size: 0.52em;
-  letter-spacing: 0.16em; text-transform: uppercase; color: var(--marigold-ink);
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink);
   margin: 0 0 var(--sp-4) 0;
 }
 .lead { font-size: 1.12em; color: var(--ink-2); max-width: 24em; }
 .mono { font-family: var(--font-mono); }
 .legal-ref {
   font-family: var(--font-mono); font-size: 0.62em; letter-spacing: 0.04em;
-  color: var(--teal-ink); background: var(--teal-soft);
+  color: var(--blue-ink); background: var(--blue-soft);
   padding: 3px 9px; border-radius: var(--r-pill); white-space: nowrap;
 }
+
+/* Brand lockup on title / closing slides (no persistent top bar on a deck) */
+.brand { display:flex; align-items:center; justify-content:center; gap: 2px; margin-bottom: var(--sp-6); }
+.edu-logo { width: 64px; height: 64px; display:block; margin-right: -6px; }
+.edu-wordmark { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: -.02em; color: var(--ink); }
 
 /* Cards */
 .card {
@@ -179,13 +274,12 @@ html, body { background: var(--paper); }
   border-radius: var(--r-md);
   padding: var(--sp-4) var(--sp-5);
   font-size: 0.94em; line-height: 1.45;
-  border: 1px solid transparent;
 }
 .callout .ico { font-style: normal; margin-right: .4em; }
-.callout.warn   { background: var(--coral-soft);   color: var(--coral-ink);   border-color: #f3c3b8; }
-.callout.lesson { background: var(--teal-soft);    color: var(--teal-ink);    border-color: #b6dcd5; }
-.callout.key    { background: var(--marigold-soft);color: var(--marigold-ink);border-color: #f1d49a; }
-.callout strong { color: inherit; }
+.callout.warn   { background: var(--red-soft);    color: var(--red-ink); }
+.callout.lesson { background: var(--blue-soft);   color: var(--blue-ink); }
+.callout.key    { background: var(--yellow-soft); color: var(--yellow-ink); }
+.callout strong, .callout em, .callout p, .callout li { color: inherit; }
 
 /* Verdict chips */
 .verdict {
@@ -199,29 +293,29 @@ html, body { background: var(--paper); }
 /* Lists */
 .reveal ul, .reveal ol { display: block; margin-left: 1.1em; }
 .reveal li { margin: .32em 0; line-height: 1.4; }
-.reveal ul li::marker { color: var(--marigold); }
-.reveal ol li::marker { color: var(--teal); font-family: var(--font-mono); }
+.reveal ul li::marker { color: var(--yellow-600); }
+.reveal ol li::marker { color: var(--blue); font-family: var(--font-mono); }
 .tick li { list-style: none; position: relative; padding-left: 1.5em; }
-.tick li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+.tick li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
 .cross li { list-style: none; position: relative; padding-left: 1.5em; }
-.cross li::before { content: "✕"; position: absolute; left: 0; color: var(--coral); font-weight: 700; }
+.cross li::before { content: "✕"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
 
 /* Tables */
 .reveal table { border-collapse: collapse; width: 100%; font-size: .82em; box-shadow: var(--shadow-sm); border-radius: var(--r-md); overflow: hidden; }
 .reveal table th, .reveal table td { border: 1px solid var(--line); padding: .55em .7em; text-align: left; vertical-align: top; background: var(--surface); }
 .reveal table thead th { background: var(--paper-2); color: var(--ink); font-family: var(--font-display); font-weight: 600; }
-.reveal table td.refcell { font-family: var(--font-mono); font-size: .9em; color: var(--teal-ink); white-space: nowrap; }
+.reveal table td.refcell { font-family: var(--font-mono); font-size: .9em; color: var(--blue); white-space: nowrap; }
 
 /* ============================================================
    Title / divider slides
    ============================================================ */
 .slide-title { text-align: center; }
 .slide-title h1 { font-size: 2.7em; margin-bottom: var(--sp-4); }
-.slide-title .subtitle { font-size: 1.15em; color: var(--ink-2); font-family: var(--font-display); font-weight: 500; max-width: 18em; margin: 0 auto var(--sp-8); letter-spacing: -0.01em; }
+.slide-title .subtitle { font-size: 1.15em; color: var(--ink-2); font-family: var(--font-display); font-weight: 500; max-width: 28em; margin: 0 auto var(--sp-8); letter-spacing: -0.01em; }
 .slide-title .meta { font-family: var(--font-mono); font-size: .6em; color: var(--ink-3); letter-spacing: 0.08em; }
 .case-pill {
   display: inline-block; margin-top: var(--sp-6);
-  background: var(--marigold-soft); color: var(--marigold-ink);
+  background: var(--yellow-soft); color: var(--yellow-ink);
   font-family: var(--font-mono); font-size: .58em; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 8px 18px; border-radius: var(--r-pill);
 }
@@ -229,7 +323,7 @@ html, body { background: var(--paper); }
 .divider { text-align: center; }
 .divider .big-num {
   font-family: var(--font-display); font-weight: 800;
-  font-size: 5.5em; line-height: 1; color: var(--marigold);
+  font-size: 5.5em; line-height: 1; color: var(--yellow-600);
   letter-spacing: -0.04em;
 }
 .divider h2 { font-size: 1.9em; margin-top: var(--sp-4); }
@@ -241,7 +335,7 @@ html, body { background: var(--paper); }
 .pyramid { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .tier {
   position: relative;
-  color: #fff; font-family: var(--font-display); font-weight: 600;
+  color: var(--paper); font-family: var(--font-display); font-weight: 600;
   display: flex; align-items: center; justify-content: center; gap: .5em;
   border-radius: var(--r-sm);
   padding: 12px 18px; text-align: center;
@@ -250,14 +344,15 @@ html, body { background: var(--paper); }
 }
 .tier .tier-label { font-size: .82em; }
 .tier .tier-note  { font-family: var(--font-sans); font-weight: 400; font-size: .58em; opacity: .92; }
-.tier.t1 { width: 38%; background: var(--coral); }
-.tier.t2 { width: 56%; background: var(--marigold); }
-.tier.t3 { width: 74%; background: var(--warning); }
-.tier.t4 { width: 92%; background: var(--teal); }
+.tier.t1 { width: 38%; background: var(--red); color: var(--red-ink); }
+.tier.t2 { width: 56%; background: var(--yellow); color: var(--yellow-ink); }
+.tier.t3 { width: 74%; background: var(--blue); color: var(--blue-ink); }
+.tier.t4 { width: 92%; background: var(--green); color: var(--green-ink); }
 
 /* pyramid legend (slide 6) */
 .pyramid-legend { font-size: .68em; }
 .pyramid-legend li { margin: .35em 0; }
+.pyramid-legend .chip { display:inline-block; padding: 2px 10px; border-radius: var(--r-pill); font-family: var(--font-display); font-weight: 600; }
 
 /* descent animation (slide 19): driven by reveal fragment .visible state.
    Override reveal's default (which hides fragments) so tiers stay visible at rest. */
@@ -267,8 +362,9 @@ html, body { background: var(--paper); }
 .reveal .fragment.elim.visible .tier-label { text-decoration: line-through; }
 .reveal .fragment.land.visible {
   transform: scale(1.04);
-  box-shadow: var(--shadow-lg), 0 0 0 4px var(--marigold-soft);
-  outline: 3px solid var(--marigold);
+  box-shadow: var(--shadow-lg);
+  outline: 4px solid var(--ink);
+  outline-offset: 2px;
 }
 
 /* layout helpers */
@@ -285,7 +381,7 @@ html, body { background: var(--paper); }
 .step-head { display: flex; align-items: baseline; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-4); }
 .step-head .knum {
   font-family: var(--font-mono); font-size: .6em; letter-spacing: .1em; text-transform: uppercase;
-  color: #fff; background: var(--teal); padding: 4px 11px; border-radius: var(--r-pill);
+  color: var(--blue-ink); background: var(--blue-soft); padding: 4px 11px; border-radius: var(--r-pill);
 }
 
 .reveal section img { max-width: 100%; }
@@ -333,24 +429,13 @@ html, body { background: var(--paper); }
 </head>
 <body class="edu">
 
-<!-- Persistent branded top bar -->
-<div class="edu-topbar">
-  <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-    <rect x="2" y="2" width="28" height="28" rx="9" fill="#0E8C7F"/>
-    <path d="M16 8 L24 12 L16 16 L8 12 Z" fill="#fff"/>
-    <path d="M11 14.5 V18.5 C11 20.4 13.2 21.8 16 21.8 C18.8 21.8 21 20.4 21 18.5 V14.5" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  </svg>
-  <span class="wordmark">edulab</span>
-  <span class="tag">AI Act · wykład</span>
-</div>
-
 <div class="reveal">
 <div class="slides">
 
 <!-- 1 · TITLE -->
 <section class="centerme" data-auto-animate>
   <div class="slide-title">
-    <p class="eyebrow">Materiał wykładowy · podejście oparte na ryzyku</p>
+    <div class="brand"><img class="edu-logo" alt="edulab" src="data:image/png;base64,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"><span class="edu-wordmark">edulab</span></div>
     <h1>AI&nbsp;Act w&nbsp;praktyce</h1>
     <p class="subtitle">Od ogólnych ram regulacyjnych do kwalifikacji systemu wspierającego diagnostykę</p>
     <p class="meta">Rozporządzenie (UE) 2024/1689 · stan prawny: wrzesień 2026 (po Digital Omnibus 2026/1744)</p>
@@ -360,11 +445,10 @@ html, body { background: var(--paper); }
 
 <!-- 2 · AGENDA -->
 <section>
-  <p class="eyebrow">Agenda</p>
   <h2>Plan wykładu</h2>
   <div class="row c2">
     <div class="card">
-      <h3 style="color:var(--marigold-ink)">Część I – AI Act ogólnie</h3>
+      <h3>Część I – AI Act ogólnie</h3>
       <ol class="tight small">
         <li>Czym jest AI Act i po co powstał</li>
         <li>Definicja systemu AI</li>
@@ -375,7 +459,7 @@ html, body { background: var(--paper); }
       </ol>
     </div>
     <div class="card">
-      <h3 style="color:var(--teal-ink)">Część II – Case: diagnostyka</h3>
+      <h3 style="color:var(--blue)">Część II – Case: diagnostyka</h3>
       <ol class="tight small" start="7">
         <li>Subsumpcja: czy to system AI?</li>
         <li>Kwalifikacja ryzyka – krok po kroku</li>
@@ -388,7 +472,7 @@ html, body { background: var(--paper); }
 </section>
 
 <!-- 3 · DIVIDER I -->
-<section class="centerme" data-background-color="#F4EDDF">
+<section class="centerme" data-background-color="#FBF7E6">
   <div class="divider">
     <div class="big-num">I</div>
     <h2>AI Act – ogólne ramy regulacyjne</h2>
@@ -398,7 +482,6 @@ html, body { background: var(--paper); }
 
 <!-- 4 · CZYM JEST AI ACT -->
 <section>
-  <p class="eyebrow">Część I · 1</p>
   <h2>Czym jest AI Act?</h2>
   <div class="row c2-wide">
     <div>
@@ -419,7 +502,6 @@ html, body { background: var(--paper); }
 <!-- 5 · DEFINICJA -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 2</p>
     <span class="legal-ref">art. 3 pkt 1</span>
   </div>
   <h2>Definicja systemu AI</h2>
@@ -449,21 +531,20 @@ html, body { background: var(--paper); }
 
 <!-- 6 · PIRAMIDA RYZYKA -->
 <section>
-  <p class="eyebrow">Część I · 3</p>
   <h2>Piramida ryzyka – cztery kategorie</h2>
   <div class="row c2-wide">
     <div class="pyramid">
-      <div class="tier t1"><span class="tier-label">🔴 Niedopuszczalne</span></div>
-      <div class="tier t2"><span class="tier-label">🟠 Wysokie ryzyko</span></div>
-      <div class="tier t3"><span class="tier-label">🟡 Ograniczone</span></div>
-      <div class="tier t4"><span class="tier-label">🟢 Minimalne</span></div>
+      <div class="tier t1"><span class="tier-label">Niedopuszczalne</span></div>
+      <div class="tier t2"><span class="tier-label">Wysokie ryzyko</span></div>
+      <div class="tier t3"><span class="tier-label">Ograniczone</span></div>
+      <div class="tier t4"><span class="tier-label">Minimalne</span></div>
     </div>
     <div>
       <ul class="pyramid-legend" style="list-style:none;margin-left:0">
-        <li><strong style="color:var(--coral-ink)">Niedopuszczalne</strong>: praktyki zakazane (art. 5) → <strong>zakaz</strong></li>
-        <li><strong style="color:var(--marigold-ink)">Wysokie</strong>: art. 6 + Zał. I i III → pełny reżim (art. 8–17, 72)</li>
-        <li><strong style="color:var(--warning-ink)">Ograniczone</strong> (nazwa umowna): art. 50 → <strong>obowiązki transparentności</strong></li>
-        <li><strong style="color:var(--teal-ink)">Minimalne</strong>: reszta → brak obowiązków szczególnych</li>
+        <li><strong class="chip" style="background:var(--red);color:var(--red-ink)">Niedopuszczalne</strong>: praktyki zakazane (art. 5) → <strong>zakaz</strong></li>
+        <li><strong class="chip" style="background:var(--yellow);color:var(--yellow-ink)">Wysokie</strong>: art. 6 + Zał. I i III → pełny reżim (art. 8–17, 72)</li>
+        <li><strong class="chip" style="background:var(--blue);color:var(--blue-ink)">Ograniczone</strong> (nazwa umowna): art. 50 → <strong>obowiązki transparentności</strong></li>
+        <li><strong class="chip" style="background:var(--green);color:var(--green-ink)">Minimalne</strong>: reszta → brak obowiązków szczególnych</li>
       </ul>
       <p class="smaller muted" style="margin-top:var(--sp-3)">„Ograniczone ryzyko" to skrót dydaktyczny, nie kategoria ustawowa. Art. 50 <strong>kumuluje się</strong> z reżimem wysokiego ryzyka; art. 4 dotyczy wszystkich poziomów.</p>
       <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span>Nasz case przejdzie tę piramidę <strong>od góry do dołu</strong> metodą eliminacji.</p>
@@ -474,7 +555,6 @@ html, body { background: var(--paper); }
 <!-- 7 · PRAKTYKI ZAKAZANE -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 3a</p>
     <span class="legal-ref">art. 5</span>
   </div>
   <h2>Praktyki zakazane</h2>
@@ -500,7 +580,6 @@ html, body { background: var(--paper); }
 <!-- 8 · WYSOKIE RYZYKO -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 3b</p>
     <span class="legal-ref">art. 6 + Zał. I i III</span>
   </div>
   <h2>Systemy wysokiego ryzyka</h2>
@@ -523,7 +602,6 @@ html, body { background: var(--paper); }
 <!-- 9 · OGRANICZONE RYZYKO -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 3c</p>
     <span class="legal-ref">art. 50</span>
   </div>
   <h2>Ograniczone ryzyko – transparentność</h2>
@@ -545,7 +623,6 @@ html, body { background: var(--paper); }
 <!-- 10 · ROLE -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 4</p>
     <span class="legal-ref">art. 3 pkt 3 i 4</span>
   </div>
   <h2>Role: dostawca vs podmiot stosujący</h2>
@@ -565,7 +642,6 @@ html, body { background: var(--paper); }
 <!-- 11 · AI LITERACY -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 5</p>
     <span class="legal-ref">art. 4</span>
   </div>
   <h2>Obowiązki przekrojowe – AI literacy</h2>
@@ -587,7 +663,6 @@ html, body { background: var(--paper); }
 <!-- 12 · ZAKRES ZASTOSOWANIA -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 6</p>
     <span class="legal-ref">art. 2</span>
   </div>
   <h2>Zakres zastosowania</h2>
@@ -614,7 +689,6 @@ html, body { background: var(--paper); }
 <!-- 12b · KALENDARZ, NADZÓR, KARY -->
 <section>
   <div class="step-head">
-    <p class="eyebrow" style="margin:0">Część I · 7</p>
     <span class="legal-ref">art. 113 · art. 99 · ustawa o systemach AI</span>
   </div>
   <h2>Kalendarz stosowania, nadzór w Polsce, kary</h2>
@@ -646,9 +720,9 @@ html, body { background: var(--paper); }
 
 <!-- 13 · DIVIDER II (vertical stack root) -->
 <section>
-  <section class="centerme" data-background-color="#D2EBE6">
+  <section class="centerme" data-background-color="#F5EDCB">
     <div class="divider">
-      <div class="big-num" style="color:var(--teal)">II</div>
+      <div class="big-num" style="color:var(--blue)">II</div>
       <h2>Case: system wspierający diagnostykę</h2>
       <p class="sub"><strong>Vet-View</strong>, oprogramowanie AI do analizy obrazów USG w weterynarii</p>
       <p class="smaller muted" style="margin-top:var(--sp-4)">↓ ścieżka subsumpcji: czy to system AI → kategoria ryzyka → role → obowiązki</p>
@@ -657,7 +731,6 @@ html, body { background: var(--paper); }
 
   <!-- 14 · OPIS PRODUKTU -->
   <section>
-    <p class="eyebrow">Case · opis produktu</p>
     <h2>Vet-View</h2>
     <div class="row c2-wide">
       <div>
@@ -726,7 +799,7 @@ html, body { background: var(--paper); }
     <h2>Czy wysokiego ryzyka?</h2>
     <div class="row c2">
       <div class="card">
-        <h3>Komponent bezpieczeństwa USG? <span style="color:var(--coral-ink)">NIE</span></h3>
+        <h3>Komponent bezpieczeństwa USG? <span style="color:var(--red)">NIE</span></h3>
         <ul class="cross smaller tight">
           <li>nie steruje bezpieczeństwem aparatu,</li>
           <li>nie zapobiega niebezpiecznej pracy urządzenia,</li>
@@ -735,7 +808,7 @@ html, body { background: var(--paper); }
         </ul>
       </div>
       <div class="card">
-        <h3>Wyrób medyczny (MDR/IVDR)? <span style="color:var(--coral-ink)">NIE</span></h3>
+        <h3>Wyrób medyczny (MDR/IVDR)? <span style="color:var(--red)">NIE</span></h3>
         <p class="smaller">MDR obejmuje wyroby do stosowania <strong>u ludzi</strong>; to oprogramowanie do USG <strong>wyłącznie weterynaryjnego</strong>. Fakt, że <em>technicznie analogiczny</em> software mógłby działać u ludzi, <strong>nie</strong> czyni go wyrobem medycznym. Warunku (b), oceny przez jednostkę notyfikowaną, nie trzeba już badać.</p>
       </div>
     </div>
@@ -769,10 +842,10 @@ html, body { background: var(--paper); }
     <h2>Ląduje na: ograniczone ryzyko</h2>
     <div class="row c2-wide">
       <div class="pyramid">
-        <div class="tier t1 fragment elim" data-fragment-index="1"><span class="tier-label">🔴 Niedopuszczalne</span></div>
-        <div class="tier t2 fragment elim" data-fragment-index="2"><span class="tier-label">🟠 Wysokie ryzyko</span></div>
-        <div class="tier t3 fragment land" data-fragment-index="3"><span class="tier-label">🟡 Ograniczone – art. 50</span></div>
-        <div class="tier t4"><span class="tier-label">🟢 Minimalne</span></div>
+        <div class="tier t1 fragment elim" data-fragment-index="1"><span class="tier-label">Niedopuszczalne</span></div>
+        <div class="tier t2 fragment elim" data-fragment-index="2"><span class="tier-label">Wysokie ryzyko</span></div>
+        <div class="tier t3 fragment land" data-fragment-index="3"><span class="tier-label">Ograniczone – art. 50</span></div>
+        <div class="tier t4"><span class="tier-label">Minimalne</span></div>
       </div>
       <div>
         <p class="small">Nie wysokiego ryzyka, ale też <strong>nie</strong> czysto minimalnego, bo aktualizuje się <strong>art. 50 ust. 2</strong>:</p>
@@ -792,7 +865,7 @@ html, body { background: var(--paper); }
     <div class="step-head"><span class="knum">Role w wdrożeniu</span><span class="legal-ref">art. 3 pkt 3 i 4</span></div>
     <h2>Kto jest kim?</h2>
     <div class="row c2">
-      <div class="card" style="border-top:4px solid var(--marigold)">
+      <div class="card" style="border:2px solid var(--yellow)">
         <p class="eyebrow" style="margin-bottom:var(--sp-2)">art. 3 pkt 3</p>
         <h3>Vet-View S.A. = DOSTAWCA</h3>
         <ul class="smaller tight">
@@ -801,7 +874,7 @@ html, body { background: var(--paper); }
           <li>udostępnia go gabinetom i klinikom w UE.</li>
         </ul>
       </div>
-      <div class="card" style="border-top:4px solid var(--teal)">
+      <div class="card" style="border:2px solid var(--blue)">
         <p class="eyebrow" style="margin-bottom:var(--sp-2)">art. 3 pkt 4</p>
         <h3>Klienci = DEPLOYERZY</h3>
         <p class="smaller">Gabinety, lecznice, kliniki, laboratoria używają systemu i sprawują nad nim kontrolę.</p>
@@ -871,7 +944,6 @@ html, body { background: var(--paper); }
 
 <!-- 24 · PODSUMOWANIE ANALIZY -->
 <section>
-  <p class="eyebrow">Podsumowanie analizy</p>
   <h2>Ścieżka subsumpcji w jednej tabeli</h2>
   <table>
     <thead>
@@ -892,7 +964,6 @@ html, body { background: var(--paper); }
 
 <!-- 25 · WNIOSKI -->
 <section>
-  <p class="eyebrow">Wnioski</p>
   <h2>Czego uczy ten case</h2>
   <ol class="small">
     <li class="fragment"><strong>Metoda zawsze ta sama:</strong> system AI? → kategoria ryzyka (eliminacja od góry) → role → obowiązki.</li>
@@ -906,7 +977,6 @@ html, body { background: var(--paper); }
 
 <!-- 26 · PYTANIA DO DYSKUSJI -->
 <section>
-  <p class="eyebrow">Pytania do dyskusji</p>
   <h2>Do przemyślenia</h2>
   <ol class="small tight">
     <li>Co zmieniłoby się w analizie, gdyby produkt był przeznaczony dla <strong>ludzi</strong> (USG medyczne)?</li>
@@ -919,11 +989,12 @@ html, body { background: var(--paper); }
 </section>
 
 <!-- 27 · ZAMKNIĘCIE -->
-<section class="centerme" data-background-color="#211E1A">
+<section class="centerme" data-background-color="#1C1917">
   <div class="slide-title" style="color:var(--paper)">
-    <p class="eyebrow" style="color:var(--marigold)">Dziękuję za uwagę</p>
+    <div class="brand"><img class="edu-logo" alt="edulab" src="data:image/png;base64,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"><span class="edu-wordmark" style="color:var(--paper)">edulab</span></div>
+    <p class="smaller" style="color:var(--yellow);font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase">Dziękuję za uwagę</p>
     <h1 style="color:var(--paper);font-size:2.2em">Compliance to proces, nie<br>jednorazowa czynność</h1>
-    <p class="smaller" style="color:var(--marigold-soft);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: wrzesień 2026 · rozporządzenie (UE) 2024/1689 ze zm. 2026/1744 · ustawa o systemach AI</p>
+    <p class="smaller" style="color:var(--yellow);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: wrzesień 2026 · rozporządzenie (UE) 2024/1689 ze zm. 2026/1744 · ustawa o systemach AI</p>
     <p class="smaller" style="color:var(--ink-3)">Materiał dydaktyczny · przykład ilustracyjny · nie stanowi porady prawnej</p>
   </div>
 </section>
