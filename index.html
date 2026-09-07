@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Act w praktyce — wykład + studium przypadku Vet-Eye SmartScan AI</title>
+<title>AI Act w praktyce – wykład + studium przypadku Vet-View</title>
 
 <!-- reveal.js (CDN) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 
 <style>
 /* ============================================================
-   edulab — Colors & Type foundation (injected tokens)
+   edulab – Colors & Type foundation (injected tokens)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
@@ -290,13 +290,13 @@ html, body { background: var(--paper); }
 
 .reveal section img { max-width: 100%; }
 
-/* content shell — fill the slide width */
+/* content shell – fill the slide width */
 .reveal .slides section { max-width: 1240px; width: 100%; box-sizing: border-box; }
 /* wider gutters between columns now that we have more room */
 .row.c2 { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
 .row.c2-wide { gap: var(--sp-10); }
 
-/* Fill the slide vertically: each leaf slide is a full-height flex column —
+/* Fill the slide vertically: each leaf slide is a full-height flex column –
    the title sits at the top, the main content block grows to fill the rest,
    and any trailing callout lands near the bottom. Title / divider / closing
    slides stay centred (.centerme). */
@@ -353,8 +353,8 @@ html, body { background: var(--paper); }
     <p class="eyebrow">Materiał wykładowy · podejście oparte na ryzyku</p>
     <h1>AI&nbsp;Act w&nbsp;praktyce</h1>
     <p class="subtitle">Od ogólnych ram regulacyjnych do kwalifikacji systemu wspierającego diagnostykę</p>
-    <p class="meta">Rozporządzenie (UE) 2024/1689</p>
-    <div><span class="case-pill">Case study · Vet-Eye SmartScan AI</span></div>
+    <p class="meta">Rozporządzenie (UE) 2024/1689 · stan prawny: wrzesień 2026 (po Digital Omnibus 2026/1744)</p>
+    <div><span class="case-pill">Case study · Vet-View</span></div>
   </div>
 </section>
 
@@ -364,33 +364,34 @@ html, body { background: var(--paper); }
   <h2>Plan wykładu</h2>
   <div class="row c2">
     <div class="card">
-      <h3 style="color:var(--marigold-ink)">Część I — AI Act ogólnie</h3>
+      <h3 style="color:var(--marigold-ink)">Część I – AI Act ogólnie</h3>
       <ol class="tight small">
         <li>Czym jest AI Act i po co powstał</li>
         <li>Definicja systemu AI</li>
-        <li>Piramida ryzyka — cztery kategorie</li>
+        <li>Piramida ryzyka – cztery kategorie</li>
         <li>Role: dostawca vs podmiot stosujący</li>
         <li>Obowiązki przekrojowe (AI literacy, transparentność)</li>
+        <li>Kalendarz stosowania, nadzór w Polsce, kary</li>
       </ol>
     </div>
     <div class="card">
-      <h3 style="color:var(--teal-ink)">Część II — Case: diagnostyka</h3>
-      <ol class="tight small" start="6">
+      <h3 style="color:var(--teal-ink)">Część II – Case: diagnostyka</h3>
+      <ol class="tight small" start="7">
         <li>Subsumpcja: czy to system AI?</li>
-        <li>Kwalifikacja ryzyka — krok po kroku</li>
+        <li>Kwalifikacja ryzyka – krok po kroku</li>
         <li>Role i obowiązki w konkretnym wdrożeniu</li>
         <li>Wnioski i pułapki rekwalifikacji</li>
       </ol>
     </div>
   </div>
-  <p class="callout key small" style="margin-top:var(--sp-5)"><span class="ico">💡</span>Część II nie wprowadza nowych przepisów — <strong>stosuje</strong> te z Części I do konkretnego produktu.</p>
+  <p class="callout key small" style="margin-top:var(--sp-5)"><span class="ico">💡</span>Część II nie wprowadza nowych przepisów – <strong>stosuje</strong> te z Części I do konkretnego produktu.</p>
 </section>
 
 <!-- 3 · DIVIDER I -->
 <section class="centerme" data-background-color="#F4EDDF">
   <div class="divider">
     <div class="big-num">I</div>
-    <h2>AI Act — ogólne ramy regulacyjne</h2>
+    <h2>AI Act – ogólne ramy regulacyjne</h2>
     <p class="sub">Mapa regulacji: czym jest, jak klasyfikuje, kto za co odpowiada</p>
   </div>
 </section>
@@ -402,9 +403,9 @@ html, body { background: var(--paper); }
   <div class="row c2-wide">
     <div>
       <ul class="small">
-        <li><strong>Rozporządzenie UE</strong> — pierwszy na świecie kompleksowy reżim prawny dla AI</li>
+        <li><strong>Rozporządzenie UE</strong> – pierwszy na świecie kompleksowy reżim prawny dla AI</li>
         <li>Obowiązuje <strong>bezpośrednio</strong> we wszystkich państwach członkowskich (nie wymaga implementacji jak dyrektywa)</li>
-        <li>Logika: <strong>product safety + prawa podstawowe</strong> — reguluje <em>ryzyko zastosowań</em>, nie „AI jako taką"</li>
+        <li>Logika: <strong>product safety + prawa podstawowe</strong> – reguluje <em>ryzyko zastosowań</em>, nie „AI jako taką"</li>
       </ul>
     </div>
     <div class="card">
@@ -434,7 +435,7 @@ html, body { background: var(--paper); }
       <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Słowo <strong>„wnioskuje"</strong> (<em>infers</em>) odróżnia system AI od zwykłego oprogramowania regułowego.</p>
     </div>
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-3)">Test praktyczny — 5 pytań</p>
+      <p class="eyebrow" style="margin-bottom:var(--sp-3)">Test praktyczny – 5 pytań</p>
       <ol class="smaller tight mono" style="color:var(--ink)">
         <li>system maszynowy?</li>
         <li>przetwarza wejście?</li>
@@ -449,7 +450,7 @@ html, body { background: var(--paper); }
 <!-- 6 · PIRAMIDA RYZYKA -->
 <section>
   <p class="eyebrow">Część I · 3</p>
-  <h2>Piramida ryzyka — cztery kategorie</h2>
+  <h2>Piramida ryzyka – cztery kategorie</h2>
   <div class="row c2-wide">
     <div class="pyramid">
       <div class="tier t1"><span class="tier-label">🔴 Niedopuszczalne</span></div>
@@ -459,12 +460,13 @@ html, body { background: var(--paper); }
     </div>
     <div>
       <ul class="pyramid-legend" style="list-style:none;margin-left:0">
-        <li><strong style="color:var(--coral-ink)">Niedopuszczalne</strong> — praktyki zakazane (art. 5) → <strong>zakaz</strong></li>
-        <li><strong style="color:var(--marigold-ink)">Wysokie</strong> — art. 6 + Zał. I i III → pełny reżim (art. 8–17, 72)</li>
-        <li><strong style="color:var(--warning-ink)">Ograniczone</strong> — art. 50 → <strong>obowiązki transparentności</strong></li>
-        <li><strong style="color:var(--teal-ink)">Minimalne</strong> — reszta → brak obowiązków szczególnych</li>
+        <li><strong style="color:var(--coral-ink)">Niedopuszczalne</strong> – praktyki zakazane (art. 5) → <strong>zakaz</strong></li>
+        <li><strong style="color:var(--marigold-ink)">Wysokie</strong> – art. 6 + Zał. I i III → pełny reżim (art. 8–17, 72)</li>
+        <li><strong style="color:var(--warning-ink)">Ograniczone</strong> (nazwa umowna) – art. 50 → <strong>obowiązki transparentności</strong></li>
+        <li><strong style="color:var(--teal-ink)">Minimalne</strong> – reszta → brak obowiązków szczególnych</li>
       </ul>
-      <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Nasz case przejdzie tę piramidę <strong>od góry do dołu</strong> metodą eliminacji.</p>
+      <p class="smaller muted" style="margin-top:var(--sp-3)">„Ograniczone ryzyko" to skrót dydaktyczny, nie kategoria ustawowa. Art. 50 <strong>kumuluje się</strong> z reżimem wysokiego ryzyka; art. 4 dotyczy wszystkich poziomów.</p>
+      <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span>Nasz case przejdzie tę piramidę <strong>od góry do dołu</strong> metodą eliminacji.</p>
     </div>
   </div>
 </section>
@@ -476,22 +478,23 @@ html, body { background: var(--paper); }
     <span class="legal-ref">art. 5</span>
   </div>
   <h2>Praktyki zakazane</h2>
-  <p class="small">Bezwzględny zakaz — nieusuwalne ryzyko dla <strong>godności, autonomii i praw podstawowych</strong>:</p>
+  <p class="small">Bezwzględny zakaz – nieusuwalne ryzyko dla <strong>godności, autonomii i praw podstawowych</strong>. Uwaga na kwalifikatory: poza wąskim wariantem wiele z tych zastosowań to „tylko" wysokie ryzyko.</p>
   <div class="row c2">
     <ul class="cross smaller tight">
-      <li>techniki <strong>podprogowe</strong> / manipulacyjne</li>
-      <li>wykorzystywanie <strong>szczególnej podatności</strong> osób</li>
-      <li><strong>scoring społeczny</strong> (<em>social scoring</em>)</li>
-      <li>zdalna <strong>identyfikacja biometryczna</strong> w czasie rzeczywistym</li>
+      <li>techniki <strong>podprogowe</strong> / manipulacyjne powodujące poważną szkodę <span class="mono">(a)</span></li>
+      <li>wykorzystywanie <strong>szczególnej podatności</strong> osób <span class="mono">(b)</span></li>
+      <li><strong>scoring społeczny</strong> prowadzący do nieproporcjonalnego traktowania <span class="mono">(c)</span></li>
+      <li>ocena ryzyka przestępstwa <strong>wyłącznie</strong> z profilowania / cech osobowości <span class="mono">(d)</span></li>
+      <li><strong>bazy twarzy</strong> z nieukierunkowanego scrapowania <span class="mono">(e)</span></li>
     </ul>
     <ul class="cross smaller tight">
-      <li><strong>kategoryzacja biometryczna</strong> osób</li>
-      <li><strong>rozpoznawanie emocji</strong> w pracy i edukacji</li>
-      <li>predykcja przestępczości (<em>predictive policing</em>)</li>
-      <li><strong>bazy biometryczne</strong> ze scrapowanych obrazów</li>
+      <li><strong>rozpoznawanie emocji</strong> w pracy i edukacji, poza celami medycznymi / bezpieczeństwa <span class="mono">(f)</span></li>
+      <li><strong>kategoryzacja biometryczna</strong> wnioskująca o rasie, poglądach, wierze, orientacji <span class="mono">(g)</span> – inna: wysokie ryzyko</li>
+      <li>zdalna <strong>identyfikacja biometryczna</strong> w czasie rzeczywistym <strong>do celów ścigania</strong> <span class="mono">(h)</span> – inna: wysokie ryzyko</li>
+      <li><strong>nowość 2026:</strong> generowanie treści intymnych bez zgody / CSAM (okres przejściowy do 2.12.2026)</li>
     </ul>
   </div>
-  <p class="callout key small" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Wspólny mianownik: wszystkie dotyczą <strong>ludzi</strong>. W case'ie weterynaryjnym brak „człowieka jako przedmiotu oceny" będzie kluczowy.</p>
+  <p class="callout key smaller" style="margin-top:var(--sp-3)"><span class="ico">🔑</span>Wspólny mianownik: wszystkie dotyczą <strong>ludzi</strong>. W case'ie weterynaryjnym brak „człowieka jako przedmiotu oceny" będzie kluczowy. Interpretacja: Wytyczne Komisji ws. praktyk zakazanych, C(2025) 5052.</p>
 </section>
 
 <!-- 8 · WYSOKIE RYZYKO -->
@@ -504,17 +507,17 @@ html, body { background: var(--paper); }
   <p class="small">System jest wysokiego ryzyka, gdy spełnia <strong>jedną z dwóch ścieżek</strong>:</p>
   <div class="row c2">
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 1 — Załącznik I</p>
-      <h3>Produktowa</h3>
-      <p class="smaller">System jest <strong>komponentem bezpieczeństwa</strong> produktu objętego unijnym prawem harmonizacyjnym (np. MDR 2017/745, IVDR 2017/746) <strong>lub sam jest takim produktem</strong>.</p>
+      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 1 – Załącznik I · art. 6 ust. 1</p>
+      <h3>Produktowa – dwa warunki łącznie</h3>
+      <p class="smaller"><strong>(a)</strong> system jest <strong>komponentem bezpieczeństwa</strong> produktu objętego prawem harmonizacyjnym z Zał. I (np. MDR 2017/745, IVDR 2017/746, maszyny) <strong>lub sam jest takim produktem</strong>, <strong>oraz (b)</strong> produkt podlega <strong>ocenie zgodności przez stronę trzecią</strong> (jednostkę notyfikowaną).</p>
     </div>
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 2 — Załącznik III</p>
+      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 2 – Załącznik III · art. 6 ust. 2</p>
       <h3>Obszarowa</h3>
-      <p class="smaller">System działa w obszarze wysokiego ryzyka dla <strong>osób fizycznych</strong>: biometria, infrastruktura krytyczna, edukacja, zatrudnienie, dostęp do świadczeń / kredytu / ochrony zdrowia, ściganie, migracja, sądownictwo, procesy demokratyczne.</p>
+      <p class="smaller">System działa w obszarze wysokiego ryzyka dla <strong>osób fizycznych</strong>: biometria, infrastruktura krytyczna, edukacja, zatrudnienie, dostęp do świadczeń / kredytu / ochrony zdrowia, ściganie, migracja, sądownictwo, procesy demokratyczne. Filtr: art. 6 ust. 3 (brak znaczącego ryzyka, o ile nie profiluje osób).</p>
     </div>
   </div>
-  <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Obie ścieżki chronią <strong>ludzi</strong>. „Technicznie mogłoby działać u ludzi" to za mało.</p>
+  <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Obie ścieżki chronią <strong>ludzi</strong>. „Technicznie mogłoby działać u ludzi" to za mało. Wyrób medyczny klasy I bez jednostki notyfikowanej nie przechodzi warunku (b).</p>
 </section>
 
 <!-- 9 · OGRANICZONE RYZYKO -->
@@ -523,19 +526,20 @@ html, body { background: var(--paper); }
     <p class="eyebrow" style="margin:0">Część I · 3c</p>
     <span class="legal-ref">art. 50</span>
   </div>
-  <h2>Ograniczone ryzyko — transparentność</h2>
-  <p class="small">Nawet jeśli system nie jest wysokiego ryzyka, art. 50 nakłada <strong>obowiązki informacyjne</strong>, gdy system:</p>
+  <h2>Ograniczone ryzyko – transparentność</h2>
+  <p class="small">Stosuje się <strong>od 2 sierpnia 2026</strong>, niezależnie od kategorii ryzyka. Obowiązki <strong>dostawcy</strong> (ust. 1–2) i <strong>deployera</strong> (ust. 3–4):</p>
   <div class="row c2">
     <div class="card">
-      <h3>🗣 Bezpośrednia interakcja</h3>
-      <p class="smaller">Przeznaczony do interakcji z osobami fizycznymi → trzeba je poinformować, że rozmawiają z AI (chyba że to oczywiste).</p>
+      <h3>🗣 Bezpośrednia interakcja <span class="mono smaller">ust. 1 · dostawca</span></h3>
+      <p class="smaller">Chatboty, asystenci, agenci → osoba ma wiedzieć, że ma do czynienia z AI, <strong>chyba że jest to oczywiste</strong> dla rozsądnie poinformowanego użytkownika.</p>
     </div>
     <div class="card">
-      <h3>🏷 Treści syntetyczne</h3>
-      <p class="smaller">Generuje obraz / dźwięk / tekst / wideo → muszą być oznaczone jako wygenerowane przez AI, w formacie <strong>maszynowo czytelnym</strong>.</p>
+      <h3>🏷 Treści syntetyczne <span class="mono smaller">ust. 2 · dostawca</span></h3>
+      <p class="smaller">Syntetyczny obraz / dźwięk / wideo / tekst → oznaczony <strong>maszynowo czytelnie</strong> i wykrywalny. Wyjątki: standardowa edycja (korekta, tłumaczenie), brak istotnej zmiany wejścia. <strong>Streszczenia AI nie korzystają z wyjątku.</strong></p>
     </div>
   </div>
-  <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>To „trzecia półka" piramidy — <strong>nie</strong> „brak obowiązków". Tu osadzi się nasz case.</p>
+  <p class="smaller muted" style="margin-top:var(--sp-3)"><strong>Deployer:</strong> ust. 3 – informowanie o rozpoznawaniu emocji / kategoryzacji biometrycznej; ust. 4 – ujawnianie deepfake'ów i tekstów AI publikowanych w sprawach publicznych. Okres przejściowy (Omnibus): oznaczanie z ust. 2 dla systemów sprzed 2.08.2026 do <strong>2.12.2026</strong>. Interpretacja: Wytyczne Komisji do art. 50 (20.07.2026) + Kodeks postępowania ws. oznaczania.</p>
+  <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>To „trzecia półka" piramidy – <strong>nie</strong> „brak obowiązków". W case'ie zaczepem będzie <strong>generowany opis tekstowy</strong> (ust. 2).</p>
 </section>
 
 <!-- 10 · ROLE -->
@@ -552,10 +556,10 @@ html, body { background: var(--paper); }
     <tbody>
       <tr><td><strong>Kto</strong></td><td>rozwija system i <strong>wprowadza do obrotu</strong> pod własną marką</td><td><strong>używa</strong> systemu i sprawuje nad nim <strong>kontrolę</strong></td></tr>
       <tr><td><strong>Przykład</strong></td><td>producent oprogramowania, SaaS</td><td>firma / klinika korzystająca z narzędzia</td></tr>
-      <tr><td><strong>Wyłączenie</strong></td><td>—</td><td>użycie w ramach <strong>osobistej działalności pozazawodowej</strong></td></tr>
+      <tr><td><strong>Wyłączenie</strong></td><td>–</td><td>użycie w ramach <strong>osobistej działalności pozazawodowej</strong></td></tr>
     </tbody>
   </table>
-  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Gdy deployerem jest osoba prawna, <em>poszczególni pracownicy</em> <strong>nie są</strong> odrębnymi deployerami (Wytyczne Komisji, pkt 2.4). Najwięcej obowiązków spoczywa na dostawcy.</p>
+  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Gdy deployerem jest osoba prawna, <em>poszczególni pracownicy</em> działający pod jej kontrolą <strong>nie są</strong> odrębnymi deployerami (Wytyczne Komisji ws. praktyk zakazanych, C(2025) 5052, sekcja 2.4, pkt 17–18). Najwięcej obowiązków spoczywa na dostawcy.</p>
 </section>
 
 <!-- 11 · AI LITERACY -->
@@ -564,8 +568,8 @@ html, body { background: var(--paper); }
     <p class="eyebrow" style="margin:0">Część I · 5</p>
     <span class="legal-ref">art. 4</span>
   </div>
-  <h2>Obowiązki przekrojowe — AI literacy</h2>
-  <p class="small">Niezależnie od kategorii ryzyka, <strong>dostawcy i deployerzy</strong> zapewniają <strong>odpowiedni poziom kompetencji AI</strong> u personelu. Personel powinien rozumieć:</p>
+  <h2>Obowiązki przekrojowe – AI literacy</h2>
+  <p class="small">Niezależnie od kategorii ryzyka, <strong>dostawcy i deployerzy</strong> podejmują środki <strong>wspierające rozwój kompetencji AI</strong> personelu i osób obsługujących system w ich imieniu. Po Omnibusie (2026/1744) przepis <strong>nie wymaga zagwarantowania określonego poziomu</strong> u konkretnej osoby; Komisja i państwa wspierają zwłaszcza MŚP. W praktyce personel powinien rozumieć:</p>
   <div class="row c2">
     <ul class="small tight">
       <li>zasady działania i <strong>ograniczenia</strong> modelu,</li>
@@ -577,7 +581,7 @@ html, body { background: var(--paper); }
       <li>zasady <strong>eskalacji błędów</strong> i komunikowania ograniczeń.</li>
     </ul>
   </div>
-  <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>Art. 4 obowiązuje od lutego 2025 i dotyczy <strong>wszystkich</strong> kategorii — także ograniczonego ryzyka. Częsty „ślepy punkt".</p>
+  <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>Art. 4 obowiązuje od 2 lutego 2025, dotyczy <strong>wszystkich</strong> kategorii i <strong>obu ról</strong> (klinika-deployer też). Omnibus złagodził brzmienie, ale nie uchylił przepisu. Częsty „ślepy punkt".</p>
 </section>
 
 <!-- 12 · ZAKRES ZASTOSOWANIA -->
@@ -591,9 +595,9 @@ html, body { background: var(--paper); }
     <div>
       <p class="small">AI Act stosuje się m.in. do:</p>
       <ul class="small tight">
-        <li><strong>dostawców</strong> wprowadzających systemy AI do obrotu w UE,</li>
-        <li><strong>producentów produktów</strong>, którzy pod własną marką wraz z produktem wprowadzają system AI <span class="mono smaller">(art. 2 ust. 1 lit. e)</span>,</li>
-        <li><strong>deployerów</strong> mających siedzibę lub działających w UE.</li>
+        <li><strong>dostawców</strong> wprowadzających systemy AI do obrotu lub do użytku w UE, niezależnie od siedziby <span class="mono smaller">(art. 2 ust. 1 lit. a)</span> – także SaaS,</li>
+        <li><strong>deployerów</strong> mających siedzibę lub znajdujących się w UE <span class="mono smaller">(lit. b)</span>,</li>
+        <li><strong>producentów produktów</strong>, którzy pod własną marką wraz z produktem wprowadzają system AI <span class="mono smaller">(lit. e)</span> – np. producent aparatu USG z modułem AI.</li>
       </ul>
     </div>
     <div class="card">
@@ -604,7 +608,40 @@ html, body { background: var(--paper); }
       </ul>
     </div>
   </div>
-  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Lit. e to brama, przez którą „producent + dołączony software AI" wpada pod rozporządzenie — to ścieżka naszego case'a.</p>
+  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Nasz case: lit. a dla Vet-View S.A. (dostawca SaaS) i lit. b dla klinik. Lit. e wchodziłaby w grę, gdyby moduł sprzedawał producent aparatu USG.</p>
+</section>
+
+<!-- 12b · KALENDARZ, NADZÓR, KARY -->
+<section>
+  <div class="step-head">
+    <p class="eyebrow" style="margin:0">Część I · 7</p>
+    <span class="legal-ref">art. 113 · art. 99 · ustawa o systemach AI</span>
+  </div>
+  <h2>Kalendarz stosowania, nadzór w Polsce, kary</h2>
+  <div class="row c2-wide">
+    <table class="smaller">
+      <thead><tr><th>Data</th><th>Co się stosuje</th></tr></thead>
+      <tbody>
+        <tr><td class="refcell">2.02.2025</td><td>zakazy (art. 5), AI literacy (art. 4)</td></tr>
+        <tr><td class="refcell">2.08.2025</td><td>modele GPAI, organy nadzoru, kary</td></tr>
+        <tr><td class="refcell">2.08.2026</td><td><strong>transparentność (art. 50)</strong> i większość reszty</td></tr>
+        <tr><td class="refcell">2.12.2026</td><td>koniec okresu przejściowego: oznaczanie (50 ust. 2) i nowy zakaz</td></tr>
+        <tr><td class="refcell">2.12.2027</td><td>wysokie ryzyko <strong>Zał. III</strong> (Omnibus: z 2.08.2026)</td></tr>
+        <tr><td class="refcell">2.08.2028</td><td>wysokie ryzyko <strong>Zał. I</strong> (Omnibus: z 2.08.2027)</td></tr>
+      </tbody>
+    </table>
+    <div>
+      <div class="card" style="margin-bottom:var(--sp-3)">
+        <p class="eyebrow" style="margin-bottom:var(--sp-2)">Polska</p>
+        <p class="smaller">Ustawa o systemach sztucznej inteligencji – w mocy od <strong>11.08.2026</strong>. Organ nadzoru: <strong>KRiBSI</strong> (Komisja Rozwoju i Bezpieczeństwa SI); kontrole i kary od 28.10.2026; piaskownice regulacyjne; opinia przed wdrożeniem.</p>
+      </div>
+      <div class="card">
+        <p class="eyebrow" style="margin-bottom:var(--sp-2)">Kary · art. 99</p>
+        <p class="smaller">do 35 mln EUR / 7% – praktyki zakazane<br>do 15 mln EUR / 3% – inne obowiązki (w tym art. 50)<br>do 7,5 mln EUR / 1% – informacje wprowadzające w błąd<br><span class="muted">MŚP: niższa z kwot</span></p>
+      </div>
+    </div>
+  </div>
+  <p class="callout key smaller" style="margin-top:var(--sp-3)"><span class="ico">🔑</span>Wykład odbywa się po 2.08.2026: art. 4 i art. 50 <strong>już obowiązują</strong>. Omnibus odroczył tylko reżim wysokiego ryzyka.</p>
 </section>
 
 <!-- 13 · DIVIDER II (vertical stack root) -->
@@ -613,7 +650,7 @@ html, body { background: var(--paper); }
     <div class="divider">
       <div class="big-num" style="color:var(--teal)">II</div>
       <h2>Case: system wspierający diagnostykę</h2>
-      <p class="sub"><strong>Vet-Eye SmartScan AI</strong> / Vet-View — oprogramowanie AI do analizy obrazów USG w weterynarii</p>
+      <p class="sub"><strong>Vet-View</strong> – oprogramowanie AI do analizy obrazów USG w weterynarii</p>
       <p class="smaller muted" style="margin-top:var(--sp-4)">↓ ścieżka subsumpcji: czy to system AI → kategoria ryzyka → role → obowiązki</p>
     </div>
   </section>
@@ -621,7 +658,7 @@ html, body { background: var(--paper); }
   <!-- 14 · OPIS PRODUKTU -->
   <section>
     <p class="eyebrow">Case · opis produktu</p>
-    <h2>Vet-Eye SmartScan AI</h2>
+    <h2>Vet-View</h2>
     <div class="row c2-wide">
       <div>
         <p class="small">Oprogramowanie <strong>SaaS</strong> (Vet-View S.A.) wspierające lekarzy weterynarii. Z obrazu USG system:</p>
@@ -635,14 +672,14 @@ html, body { background: var(--paper); }
       <div class="card">
         <p class="eyebrow" style="margin-bottom:var(--sp-3)">Zakres przeznaczenia</p>
         <ul class="smaller tight" style="list-style:none;margin-left:0">
-          <li>🐕 gatunek — <strong>pies</strong></li>
-          <li>🫘 narząd — <strong>nerki</strong></li>
-          <li>📡 badanie — <strong>USG przezpowłokowe</strong></li>
+          <li>🐕 gatunek – <strong>pies</strong></li>
+          <li>🫘 narząd – <strong>nerki</strong></li>
+          <li>📡 badanie – <strong>USG przezpowłokowe</strong></li>
         </ul>
         <p class="smaller muted" style="margin-top:var(--sp-3)">Model trenowany / walidowany na danych klientów; śledzenie historii badań w czasie.</p>
       </div>
     </div>
-    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">💡</span>Wynik jest <strong>pomocniczy</strong> — decyduje lekarz weterynarii.</p>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">💡</span>Wynik jest <strong>pomocniczy</strong> – decyduje lekarz weterynarii.</p>
   </section>
 
   <!-- 15 · KROK 0 -->
@@ -658,7 +695,7 @@ html, body { background: var(--paper); }
         <li>zawiera <strong>komponent AI</strong> trenowany na danych</li>
       </ul>
       <div style="text-align:center">
-        <span class="verdict yes">✅ TAK — to system AI</span>
+        <span class="verdict yes">✅ TAK – to system AI</span>
         <p class="smaller muted" style="margin-top:var(--sp-3)">Pozytywna odpowiedź otwiera pytanie o kategorię ryzyka.</p>
       </div>
     </div>
@@ -674,10 +711,11 @@ html, body { background: var(--paper); }
         <li>scoring społeczny? <strong>nie</strong></li>
         <li>identyfikacja / kategoryzacja biometryczna ludzi? <strong>nie</strong></li>
         <li>rozpoznawanie emocji, predykcja przestępczości? <strong>nie</strong></li>
+        <li>treści intymne bez zgody / CSAM (nowy zakaz 2026)? <strong>nie</strong></li>
       </ul>
       <div style="text-align:center">
         <span class="verdict no">NIE jest zakazany</span>
-        <p class="smaller muted" style="margin-top:var(--sp-3)">Wszystkie zakazy z art. 5 dotyczą ludzi — tu „obiektem" jest nerka psa. Schodzimy piętro niżej.</p>
+        <p class="smaller muted" style="margin-top:var(--sp-3)">Wszystkie zakazy z art. 5 dotyczą ludzi – tu „obiektem" jest nerka psa. Schodzimy piętro niżej.</p>
       </div>
     </div>
   </section>
@@ -693,12 +731,12 @@ html, body { background: var(--paper); }
           <li>nie steruje bezpieczeństwem aparatu,</li>
           <li>nie zapobiega niebezpiecznej pracy urządzenia,</li>
           <li>nie kontroluje emisji ultradźwięków,</li>
-          <li>jedynie <strong>lokalizuje i klasyfikuje</strong> zmianę — informacja pomocnicza.</li>
+          <li>jedynie <strong>lokalizuje i klasyfikuje</strong> zmianę – informacja pomocnicza.</li>
         </ul>
       </div>
       <div class="card">
         <h3>Wyrób medyczny (MDR/IVDR)? <span style="color:var(--coral-ink)">NIE</span></h3>
-        <p class="smaller">To oprogramowanie do USG <strong>wyłącznie weterynaryjnego</strong>. Fakt, że <em>technicznie analogiczny</em> software mógłby działać u ludzi, <strong>nie</strong> czyni go wyrobem medycznym.</p>
+        <p class="smaller">MDR obejmuje wyroby do stosowania <strong>u ludzi</strong>; to oprogramowanie do USG <strong>wyłącznie weterynaryjnego</strong>. Fakt, że <em>technicznie analogiczny</em> software mógłby działać u ludzi, <strong>nie</strong> czyni go wyrobem medycznym. Warunek (b) – ocena przez jednostkę notyfikowaną – nie wymaga już badania.</p>
       </div>
     </div>
     <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Kwalifikacja idzie za <strong>przeznaczeniem</strong> (<em>intended purpose</em>), nie za „teoretyczną możliwością".</p>
@@ -708,7 +746,7 @@ html, body { background: var(--paper); }
   <section>
     <div class="step-head"><span class="knum">Krok 2 · ścieżka obszarowa</span><span class="legal-ref">Załącznik III</span></div>
     <h2>Czy wysokiego ryzyka?</h2>
-    <p class="small">Załącznik III chroni <strong>osoby fizyczne i ich prawa</strong>. Vet-Eye SmartScan AI:</p>
+    <p class="small">Załącznik III chroni <strong>osoby fizyczne i ich prawa</strong>. Vet-View:</p>
     <div class="row c2">
       <ul class="cross smaller tight">
         <li>nie identyfikuje ani nie kategoryzuje <strong>ludzi</strong>,</li>
@@ -722,7 +760,7 @@ html, body { background: var(--paper); }
       </ul>
     </div>
     <div style="text-align:center;margin-top:var(--sp-4)"><span class="verdict no">System dotyczy zwierząt → NIE jest wysokiego ryzyka</span></div>
-    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Rozstrzygnął <strong>kontekst — zwierzęta, nie ludzie</strong>. Ta sama architektura w USG dla ludzi → wyrób medyczny → potencjalnie wysokie ryzyko.</p>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Rozstrzygnął <strong>kontekst – zwierzęta, nie ludzie</strong>. Ta sama architektura w USG dla ludzi → wyrób medyczny → potencjalnie wysokie ryzyko.</p>
   </section>
 
   <!-- 19 · KROK 3 descent -->
@@ -733,19 +771,20 @@ html, body { background: var(--paper); }
       <div class="pyramid">
         <div class="tier t1 fragment elim" data-fragment-index="1"><span class="tier-label">🔴 Niedopuszczalne</span></div>
         <div class="tier t2 fragment elim" data-fragment-index="2"><span class="tier-label">🟠 Wysokie ryzyko</span></div>
-        <div class="tier t3 fragment land" data-fragment-index="3"><span class="tier-label">🟡 Ograniczone — art. 50</span></div>
+        <div class="tier t3 fragment land" data-fragment-index="3"><span class="tier-label">🟡 Ograniczone – art. 50</span></div>
         <div class="tier t4"><span class="tier-label">🟢 Minimalne</span></div>
       </div>
       <div>
-        <p class="small">System trafia do kategorii <strong><em>other AI systems</em></strong> — ale <strong>nie</strong> jest czysto minimalnego ryzyka, bo aktualizują się przesłanki art. 50:</p>
-        <ul class="small tick tight">
-          <li><strong>bezpośrednia interakcja</strong> z osobami fizycznymi (lekarzami weterynarii),</li>
-          <li><strong>treści syntetyczne</strong>: ramki, maski / heatmapy, opisy tekstowe.</li>
+        <p class="small">Nie wysokiego ryzyka – ale <strong>nie</strong> czysto minimalnego, bo aktualizuje się <strong>art. 50 ust. 2</strong>:</p>
+        <ul class="smaller tight">
+          <li class="tick"><strong>opis tekstowy</strong> do dokumentacji = syntetyczny tekst; streszczenie AI nie mieści się w wyjątku „standardowej edycji" → <strong>obowiązek oznaczenia</strong>,</li>
+          <li><strong>ramki / maski / heatmapy / prawdopodobieństwo</strong> = wyniki analityczne, nie syntetyczny obraz → oznaczenie jako <em>dobra praktyka</em>,</li>
+          <li><strong>ust. 1</strong> (interakcja): GUI dla lekarza to nie chatbot, a użycie AI jest dla profesjonalisty <em>oczywiste</em> → nie na tym opiera się kwalifikacja.</li>
         </ul>
-        <p class="callout key small fragment" data-fragment-index="3" style="margin-top:var(--sp-3)"><span class="ico">➡</span><strong>Ograniczone ryzyko</strong> — z obowiązkami transparentności.</p>
+        <p class="callout key small fragment" data-fragment-index="3" style="margin-top:var(--sp-3)"><span class="ico">➡</span><strong>Obowiązki transparentności z art. 50</strong> („ograniczone ryzyko").</p>
       </div>
     </div>
-    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>Dostawca musi <strong>stale monitorować zmiany funkcjonalne</strong> pod kątem możliwej rekwalifikacji.</p>
+    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>Kwalifikacja wisi na generatorze tekstu: sama ramka + klasa byłyby bliżej minimalnego ryzyka. Dostawca musi <strong>stale monitorować zmiany funkcjonalne</strong>.</p>
   </section>
 
   <!-- 20 · ROLE W WDROŻENIU -->
@@ -766,10 +805,10 @@ html, body { background: var(--paper); }
         <p class="eyebrow" style="margin-bottom:var(--sp-2)">art. 3 pkt 4</p>
         <h3>Klienci = DEPLOYERZY</h3>
         <p class="smaller">Gabinety, lecznice, kliniki, laboratoria używają systemu i sprawują nad nim kontrolę.</p>
-        <p class="smaller muted">→ Poszczególni weterynarze <strong>nie są</strong> odrębnymi deployerami — działają w ramach podmiotu.</p>
+        <p class="smaller muted">→ Poszczególni weterynarze <strong>nie są</strong> odrębnymi deployerami – działają w ramach podmiotu.</p>
       </div>
     </div>
-    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Większość obowiązków spoczywa na <strong>dostawcy</strong> — Vet-View S.A.</p>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Większość obowiązków spoczywa na <strong>dostawcy</strong> – Vet-View S.A.</p>
   </section>
 
   <!-- 21 · OBOWIĄZKI 1/3 -->
@@ -779,18 +818,18 @@ html, body { background: var(--paper); }
     <div class="row c2">
       <div class="card">
         <h3>AI literacy <span class="mono smaller">(art. 4)</span></h3>
-        <p class="smaller">Przeszkolić nie tylko R&D, ale i <strong>sprzedaż oraz serwis</strong>; materiały dla klientów i weterynarzy; aktualizacja wiedzy po każdej istotnej zmianie modelu.</p>
+        <p class="smaller">Środki wspierające kompetencje: przeszkolić nie tylko R&D, ale i <strong>sprzedaż oraz serwis</strong>; materiały dla klientów i weterynarzy; aktualizacja po każdej istotnej zmianie modelu. <strong>Klinika-deployer ma własny obowiązek z art. 4.</strong></p>
       </div>
       <div class="card">
         <h3>Transparentność <span class="mono smaller">(art. 50)</span></h3>
         <ol class="smaller tight">
-          <li><strong>interfejs</strong> — „wygenerowane przez AI, pomocnicze, nie zastępuje diagnozy, wymaga weryfikacji",</li>
-          <li><strong>dokumentacja</strong> — przeznaczenie, zakres, ograniczenia, human oversight, zgłaszanie błędów,</li>
-          <li><strong>wynik</strong> — oznaczyć heatmapę, kontur i opis jako warstwy AI (maszynowo czytelnie).</li>
+          <li><strong>opis tekstowy</strong> (obowiązek, ust. 2) – oznaczony maszynowo czytelnie (metadane / C2PA), trwale po wklejeniu do dokumentacji,</li>
+          <li><strong>interfejs</strong> (dobra praktyka) – „wygenerowane przez AI, pomocnicze, wymaga weryfikacji",</li>
+          <li><strong>dokumentacja + warstwy graficzne</strong> (dobra praktyka) – przeznaczenie, ograniczenia, human oversight; heatmapa i kontur jako warstwy AI.</li>
         </ol>
       </div>
     </div>
-    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Poziom 3 to wprost obowiązek oznaczania treści syntetycznych. „Prawdopodobieństwo = parametr modelu, nie potwierdzenie diagnozy".</p>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Poziom 1 to wprost obowiązek oznaczania treści syntetycznych; 2–3 to ostrożnościowa nadwyżka. Obowiązki deployera z art. 50 ust. 3–4 nie mają zastosowania.</p>
   </section>
 
   <!-- 22 · OBOWIĄZKI 2/3 -->
@@ -806,14 +845,14 @@ html, body { background: var(--paper); }
         <li>„medyczny system AI", „dla USG" (bez dookreślenia: <strong>weterynaryjnego</strong>)</li>
       </ul>
     </div>
-    <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span><em>Język marketingu</em> ma skutki prawne — nieostrożny copywriting może zmienić kwalifikację produktu.</p>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span><em>Język marketingu</em> ma skutki prawne – nieostrożny copywriting może zmienić kwalifikację produktu.</p>
   </section>
 
   <!-- 23 · OBOWIĄZKI 3/3 -->
   <section>
     <div class="step-head"><span class="knum">Obowiązki dostawcy · 3/3</span></div>
     <h2>Zarządzanie zmianami modelu</h2>
-    <p class="small">AI Act <strong>nie</strong> nakłada pełnego <em>lifecycle compliance</em> poza wysokim ryzykiem — ale przy modelu SaaS trenowanym na danych klientów dostawca powinien prowadzić <strong>kontrolę zmian</strong> i dokumentować:</p>
+    <p class="small">AI Act <strong>nie</strong> nakłada pełnego <em>lifecycle compliance</em> poza wysokim ryzykiem – ale przy modelu SaaS trenowanym na danych klientów dostawca powinien prowadzić <strong>kontrolę zmian</strong> i dokumentować:</p>
     <div class="row c2">
       <ul class="smaller tight">
         <li>wersję modelu, daty wdrożeń, zmiany architektury i zbiorów treningowych,</li>
@@ -824,7 +863,8 @@ html, body { background: var(--paper); }
         <li>wpływ na porównywalność wyników historycznych, procedurę <strong>rollback</strong>, komunikację do klientów.</li>
       </ul>
     </div>
-    <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>System ma umożliwiać <strong>śledzenie historii badań w czasie</strong> — zmiana modelu między badaniami może ograniczyć porównywalność wyników.</p>
+    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>System ma umożliwiać <strong>śledzenie historii badań w czasie</strong> – zmiana modelu między badaniami może ograniczyć porównywalność wyników.</p>
+    <p class="smaller muted" style="margin-top:var(--sp-3)"><strong>GPAI (art. 53):</strong> jeśli opis generuje zewnętrzny model przez API, obowiązki modelu spoczywają na jego dostawcy; Vet-View pozostaje dostawcą <em>systemu</em> – chyba że istotnie zmodyfikuje model.</p>
   </section>
 
 </section><!-- /vertical stack -->
@@ -841,10 +881,11 @@ html, body { background: var(--paper); }
       <tr><td>1</td><td>Czy to system AI?</td><td class="refcell">art. 3 pkt 1</td><td><strong>Tak</strong></td></tr>
       <tr><td>2a</td><td>Czy zakazany?</td><td class="refcell">art. 5</td><td>Nie</td></tr>
       <tr><td>2b</td><td>Czy wysokiego ryzyka?</td><td class="refcell">art. 6, zał. I i III</td><td>Nie</td></tr>
-      <tr><td>2c</td><td>Która kategoria?</td><td class="refcell">art. 50</td><td><strong>Ograniczone ryzyko</strong></td></tr>
+      <tr><td>2c</td><td>Która kategoria?</td><td class="refcell">art. 50 ust. 2</td><td><strong>Transparentność („ograniczone ryzyko")</strong></td></tr>
       <tr><td>3</td><td>Kto jest kim?</td><td class="refcell">art. 3 pkt 3 i 4</td><td>Dostawca = Vet-View S.A.; deployer = klinika</td></tr>
-      <tr><td>4</td><td>Czy AI Act ma zastosowanie?</td><td class="refcell">art. 2 ust. 1 lit. e</td><td><strong>Tak</strong>, bez wyłączeń</td></tr>
-      <tr><td>5</td><td>Jakie obowiązki?</td><td class="refcell">art. 4, 50, 3 pkt 12</td><td>Literacy, transparentność, intended purpose, kontrola zmian</td></tr>
+      <tr><td>4</td><td>Czy AI Act ma zastosowanie?</td><td class="refcell">art. 2 ust. 1 lit. a / b</td><td><strong>Tak</strong>, bez wyłączeń</td></tr>
+      <tr><td>5</td><td>Jakie obowiązki?</td><td class="refcell">art. 4, 50 ust. 2, 3 pkt 12, 53</td><td>Literacy (obie role), oznaczanie tekstu AI, intended purpose, kontrola zmian</td></tr>
+      <tr><td>6</td><td>Od kiedy, kto nadzoruje?</td><td class="refcell">art. 113, 99; ustawa o systemach AI</td><td>art. 4 od 2.02.2025, art. 50 od 2.08.2026; KRiBSI</td></tr>
     </tbody>
   </table>
 </section>
@@ -856,9 +897,10 @@ html, body { background: var(--paper); }
   <ol class="small">
     <li class="fragment"><strong>Metoda zawsze ta sama:</strong> system AI? → kategoria ryzyka (eliminacja od góry) → role → obowiązki.</li>
     <li class="fragment"><strong>Kwalifikacja idzie za przeznaczeniem</strong>, nie za technicznymi możliwościami („mogłoby działać u ludzi" ≠ wyrób medyczny).</li>
-    <li class="fragment"><strong>„Ograniczone ryzyko" ≠ brak obowiązków</strong> — transparentność (art. 50) + AI literacy (art. 4) obowiązują.</li>
-    <li class="fragment"><strong>Język produktu ma skutki prawne</strong> — marketing może przesunąć produkt w górę piramidy.</li>
-    <li class="fragment"><strong>Kwalifikacja jest dynamiczna</strong> — nowe funkcje (ocena ludzi, profilowanie) mogą wymagać rekwalifikacji.</li>
+    <li class="fragment"><strong>„Ograniczone ryzyko" ≠ brak obowiązków</strong> – transparentność (art. 50) + AI literacy (art. 4) obowiązują.</li>
+    <li class="fragment"><strong>Język produktu ma skutki prawne</strong> – marketing może przesunąć produkt w górę piramidy.</li>
+    <li class="fragment"><strong>Kwalifikacja jest dynamiczna</strong> – nowe funkcje (ocena ludzi, profilowanie) mogą wymagać rekwalifikacji.</li>
+    <li class="fragment"><strong>Kwalifikacja wisi na konkretnym wyniku</strong> – art. 50 ust. 2 uruchamia generator opisu, nie ramki i heatmapy.</li>
   </ol>
 </section>
 
@@ -869,9 +911,10 @@ html, body { background: var(--paper); }
   <ol class="small tight">
     <li>Co zmieniłoby się w analizie, gdyby produkt był przeznaczony dla <strong>ludzi</strong> (USG medyczne)?</li>
     <li>Jakie funkcje przesunęłyby produkt do kategorii <strong>wysokiego ryzyka</strong> lub <strong>zakazanej</strong>?</li>
-    <li>Trenowanie modelu na danych klientów — jakie obowiązki rodzi to dodatkowo na gruncie <strong>RODO</strong>?</li>
-    <li>Jak technicznie oznaczyć heatmapę i opis jako <strong>treść wygenerowaną przez AI</strong> (format maszynowo czytelny)?</li>
-    <li>Kto odpowiada, gdy lekarz bezkrytycznie zaufa błędnemu wynikowi (<em>automation bias</em>) — dostawca czy deployer?</li>
+    <li>Trenowanie modelu na danych klientów – jakie obowiązki rodzi to dodatkowo na gruncie <strong>RODO</strong>?</li>
+    <li>Jak technicznie oznaczyć opis (obowiązek) i heatmapę (dobra praktyka) jako <strong>treść wygenerowaną przez AI</strong>, tak by oznaczenie przetrwało wklejenie do dokumentacji?</li>
+    <li>Kto odpowiada, gdy lekarz bezkrytycznie zaufa błędnemu wynikowi (<em>automation bias</em>)? Wskazówka: dyrektywa AI Liability wycofana (2025); nowa dyrektywa produktowa (UE) 2024/2853 obejmuje AI od 9.12.2026.</li>
+    <li>Gdyby Vet-View zwracał tylko ramkę i klasę, bez opisu – czy art. 50 nadal by obowiązywał?</li>
   </ol>
 </section>
 
@@ -880,7 +923,7 @@ html, body { background: var(--paper); }
   <div class="slide-title" style="color:var(--paper)">
     <p class="eyebrow" style="color:var(--marigold)">Dziękuję za uwagę</p>
     <h1 style="color:var(--paper);font-size:2.2em">Compliance to proces, nie<br>jednorazowa czynność</h1>
-    <p class="smaller" style="color:var(--marigold-soft);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: rozporządzenie (UE) 2024/1689 (AI Act)</p>
+    <p class="smaller" style="color:var(--marigold-soft);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: wrzesień 2026 · rozporządzenie (UE) 2024/1689 ze zm. 2026/1744 · ustawa o systemach AI</p>
     <p class="smaller" style="color:var(--ink-3)">Materiał dydaktyczny · przykład ilustracyjny · nie stanowi porady prawnej</p>
   </div>
 </section>
