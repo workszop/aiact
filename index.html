@@ -6,6 +6,9 @@
 <title>AI Act w praktyce – wykład + studium przypadku Vet-View</title>
 
 <!-- reveal.js (CDN) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 
 <style>
@@ -15,7 +18,6 @@
    Foundations" for substitution notes.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
 
 :root {
   /* ---- Brand fonts ---- */
@@ -200,7 +202,7 @@ body.edu { background: var(--paper); color: var(--ink); font-family: var(--font-
   --r-heading-color: var(--ink);
   --r-heading-font-weight: 700;
   --r-heading1-text-shadow: none;
-  --r-link-color: var(--blue);
+  --r-link-color: var(--blue-600);
   --r-link-color-hover: var(--blue-600);
   --r-selection-background-color: var(--yellow);
   --r-selection-color: var(--ink);
@@ -229,11 +231,13 @@ html, body { background: var(--paper); }
 .reveal strong { color: var(--ink); font-weight: 700; }
 .reveal em { color: var(--ink-2); font-style: italic; }
 
-.reveal a { color: var(--blue); text-decoration: none; }
+.reveal a { color: var(--blue-600); text-decoration: none; }
 
-/* Progress bar + controls in yellow */
+/* Progress bar in yellow; nav arrows in ink (yellow on white is 1.4:1) */
 .reveal .progress { color: var(--yellow); height: 5px; background: var(--paper-3); }
-.reveal .controls { color: var(--yellow-600); }
+.reveal .controls { color: var(--ink-2); }
+.reveal.has-dark-background .controls { color: var(--paper); }
+.reveal.has-dark-background .slide-number { color: color-mix(in srgb, var(--paper) 72%, transparent); }
 .reveal .slide-number { background: transparent; color: var(--ink-3); font-family: var(--font-mono); font-size: 13px; }
 
 /* ============================================================
@@ -258,13 +262,26 @@ html, body { background: var(--paper); }
 .edu-wordmark { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: -.02em; color: var(--ink); }
 
 /* Cards */
+/* Card anatomy: --line-2 contour, stone head strip (label / title), white body */
 .card {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-2);
   border-radius: var(--r-lg);
-  box-shadow: var(--shadow-md);
-  padding: var(--sp-6) var(--sp-8);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex; flex-direction: column;
 }
+.card-head {
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-3) var(--sp-6);
+}
+.card-head h3, .card-head .eyebrow { margin: 0; }
+.card-head h3 { font-size: 1.12em; }
+.card-head .eyebrow { font-size: 0.5em; letter-spacing: 0.14em; }
+.card-body { padding: var(--sp-5) var(--sp-8) var(--sp-6); flex: 1 1 auto; }
+.card-body > :first-child { margin-top: 0; }
+.card-body > :last-child { margin-bottom: 0; }
 .cards { display: grid; gap: var(--sp-5); }
 .cards.two { grid-template-columns: 1fr 1fr; }
 .cards.three { grid-template-columns: repeat(3, 1fr); }
@@ -294,17 +311,25 @@ html, body { background: var(--paper); }
 .reveal ul, .reveal ol { display: block; margin-left: 1.1em; }
 .reveal li { margin: .32em 0; line-height: 1.4; }
 .reveal ul li::marker { color: var(--yellow-600); }
-.reveal ol li::marker { color: var(--blue); font-family: var(--font-mono); }
+.reveal ol li::marker { color: var(--blue-600); font-family: var(--font-mono); }
 .tick li { list-style: none; position: relative; padding-left: 1.5em; }
-.tick li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+.tick li::before { content: "✓"; position: absolute; left: 0; color: var(--green-600); font-weight: 700; }
 .cross li { list-style: none; position: relative; padding-left: 1.5em; }
-.cross li::before { content: "✕"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+.cross li::before { content: "✕"; position: absolute; left: 0; color: var(--red-600); font-weight: 700; }
 
 /* Tables */
-.reveal table { border-collapse: collapse; width: 100%; font-size: .82em; box-shadow: var(--shadow-sm); border-radius: var(--r-md); overflow: hidden; }
-.reveal table th, .reveal table td { border: 1px solid var(--line); padding: .55em .7em; text-align: left; vertical-align: top; background: var(--surface); }
-.reveal table thead th { background: var(--paper-2); color: var(--ink); font-family: var(--font-display); font-weight: 600; }
-.reveal table td.refcell { font-family: var(--font-mono); font-size: .9em; color: var(--blue); white-space: nowrap; }
+/* Ruled data table: stone head with mono labels, zebra rows, first column bold ink */
+.reveal table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: .82em; box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line-2); border-radius: var(--r-md); overflow: hidden; }
+.reveal table th, .reveal table td { border: 0; border-bottom: 1px solid var(--line); padding: .55em .8em; text-align: left; vertical-align: top; background: var(--surface); color: var(--ink-2); }
+.reveal table thead th { background: var(--paper-3); border-bottom-color: var(--line-2); color: var(--ink);
+  font-family: var(--font-mono); font-size: .62em; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; vertical-align: middle; }
+.reveal table thead th .mono { font-size: 1em; text-transform: none; letter-spacing: 0; color: var(--ink-2); }
+.reveal table tbody tr:nth-child(even) td { background: var(--paper-2); }
+.reveal table tbody tr:last-child td { border-bottom: 0; }
+.reveal table tbody td:first-child { color: var(--ink); font-weight: 700; }
+/* legal refs: mono ink (blue-600 on the stone zebra rows is 4.3:1) */
+.reveal table td.refcell { font-family: var(--font-mono); font-size: .9em; color: var(--ink); white-space: nowrap; }
 
 /* ============================================================
    Title / divider slides
@@ -322,10 +347,13 @@ html, body { background: var(--paper); }
 
 .divider { text-align: center; }
 .divider .big-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5em; padding: .12em .3em; border-radius: var(--r-xl);
+  background: var(--yellow); color: var(--yellow-ink);
   font-family: var(--font-display); font-weight: 800;
-  font-size: 5.5em; line-height: 1; color: var(--yellow-600);
-  letter-spacing: -0.04em;
+  font-size: 3.6em; line-height: 1; letter-spacing: -0.04em;
 }
+.divider .big-num.alt { background: var(--blue-soft); color: var(--blue-ink); }
 .divider h2 { font-size: 1.9em; margin-top: var(--sp-4); }
 .divider .sub { color: var(--ink-2); font-size: .95em; }
 
@@ -344,10 +372,10 @@ html, body { background: var(--paper); }
 }
 .tier .tier-label { font-size: .82em; }
 .tier .tier-note  { font-family: var(--font-sans); font-weight: 400; font-size: .58em; opacity: .92; }
-.tier.t1 { width: 38%; background: var(--red); color: var(--red-ink); }
+.tier.t1 { width: 38%; background: var(--red-soft); color: var(--red-ink); }
 .tier.t2 { width: 56%; background: var(--yellow); color: var(--yellow-ink); }
-.tier.t3 { width: 74%; background: var(--blue); color: var(--blue-ink); }
-.tier.t4 { width: 92%; background: var(--green); color: var(--green-ink); }
+.tier.t3 { width: 74%; background: var(--blue-soft); color: var(--blue-ink); }
+.tier.t4 { width: 92%; background: var(--green-soft); color: var(--green-ink); }
 
 /* pyramid legend (slide 6) */
 .pyramid-legend { font-size: .68em; }
@@ -421,7 +449,8 @@ html, body { background: var(--paper); }
 .reveal .slides section:not(.centerme):not(:has(> section)) > ul { display: flex; flex-direction: column; justify-content: center; }
 /* columns + cards stretch to equal height */
 .row.c2, .row.c2-wide { align-items: stretch; }
-.row.c2 > .card, .row.c2-wide > .card { display: flex; flex-direction: column; justify-content: center; }
+.row.c2 > .card, .row.c2-wide > .card { display: flex; flex-direction: column; justify-content: flex-start; }
+.row.c2 > .card > .card-body, .row.c2-wide > .card > .card-body { display: flex; flex-direction: column; justify-content: center; }
 /* Titles stay left-aligned; everything after the heading is centred on the page:
    blocks shrink to their content width and sit in the middle, prose is centred,
    list items and table cells keep left alignment for readability. */
@@ -466,24 +495,28 @@ html, body { background: var(--paper); }
   <h2>Plan wykładu</h2>
   <div class="row c2">
     <div class="card">
-      <h3>Część I – AI Act ogólnie</h3>
-      <ol class="tight small">
-        <li>Czym jest AI Act i po co powstał</li>
-        <li>Definicja systemu AI</li>
-        <li>Piramida ryzyka – cztery kategorie</li>
-        <li>Role: dostawca vs podmiot stosujący</li>
-        <li>Obowiązki przekrojowe (AI literacy, transparentność)</li>
-        <li>Kalendarz stosowania, nadzór w Polsce, kary</li>
-      </ol>
+      <div class="card-head"><h3>Część I – AI Act ogólnie</h3></div>
+      <div class="card-body">
+        <ol class="tight small">
+          <li>Czym jest AI Act i po co powstał</li>
+          <li>Definicja systemu AI</li>
+          <li>Piramida ryzyka – cztery kategorie</li>
+          <li>Role: dostawca vs podmiot stosujący</li>
+          <li>Obowiązki przekrojowe (AI literacy, transparentność)</li>
+          <li>Kalendarz stosowania, nadzór w Polsce, kary</li>
+        </ol>
+      </div>
     </div>
     <div class="card">
-      <h3 style="color:var(--blue)">Część II – Case: diagnostyka</h3>
-      <ol class="tight small" start="7">
-        <li>Subsumpcja: czy to system AI?</li>
-        <li>Kwalifikacja ryzyka – krok po kroku</li>
-        <li>Role i obowiązki w konkretnym wdrożeniu</li>
-        <li>Wnioski i pułapki rekwalifikacji</li>
-      </ol>
+      <div class="card-head"><h3 style="color:var(--blue-600)">Część II – Case: diagnostyka</h3></div>
+      <div class="card-body">
+        <ol class="tight small" start="7">
+          <li>Subsumpcja: czy to system AI?</li>
+          <li>Kwalifikacja ryzyka – krok po kroku</li>
+          <li>Role i obowiązki w konkretnym wdrożeniu</li>
+          <li>Wnioski i pułapki rekwalifikacji</li>
+        </ol>
+      </div>
     </div>
   </div>
   <p class="callout key small" style="margin-top:var(--sp-5)"><span class="ico">💡</span>Część II nie wprowadza nowych przepisów, tylko stosuje te z Części I do konkretnego produktu.</p>
@@ -510,9 +543,11 @@ html, body { background: var(--paper); }
       </ul>
     </div>
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-3)">Zasada</p>
-      <h3>Podejście oparte na ryzyku</h3>
-      <p class="small">Im wyższe ryzyko dla zdrowia, bezpieczeństwa i praw podstawowych, tym surowsze obowiązki. Większość systemów AI podlega obowiązkom <strong>niewielkim albo żadnym</strong>.</p>
+      <div class="card-head"><p class="eyebrow">Zasada</p></div>
+      <div class="card-body">
+        <h3>Podejście oparte na ryzyku</h3>
+        <p class="small">Im wyższe ryzyko dla zdrowia, bezpieczeństwa i praw podstawowych, tym surowsze obowiązki. Większość systemów AI podlega obowiązkom <strong>niewielkim albo żadnym</strong>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -535,14 +570,16 @@ html, body { background: var(--paper); }
       <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Słowo <strong>„wnioskuje"</strong> (<em>infers</em>) odróżnia system AI od zwykłego oprogramowania regułowego.</p>
     </div>
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-3)">Test praktyczny: 5 pytań</p>
-      <ol class="smaller tight mono" style="color:var(--ink)">
-        <li>system maszynowy?</li>
-        <li>przetwarza wejście?</li>
-        <li>generuje wynik (predykcja / treść / rekomendacja)?</li>
-        <li>wynik wpływa na rzeczywistość?</li>
-        <li>zawiera komponent uczący się / wnioskujący?</li>
-      </ol>
+      <div class="card-head"><p class="eyebrow">Test praktyczny: 5 pytań</p></div>
+      <div class="card-body">
+        <ol class="smaller tight mono" style="color:var(--ink)">
+          <li>system maszynowy?</li>
+          <li>przetwarza wejście?</li>
+          <li>generuje wynik (predykcja / treść / rekomendacja)?</li>
+          <li>wynik wpływa na rzeczywistość?</li>
+          <li>zawiera komponent uczący się / wnioskujący?</li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
@@ -559,10 +596,10 @@ html, body { background: var(--paper); }
     </div>
     <div>
       <ul class="pyramid-legend" style="list-style:none;margin-left:0">
-        <li><strong class="chip" style="background:var(--red);color:var(--red-ink)">Niedopuszczalne</strong>: praktyki zakazane (art. 5) → <strong>zakaz</strong></li>
+        <li><strong class="chip" style="background:var(--red-soft);color:var(--red-ink)">Niedopuszczalne</strong>: praktyki zakazane (art. 5) → <strong>zakaz</strong></li>
         <li><strong class="chip" style="background:var(--yellow);color:var(--yellow-ink)">Wysokie</strong>: art. 6 + Zał. I i III → pełny reżim (art. 8–17, 72)</li>
-        <li><strong class="chip" style="background:var(--blue);color:var(--blue-ink)">Ograniczone</strong> (nazwa umowna): art. 50 → <strong>obowiązki transparentności</strong></li>
-        <li><strong class="chip" style="background:var(--green);color:var(--green-ink)">Minimalne</strong>: reszta → brak obowiązków szczególnych</li>
+        <li><strong class="chip" style="background:var(--blue-soft);color:var(--blue-ink)">Ograniczone</strong> (nazwa umowna): art. 50 → <strong>obowiązki transparentności</strong></li>
+        <li><strong class="chip" style="background:var(--green-soft);color:var(--green-ink)">Minimalne</strong>: reszta → brak obowiązków szczególnych</li>
       </ul>
       <p class="smaller muted" style="margin-top:var(--sp-3)">„Ograniczone ryzyko" to skrót dydaktyczny, nie kategoria ustawowa. Art. 50 <strong>kumuluje się</strong> z reżimem wysokiego ryzyka; art. 4 dotyczy wszystkich poziomów.</p>
       <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span>Nasz case przejdzie tę piramidę <strong>od góry do dołu</strong> metodą eliminacji.</p>
@@ -604,14 +641,18 @@ html, body { background: var(--paper); }
   <p class="small">System jest wysokiego ryzyka, gdy spełnia <strong>jedną z dwóch ścieżek</strong>:</p>
   <div class="row c2">
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 1 – Załącznik I · art. 6 ust. 1</p>
-      <h3>Produktowa: dwa warunki łącznie</h3>
-      <p class="smaller"><strong>(a)</strong> system jest <strong>komponentem bezpieczeństwa</strong> produktu objętego prawem harmonizacyjnym z Zał. I (np. MDR 2017/745, IVDR 2017/746, maszyny) <strong>lub sam jest takim produktem</strong>, <strong>oraz (b)</strong> produkt podlega <strong>ocenie zgodności przez stronę trzecią</strong> (jednostkę notyfikowaną).</p>
+      <div class="card-head"><p class="eyebrow">Ścieżka 1 – Załącznik I · art. 6 ust. 1</p></div>
+      <div class="card-body">
+        <h3>Produktowa: dwa warunki łącznie</h3>
+        <p class="smaller"><strong>(a)</strong> system jest <strong>komponentem bezpieczeństwa</strong> produktu objętego prawem harmonizacyjnym z Zał. I (np. MDR 2017/745, IVDR 2017/746, maszyny) <strong>lub sam jest takim produktem</strong>, <strong>oraz (b)</strong> produkt podlega <strong>ocenie zgodności przez stronę trzecią</strong> (jednostkę notyfikowaną).</p>
+      </div>
     </div>
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Ścieżka 2 – Załącznik III · art. 6 ust. 2</p>
-      <h3>Obszarowa</h3>
-      <p class="smaller">System działa w obszarze wysokiego ryzyka dla <strong>osób fizycznych</strong>: biometria, infrastruktura krytyczna, edukacja, zatrudnienie, dostęp do świadczeń / kredytu / ochrony zdrowia, ściganie, migracja, sądownictwo, procesy demokratyczne. Filtr: art. 6 ust. 3 (brak znaczącego ryzyka, o ile nie profiluje osób).</p>
+      <div class="card-head"><p class="eyebrow">Ścieżka 2 – Załącznik III · art. 6 ust. 2</p></div>
+      <div class="card-body">
+        <h3>Obszarowa</h3>
+        <p class="smaller">System działa w obszarze wysokiego ryzyka dla <strong>osób fizycznych</strong>: biometria, infrastruktura krytyczna, edukacja, zatrudnienie, dostęp do świadczeń / kredytu / ochrony zdrowia, ściganie, migracja, sądownictwo, procesy demokratyczne. Filtr: art. 6 ust. 3 (brak znaczącego ryzyka, o ile nie profiluje osób).</p>
+      </div>
     </div>
   </div>
   <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Obie ścieżki chronią <strong>ludzi</strong>. „Technicznie mogłoby działać u ludzi" to za mało. Wyrób medyczny klasy I bez jednostki notyfikowanej nie przechodzi warunku (b).</p>
@@ -626,12 +667,16 @@ html, body { background: var(--paper); }
   <p class="small">Stosuje się <strong>od 2 sierpnia 2026</strong>, niezależnie od kategorii ryzyka. Obowiązki <strong>dostawcy</strong> (ust. 1–2) i <strong>deployera</strong> (ust. 3–4):</p>
   <div class="row c2">
     <div class="card">
-      <h3>🗣 Bezpośrednia interakcja <span class="mono smaller">ust. 1 · dostawca</span></h3>
-      <p class="smaller">Chatboty, asystenci, agenci → osoba ma wiedzieć, że ma do czynienia z AI, <strong>chyba że jest to oczywiste</strong> dla rozsądnie poinformowanego użytkownika.</p>
+      <div class="card-head"><h3>🗣 Bezpośrednia interakcja <span class="mono smaller">ust. 1 · dostawca</span></h3></div>
+      <div class="card-body">
+        <p class="smaller">Chatboty, asystenci, agenci → osoba ma wiedzieć, że ma do czynienia z AI, <strong>chyba że jest to oczywiste</strong> dla rozsądnie poinformowanego użytkownika.</p>
+      </div>
     </div>
     <div class="card">
-      <h3>🏷 Treści syntetyczne <span class="mono smaller">ust. 2 · dostawca</span></h3>
-      <p class="smaller">Syntetyczny obraz / dźwięk / wideo / tekst → oznaczony <strong>maszynowo czytelnie</strong> i wykrywalny. Wyjątki: standardowa edycja (korekta, tłumaczenie), brak istotnej zmiany wejścia. <strong>Streszczenia AI nie korzystają z wyjątku.</strong></p>
+      <div class="card-head"><h3>🏷 Treści syntetyczne <span class="mono smaller">ust. 2 · dostawca</span></h3></div>
+      <div class="card-body">
+        <p class="smaller">Syntetyczny obraz / dźwięk / wideo / tekst → oznaczony <strong>maszynowo czytelnie</strong> i wykrywalny. Wyjątki: standardowa edycja (korekta, tłumaczenie), brak istotnej zmiany wejścia. <strong>Streszczenia AI nie korzystają z wyjątku.</strong></p>
+      </div>
     </div>
   </div>
   <p class="smaller muted" style="margin-top:var(--sp-3)"><strong>Deployer:</strong> ust. 3, informowanie o rozpoznawaniu emocji lub kategoryzacji biometrycznej; ust. 4, ujawnianie deepfake'ów i tekstów AI publikowanych w sprawach publicznych. Okres przejściowy (Omnibus): oznaczanie z ust. 2 dla systemów sprzed 2.08.2026 do <strong>2.12.2026</strong>. Interpretacja: Wytyczne Komisji do art. 50 (20.07.2026) + Kodeks postępowania ws. oznaczania.</p>
@@ -694,11 +739,13 @@ html, body { background: var(--paper); }
       </ul>
     </div>
     <div class="card">
-      <p class="eyebrow" style="margin-bottom:var(--sp-2)">Wyłączenia do sprawdzenia</p>
-      <ul class="smaller tight">
-        <li>prywatne, nieprofesjonalne użycie,</li>
-        <li>czynności <strong>B+R przed</strong> wprowadzeniem na rynek <span class="muted">(ale nie testy w warunkach rzeczywistych ani komercyjne udostępnianie)</span>.</li>
-      </ul>
+      <div class="card-head"><p class="eyebrow">Wyłączenia do sprawdzenia</p></div>
+      <div class="card-body">
+        <ul class="smaller tight">
+          <li>prywatne, nieprofesjonalne użycie,</li>
+          <li>czynności <strong>B+R przed</strong> wprowadzeniem na rynek <span class="muted">(ale nie testy w warunkach rzeczywistych ani komercyjne udostępnianie)</span>.</li>
+        </ul>
+      </div>
     </div>
   </div>
   <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Nasz case: lit. a dla Vet-View S.A. (dostawca SaaS) i lit. b dla klinik. Lit. e wchodziłaby w grę, gdyby moduł sprzedawał producent aparatu USG.</p>
@@ -724,12 +771,16 @@ html, body { background: var(--paper); }
     </table>
     <div>
       <div class="card" style="margin-bottom:var(--sp-3)">
-        <p class="eyebrow" style="margin-bottom:var(--sp-2)">Polska</p>
-        <p class="smaller">Ustawa o systemach sztucznej inteligencji, w mocy od <strong>11.08.2026</strong>. Organ nadzoru: <strong>KRiBSI</strong> (Komisja Rozwoju i Bezpieczeństwa SI); kontrole i kary od 28.10.2026; piaskownice regulacyjne; opinia przed wdrożeniem.</p>
+        <div class="card-head"><p class="eyebrow">Polska</p></div>
+        <div class="card-body">
+          <p class="smaller">Ustawa o systemach sztucznej inteligencji, w mocy od <strong>11.08.2026</strong>. Organ nadzoru: <strong>KRiBSI</strong> (Komisja Rozwoju i Bezpieczeństwa SI); kontrole i kary od 28.10.2026; piaskownice regulacyjne; opinia przed wdrożeniem.</p>
+        </div>
       </div>
       <div class="card">
-        <p class="eyebrow" style="margin-bottom:var(--sp-2)">Kary · art. 99</p>
-        <p class="smaller">do 35 mln EUR / 7%: praktyki zakazane<br>do 15 mln EUR / 3%: inne obowiązki (w tym art. 50)<br>do 7,5 mln EUR / 1%: informacje wprowadzające w błąd<br><span class="muted">MŚP: niższa z kwot</span></p>
+        <div class="card-head"><p class="eyebrow">Kary · art. 99</p></div>
+        <div class="card-body">
+          <p class="smaller">do 35 mln EUR / 7%: praktyki zakazane<br>do 15 mln EUR / 3%: inne obowiązki (w tym art. 50)<br>do 7,5 mln EUR / 1%: informacje wprowadzające w błąd<br><span class="muted">MŚP: niższa z kwot</span></p>
+        </div>
       </div>
     </div>
   </div>
@@ -740,7 +791,7 @@ html, body { background: var(--paper); }
 <section>
   <section class="centerme" data-background-color="#EAE6E0">
     <div class="divider">
-      <div class="big-num" style="color:var(--blue)">II</div>
+      <div class="big-num alt">II</div>
       <h2>Case: system wspierający diagnostykę</h2>
       <p class="sub"><strong>Vet-View</strong>, oprogramowanie AI do analizy obrazów USG w weterynarii</p>
       <p class="smaller muted" style="margin-top:var(--sp-4)">↓ ścieżka subsumpcji: czy to system AI → kategoria ryzyka → role → obowiązki</p>
@@ -761,13 +812,15 @@ html, body { background: var(--paper); }
         </ul>
       </div>
       <div class="card">
-        <p class="eyebrow" style="margin-bottom:var(--sp-3)">Zakres przeznaczenia</p>
-        <ul class="smaller tight" style="list-style:none;margin-left:0">
-          <li>🐕 gatunek – <strong>pies</strong></li>
-          <li>🫘 narząd – <strong>nerki</strong></li>
-          <li>📡 badanie – <strong>USG przezpowłokowe</strong></li>
-        </ul>
-        <p class="smaller muted" style="margin-top:var(--sp-3)">Model trenowany / walidowany na danych klientów; śledzenie historii badań w czasie.</p>
+        <div class="card-head"><p class="eyebrow">Zakres przeznaczenia</p></div>
+        <div class="card-body">
+          <ul class="smaller tight" style="list-style:none;margin-left:0">
+            <li>🐕 gatunek – <strong>pies</strong></li>
+            <li>🫘 narząd – <strong>nerki</strong></li>
+            <li>📡 badanie – <strong>USG przezpowłokowe</strong></li>
+          </ul>
+          <p class="smaller muted" style="margin-top:var(--sp-3)">Model trenowany / walidowany na danych klientów; śledzenie historii badań w czasie.</p>
+        </div>
       </div>
     </div>
     <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">💡</span>Wynik jest <strong>pomocniczy</strong>, decyduje lekarz weterynarii.</p>
@@ -817,17 +870,21 @@ html, body { background: var(--paper); }
     <h2>Czy wysokiego ryzyka?</h2>
     <div class="row c2">
       <div class="card">
-        <h3>Komponent bezpieczeństwa USG? <span style="color:var(--red)">NIE</span></h3>
-        <ul class="cross smaller tight">
-          <li>nie steruje bezpieczeństwem aparatu,</li>
-          <li>nie zapobiega niebezpiecznej pracy urządzenia,</li>
-          <li>nie kontroluje emisji ultradźwięków,</li>
-          <li>jedynie <strong>lokalizuje i klasyfikuje</strong> zmianę, czyli daje informację pomocniczą.</li>
-        </ul>
+        <div class="card-head"><h3>Komponent bezpieczeństwa USG? <span style="color:var(--red-600)">NIE</span></h3></div>
+        <div class="card-body">
+          <ul class="cross smaller tight">
+            <li>nie steruje bezpieczeństwem aparatu,</li>
+            <li>nie zapobiega niebezpiecznej pracy urządzenia,</li>
+            <li>nie kontroluje emisji ultradźwięków,</li>
+            <li>jedynie <strong>lokalizuje i klasyfikuje</strong> zmianę, czyli daje informację pomocniczą.</li>
+          </ul>
+        </div>
       </div>
       <div class="card">
-        <h3>Wyrób medyczny (MDR/IVDR)? <span style="color:var(--red)">NIE</span></h3>
-        <p class="smaller">MDR obejmuje wyroby do stosowania <strong>u ludzi</strong>; to oprogramowanie do USG <strong>wyłącznie weterynaryjnego</strong>. Fakt, że <em>technicznie analogiczny</em> software mógłby działać u ludzi, <strong>nie</strong> czyni go wyrobem medycznym. Warunku (b), oceny przez jednostkę notyfikowaną, nie trzeba już badać.</p>
+        <div class="card-head"><h3>Wyrób medyczny (MDR/IVDR)? <span style="color:var(--red-600)">NIE</span></h3></div>
+        <div class="card-body">
+          <p class="smaller">MDR obejmuje wyroby do stosowania <strong>u ludzi</strong>; to oprogramowanie do USG <strong>wyłącznie weterynaryjnego</strong>. Fakt, że <em>technicznie analogiczny</em> software mógłby działać u ludzi, <strong>nie</strong> czyni go wyrobem medycznym. Warunku (b), oceny przez jednostkę notyfikowaną, nie trzeba już badać.</p>
+        </div>
       </div>
     </div>
     <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Kwalifikacja idzie za <strong>przeznaczeniem</strong> (<em>intended purpose</em>), nie za „teoretyczną możliwością".</p>
@@ -884,19 +941,23 @@ html, body { background: var(--paper); }
     <h2>Kto jest kim?</h2>
     <div class="row c2">
       <div class="card" style="border:2px solid var(--yellow)">
-        <p class="eyebrow" style="margin-bottom:var(--sp-2)">art. 3 pkt 3</p>
-        <h3>Vet-View S.A. = DOSTAWCA</h3>
-        <ul class="smaller tight">
-          <li>sam rozwija moduł AI,</li>
-          <li>oferuje produkt jako <strong>SaaS pod własną marką</strong>,</li>
-          <li>udostępnia go gabinetom i klinikom w UE.</li>
-        </ul>
+        <div class="card-head"><p class="eyebrow">art. 3 pkt 3</p></div>
+        <div class="card-body">
+          <h3>Vet-View S.A. = DOSTAWCA</h3>
+          <ul class="smaller tight">
+            <li>sam rozwija moduł AI,</li>
+            <li>oferuje produkt jako <strong>SaaS pod własną marką</strong>,</li>
+            <li>udostępnia go gabinetom i klinikom w UE.</li>
+          </ul>
+        </div>
       </div>
       <div class="card" style="border:2px solid var(--blue)">
-        <p class="eyebrow" style="margin-bottom:var(--sp-2)">art. 3 pkt 4</p>
-        <h3>Klienci = DEPLOYERZY</h3>
-        <p class="smaller">Gabinety, lecznice, kliniki, laboratoria używają systemu i sprawują nad nim kontrolę.</p>
-        <p class="smaller muted">Poszczególni weterynarze <strong>nie są</strong> odrębnymi deployerami, działają w ramach podmiotu.</p>
+        <div class="card-head"><p class="eyebrow">art. 3 pkt 4</p></div>
+        <div class="card-body">
+          <h3>Klienci = DEPLOYERZY</h3>
+          <p class="smaller">Gabinety, lecznice, kliniki, laboratoria używają systemu i sprawują nad nim kontrolę.</p>
+          <p class="smaller muted">Poszczególni weterynarze <strong>nie są</strong> odrębnymi deployerami, działają w ramach podmiotu.</p>
+        </div>
       </div>
     </div>
     <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Większość obowiązków spoczywa na <strong>dostawcy</strong>, czyli Vet-View S.A.</p>
@@ -908,16 +969,20 @@ html, body { background: var(--paper); }
     <h2>AI literacy i transparentność</h2>
     <div class="row c2">
       <div class="card">
-        <h3>AI literacy <span class="mono smaller">(art. 4)</span></h3>
-        <p class="smaller">Środki wspierające kompetencje: szkolenia dla R&D, <strong>sprzedaży i serwisu</strong>; materiały dla klientów i weterynarzy; aktualizacja po każdej istotnej zmianie modelu. <strong>Klinika-deployer ma własny obowiązek z art. 4.</strong></p>
+        <div class="card-head"><h3>AI literacy <span class="mono smaller">(art. 4)</span></h3></div>
+        <div class="card-body">
+          <p class="smaller">Środki wspierające kompetencje: szkolenia dla R&D, <strong>sprzedaży i serwisu</strong>; materiały dla klientów i weterynarzy; aktualizacja po każdej istotnej zmianie modelu. <strong>Klinika-deployer ma własny obowiązek z art. 4.</strong></p>
+        </div>
       </div>
       <div class="card">
-        <h3>Transparentność <span class="mono smaller">(art. 50)</span></h3>
-        <ol class="smaller tight">
-          <li><strong>opis tekstowy</strong> (obowiązek, ust. 2): oznaczony maszynowo czytelnie (metadane / C2PA), trwale po wklejeniu do dokumentacji,</li>
-          <li><strong>interfejs</strong> (dobra praktyka): „wygenerowane przez AI, pomocnicze, wymaga weryfikacji",</li>
-          <li><strong>dokumentacja i warstwy graficzne</strong> (dobra praktyka): przeznaczenie, ograniczenia, human oversight; heatmapa i kontur jako warstwy AI.</li>
-        </ol>
+        <div class="card-head"><h3>Transparentność <span class="mono smaller">(art. 50)</span></h3></div>
+        <div class="card-body">
+          <ol class="smaller tight">
+            <li><strong>opis tekstowy</strong> (obowiązek, ust. 2): oznaczony maszynowo czytelnie (metadane / C2PA), trwale po wklejeniu do dokumentacji,</li>
+            <li><strong>interfejs</strong> (dobra praktyka): „wygenerowane przez AI, pomocnicze, wymaga weryfikacji",</li>
+            <li><strong>dokumentacja i warstwy graficzne</strong> (dobra praktyka): przeznaczenie, ograniczenia, human oversight; heatmapa i kontur jako warstwy AI.</li>
+          </ol>
+        </div>
       </div>
     </div>
     <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Poziom 1 to wprost obowiązek oznaczania treści syntetycznych; 2–3 to ostrożnościowa nadwyżka. Obowiązki deployera z art. 50 ust. 3–4 nie mają zastosowania.</p>
@@ -1013,7 +1078,7 @@ html, body { background: var(--paper); }
     <p class="smaller" style="color:var(--yellow);font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase">Dziękuję za uwagę</p>
     <h1 style="color:var(--paper);font-size:2.2em">Compliance to proces, nie<br>jednorazowa czynność</h1>
     <p class="smaller" style="color:var(--yellow);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: wrzesień 2026 · rozporządzenie (UE) 2024/1689 ze zm. 2026/1744 · ustawa o systemach AI</p>
-    <p class="smaller" style="color:var(--ink-3)">Materiał dydaktyczny · przykład ilustracyjny · nie stanowi porady prawnej</p>
+    <p class="smaller" style="color:color-mix(in srgb, var(--paper) 72%, transparent)">Materiał dydaktyczny · przykład ilustracyjny · nie stanowi porady prawnej</p>
   </div>
 </section>
 
