@@ -3,13 +3,13 @@
 
 *Materiał wykładowy · podejście oparte na ryzyku · case study: Vet-View*
 
-*Stan prawny: wrzesień 2026. Rozporządzenie (UE) 2024/1689 (AI Act) ze zmianami z rozporządzenia (UE) 2026/1744 (Digital Omnibus on AI, w mocy od 27 lipca 2026) oraz ustawa o systemach sztucznej inteligencji (w mocy od 11 sierpnia 2026).*
+*Stan prawny: listopad 2026. Rozporządzenie (UE) 2024/1689 (AI Act) ze zmianami z rozporządzenia (UE) 2026/1744 (Digital Omnibus on AI, w mocy od 27 lipca 2026) oraz ustawa o systemach sztucznej inteligencji (w mocy od 11 sierpnia 2026).*
 
 > **Notatka prelegenta:** Slajd otwierający. Zapowiedz logikę całości: najpierw mapa regulacji (czym jest AI Act, jak klasyfikuje systemy, kto za co odpowiada), potem na żywym przykładzie cała ścieżka subsumpcji: czy to w ogóle system AI, do której kategorii ryzyka trafia, jakie obowiązki z tego wynikają.
 
 ---
 
-## Agenda
+## Plan wykładu
 
 **Część I. AI Act ogólnie**
 1. Czym jest AI Act i po co powstał
@@ -25,7 +25,7 @@
 9. Role i obowiązki w konkretnym wdrożeniu
 10. Wnioski i pułapki rekwalifikacji
 
-> **Notatka:** Zaznacz, że Część II nie wprowadza nowych przepisów, tylko stosuje te z Części I. To ma być moment „aha": regulacja staje się operacyjna dopiero wtedy, gdy zsubsumujemy ją pod konkretny produkt.
+> **Notatka:** Zaznacz, że Część II nie wprowadza nowych przepisów, tylko stosuje te z Części I. Studenci mają zobaczyć, że przepisy zaczynają coś znaczyć dopiero wtedy, gdy zastosujemy je do konkretnego produktu.
 
 ---
 
@@ -36,15 +36,15 @@
 
 ## Czym jest AI Act?
 
-- Rozporządzenie UE, pierwszy na świecie kompleksowy reżim prawny dla sztucznej inteligencji.
+- Rozporządzenie UE, pierwsza na świecie całościowa regulacja sztucznej inteligencji.
 - Obowiązuje bezpośrednio we wszystkich państwach członkowskich; w odróżnieniu od dyrektywy nie wymaga implementacji.
-- Łączy logikę bezpieczeństwa produktów z ochroną praw podstawowych. Nie reguluje „AI jako takiej", lecz ryzyko jej zastosowań.
+- Łączy logikę bezpieczeństwa produktów z ochroną praw podstawowych. Reguluje ryzyko zastosowań, a nie „AI jako taką”.
 
 **Podejście oparte na ryzyku (*risk-based approach*)**
 
 Im wyższe ryzyko dla zdrowia, bezpieczeństwa i praw podstawowych, tym surowsze obowiązki. Większość systemów AI ma obowiązki niewielkie albo żadne.
 
-> **Notatka:** Najczęstsze nieporozumienie studentów: że AI Act „zakazuje AI" albo obciąża każdy chatbot. Jest odwrotnie, ciężar regulacyjny skupia się na wąskiej grupie zastosowań wysokiego ryzyka. Dobry moment, żeby zapowiedzieć, że nasz case wyląduje nisko w piramidzie.
+> **Notatka:** Najczęstsze nieporozumienie studentów: że AI Act „zakazuje AI” albo obciąża każdy chatbot. Jest odwrotnie, ciężar regulacyjny skupia się na wąskiej grupie zastosowań wysokiego ryzyka. Dobry moment, żeby zapowiedzieć, że nasz case wyląduje nisko w piramidzie.
 
 ---
 
@@ -59,7 +59,7 @@ System AI to system maszynowy, który:
 **Test praktyczny, pięć pytań:**
 system maszynowy? → przetwarza wejście? → generuje wynik (predykcję, treść, rekomendację)? → wynik wpływa na rzeczywistość? → zawiera komponent uczący się lub wnioskujący?
 
-> **Notatka:** Podkreśl słowo „wnioskuje" (*infers*). To ono odróżnia system AI od zwykłego oprogramowania regułowego. Wytyczne Komisji w sprawie definicji systemu AI są tu źródłem interpretacyjnym, do którego wrócimy w Części II.
+> **Notatka:** Podkreśl słowo „wnioskuje” (*infers*). To ono odróżnia system AI od zwykłego oprogramowania regułowego. Wytyczne Komisji w sprawie definicji systemu AI są tu źródłem interpretacyjnym, do którego wrócimy w Części II.
 
 ---
 
@@ -72,9 +72,9 @@ system maszynowy? → przetwarza wejście? → generuje wynik (predykcję, treś
 | Ograniczone ryzyko (nazwa umowna) | systemy objęte art. 50 | obowiązki transparentności |
 | Minimalne ryzyko | reszta systemów AI | brak obowiązków szczególnych |
 
-„Ograniczone ryzyko" to skrót dydaktyczny, nie kategoria ustawowa. Rozporządzenie zna praktyki zakazane, systemy wysokiego ryzyka, systemy objęte art. 50 oraz modele GPAI (rozdz. V). Obowiązki z art. 50 kumulują się z reżimem wysokiego ryzyka, a art. 4 dotyczy wszystkich poziomów.
+„Ograniczone ryzyko” to skrót dydaktyczny, nie kategoria ustawowa. Rozporządzenie zna praktyki zakazane, systemy wysokiego ryzyka, systemy objęte art. 50 oraz modele GPAI (rozdz. V). Obowiązki z art. 50 kumulują się z reżimem wysokiego ryzyka, a art. 4 dotyczy wszystkich poziomów.
 
-> **Notatka:** Narysuj to jako piramidę: góra wąska (zakazane), dół szeroki (minimalne). Komisja w wytycznych używa określenia „transparency risk". Zapowiedz, że nasz case przejdzie piramidę od góry do dołu metodą eliminacji: najpierw wykluczymy zakaz, potem wysokie ryzyko, i wylądujemy na poziomie obowiązków z art. 50.
+> **Notatka:** Narysuj to jako piramidę: góra wąska (zakazane), dół szeroki (minimalne). Komisja w wytycznych używa określenia „transparency risk”. Zapowiedz, że nasz case przejdzie piramidę od góry do dołu metodą eliminacji: najpierw wykluczymy zakaz, potem wysokie ryzyko, i wylądujemy na poziomie obowiązków z art. 50.
 
 ---
 
@@ -90,9 +90,9 @@ Bezwzględny zakaz, bo ryzyko dla godności, autonomii i praw podstawowych jest 
 - rozpoznawanie emocji w miejscu pracy i w edukacji, z wyjątkiem celów medycznych i bezpieczeństwa (lit. f)
 - kategoryzacja biometryczna wnioskująca o rasie, poglądach politycznych, przynależności związkowej, przekonaniach, życiu seksualnym lub orientacji (lit. g); inna kategoryzacja biometryczna to wysokie ryzyko (Zał. III) plus art. 50 ust. 3
 - zdalna identyfikacja biometryczna w czasie rzeczywistym w przestrzeni publicznej do celów ścigania przestępstw, z wąskimi wyjątkami (lit. h); RBI w innych celach to wysokie ryzyko
-- nowość z Omnibusu 2026: systemy, których przewidywalnym i powtarzalnym wynikiem jest generowanie treści intymnych bez zgody lub materiałów CSAM; okres przejściowy do 2 grudnia 2026
+- nowość z Omnibusu 2026 (lit. ba i bb): systemy, których przewidywalnym i powtarzalnym wynikiem jest generowanie treści intymnych bez zgody lub materiałów CSAM; zakaz stosuje się od 2 grudnia 2026
 
-> **Notatka:** Wspólny mianownik listy: wszystkie pozycje dotyczą ludzi i ingerencji w ich prawa podstawowe. Zwróć uwagę na kwalifikatory. Kilka praktyk jest zakazanych tylko w wąskim wariancie, a poza nim ląduje w wysokim ryzyku. W case'ie weterynaryjnym brak „człowieka jako przedmiotu oceny" będzie głównym argumentem. Źródło interpretacji: Wytyczne Komisji w sprawie praktyk zakazanych, C(2025) 5052 final.
+> **Notatka:** Wspólny mianownik listy: wszystkie pozycje dotyczą ludzi i ingerencji w ich prawa podstawowe. Zwróć uwagę na kwalifikatory. Kilka praktyk jest zakazanych tylko w wąskim wariancie, a poza nim ląduje w wysokim ryzyku. W case'ie weterynaryjnym brak „człowieka jako przedmiotu oceny” będzie głównym argumentem. Źródło interpretacji: Wytyczne Komisji w sprawie praktyk zakazanych, C(2025) 5052 final.
 
 ---
 
@@ -107,7 +107,7 @@ System jest wysokiego ryzyka, gdy spełnia jedną z dwóch ścieżek.
 **Ścieżka 2. Załącznik III (obszarowa), art. 6 ust. 2**
 System działa w jednym z wymienionych obszarów wysokiego ryzyka dla osób fizycznych: biometria, infrastruktura krytyczna, edukacja, zatrudnienie, dostęp do świadczeń, kredytu, ubezpieczeń i ochrony zdrowia, ściganie, migracja, wymiar sprawiedliwości, procesy demokratyczne. Wyjątek z art. 6 ust. 3: system z Zał. III nie jest wysokiego ryzyka, gdy nie stwarza znaczącego ryzyka (np. wykonuje wąskie zadanie proceduralne), chyba że profiluje osoby.
 
-> **Notatka:** To najważniejszy slajd dla zrozumienia case'a. Obie ścieżki służą ochronie ludzi. Podkreśl, że ścieżka produktowa ma dwa warunki łączne: oprogramowanie medyczne klasy I bez udziału jednostki notyfikowanej nie przechodzi warunku (b). W Części II pokażemy, dlaczego oprogramowanie weterynaryjne wypada z obu i dlaczego „technicznie mogłoby działać u ludzi" to za mało.
+> **Notatka:** To najważniejszy slajd dla zrozumienia case'a. Obie ścieżki służą ochronie ludzi. Podkreśl, że ścieżka produktowa ma dwa warunki łączne: oprogramowanie medyczne klasy I bez udziału jednostki notyfikowanej nie przechodzi warunku (b). W Części II pokażemy, dlaczego oprogramowanie weterynaryjne wypada z obu i dlaczego „technicznie mogłoby działać u ludzi” to za mało.
 
 ---
 
@@ -125,7 +125,7 @@ Art. 50 stosuje się od 2 sierpnia 2026, niezależnie od kategorii ryzyka.
 
 Okres przejściowy z Omnibusu: systemy generatywne obecne na rynku przed 2 sierpnia 2026 mają czas na wdrożenie oznaczania z ust. 2 do 2 grudnia 2026. Interpretacja: Wytyczne Komisji do art. 50 (20 lipca 2026) i Kodeks postępowania w sprawie oznaczania treści generowanych przez AI.
 
-> **Notatka:** Art. 50 to „miękki" reżim, ale realny i już obowiązujący. Wiele zespołów produktowych zakłada, że skoro nie są high-risk, to nic ich nie dotyczy, i przeocza transparentność. Uprzedź, że w case'ie najmocniejszym punktem zaczepienia będzie generowany opis tekstowy (ust. 2), a nie sam interfejs.
+> **Notatka:** Art. 50 to „miękki” reżim, ale realny i już obowiązujący. Wiele zespołów produktowych zakłada, że skoro nie są high-risk, to nic ich nie dotyczy, i przeocza transparentność. Uprzedź, że w case'ie najmocniejszym punktem zaczepienia będzie generowany opis tekstowy (ust. 2), a nie sam interfejs.
 
 ---
 
@@ -147,7 +147,7 @@ Gdy deployerem jest osoba prawna, poszczególni pracownicy działający w jej ra
 
 Niezależnie od kategorii ryzyka dostawcy i deployerzy podejmują środki wspierające rozwój kompetencji AI (*AI literacy*) swojego personelu i osób obsługujących system w ich imieniu, z uwzględnieniem ich wiedzy, doświadczenia i kontekstu użycia.
 
-Po Omnibusie (rozp. 2026/1744) przepis wprost nie wymaga zagwarantowania określonego poziomu kompetencji u konkretnej osoby. Komisja i państwa członkowskie mają wspierać dostawców i deployerów, zwłaszcza MŚP. Wcześniejsza wersja („zapewnić wystarczający poziom") już nie obowiązuje.
+Po Omnibusie (rozp. 2026/1744) przepis wprost nie wymaga zagwarantowania określonego poziomu kompetencji u konkretnej osoby. Komisja i państwa członkowskie mają wspierać dostawców i deployerów, zwłaszcza MŚP. Wcześniejsza wersja („zapewnić wystarczający poziom”) już nie obowiązuje.
 
 W praktyce personel powinien rozumieć:
 - zasady działania i ograniczenia modelu,
@@ -156,7 +156,7 @@ W praktyce personel powinien rozumieć:
 - ryzyko *automation bias*, czyli nadmiernego zaufania do AI,
 - zasady eskalacji błędów i komunikowania ograniczeń.
 
-> **Notatka:** Art. 4 obowiązuje od 2 lutego 2025, dotyczy wszystkich kategorii (także systemów objętych tylko art. 50) i obu ról, więc klinika-deployer też. Omnibus złagodził brzmienie z obowiązku rezultatu na obowiązek starannego działania, ale nie uchylił przepisu. Częsty „ślepy punkt". Zapowiedz, że w case'ie przełożymy to na konkretny program szkoleń.
+> **Notatka:** Art. 4 obowiązuje od 2 lutego 2025, dotyczy wszystkich kategorii (także systemów objętych tylko art. 50) i obu ról, więc klinika-deployer też. Omnibus złagodził brzmienie z obowiązku rezultatu na obowiązek starannego działania, ale nie uchylił przepisu. Często się o nim zapomina. Zapowiedz, że w case'ie przełożymy to na konkretny program szkoleń.
 
 ---
 
@@ -182,13 +182,13 @@ AI Act stosuje się m.in. do:
 | 2 lutego 2025 | praktyki zakazane (art. 5), AI literacy (art. 4), definicje |
 | 2 sierpnia 2025 | modele GPAI (rozdz. V), organy nadzoru, kary (art. 99) |
 | 2 sierpnia 2026 | transparentność (art. 50) i większość pozostałych przepisów |
-| 2 grudnia 2026 | koniec okresu przejściowego na oznaczanie z art. 50 ust. 2 (systemy sprzed 2.08.2026) oraz na nowy zakaz z art. 5 |
+| 2 grudnia 2026 | koniec okresu przejściowego na oznaczanie z art. 50 ust. 2 (systemy sprzed 2.08.2026); początek stosowania nowego zakazu z art. 5 |
 | 2 grudnia 2027 | systemy wysokiego ryzyka z Zał. III (Omnibus przesunął z 2.08.2026) |
 | 2 sierpnia 2028 | systemy wysokiego ryzyka z Zał. I (Omnibus przesunął z 2.08.2027) |
 
-**Polska.** Ustawa o systemach sztucznej inteligencji: uchwalona 3 lipca 2026, podpisana 24 lipca 2026, w mocy od 11 sierpnia 2026. Organem nadzoru jest Komisja Rozwoju i Bezpieczeństwa Sztucznej Inteligencji (KRiBSI), która może kontrolować i karać od 28 października 2026. Ustawa przewiduje też piaskownice regulacyjne i procedurę opinii przed wdrożeniem.
+**Polska.** Ustawa o systemach sztucznej inteligencji: uchwalona 3 lipca 2026, podpisana 24 lipca 2026, w mocy od 11 sierpnia 2026. Organem nadzoru jest Komisja Rozwoju i Bezpieczeństwa Sztucznej Inteligencji (KRiBSI), która od 28 października 2026 może kontrolować, karać i wydawać opinie indywidualne. Przewodniczącą Komisji jest Pamela Krzypkowska, wybrana przez Sejm we wrześniu 2026. Ustawa przewiduje też piaskownice regulacyjne i procedurę opinii przed wdrożeniem.
 
-**Kary (art. 99).** Do 35 mln EUR lub 7% obrotu za praktyki zakazane; do 15 mln EUR lub 3% za inne obowiązki, w tym art. 50; do 7,5 mln EUR lub 1% za informacje wprowadzające w błąd. Dla MŚP stosuje się niższą z kwot.
+**Kary (art. 99).** Do 35 mln EUR lub 7% obrotu za praktyki zakazane; do 15 mln EUR lub 3% za inne obowiązki, w tym art. 50; do 7,5 mln EUR lub 1% za informacje wprowadzające w błąd. Dla MŚP stosuje się niższą z kwot (ust. 6). Omnibus rozszerzył tę zasadę na małe spółki o średniej kapitalizacji, ale tylko w dwóch niższych progach, czyli nie przy praktykach zakazanych (ust. 6a).
 
 > **Notatka:** Wykład odbywa się po 2 sierpnia 2026, więc art. 50 już obowiązuje, a art. 4 od półtora roku. Omnibus przesunął tylko reżim wysokiego ryzyka; nasz case nie korzysta z tego odroczenia.
 
@@ -204,7 +204,7 @@ AI Act stosuje się m.in. do:
 
 ---
 
-## Krok 0. Czy to w ogóle system AI?
+## Krok 1. Czy to w ogóle system AI?
 
 Subsumpcja pod art. 3 pkt 1. Vet-View:
 - jest systemem maszynowym,
@@ -215,11 +215,11 @@ Subsumpcja pod art. 3 pkt 1. Vet-View:
 
 **Wniosek: tak, to system AI objęty AI Act.**
 
-> **Notatka:** Pokaż, że to nie formalność. Gdyby to był sztywny algorytm progowy bez wnioskowania, dyskusja byłaby inna. Dopiero pozytywna odpowiedź „to system AI" otwiera pytanie o kategorię ryzyka.
+> **Notatka:** Pokaż, że to nie formalność. Gdyby to był sztywny algorytm progowy bez wnioskowania, dyskusja byłaby inna. Dopiero pozytywna odpowiedź „to system AI” otwiera pytanie o kategorię ryzyka.
 
 ---
 
-## Krok 1. Czy zakazany? (art. 5)
+## Krok 2a. Czy zakazany? (art. 5)
 
 Przechodzimy listę praktyk zakazanych:
 - techniki podprogowe, manipulacja? nie
@@ -232,11 +232,11 @@ Produkt dotyczy obrazów USG zwierząt i nie ingeruje w prawa podstawowe ludzi.
 
 **Wniosek: nie jest systemem zakazanym.**
 
-> **Notatka:** Szybki slajd eliminacyjny. Wszystkie zakazy z art. 5 dotyczą ludzi, a tu „obiektem" jest nerka psa. Schodzimy piętro niżej.
+> **Notatka:** Szybki slajd eliminacyjny. Wszystkie zakazy z art. 5 dotyczą ludzi, a tu „obiektem” jest nerka psa. Schodzimy piętro niżej.
 
 ---
 
-## Krok 2. Czy wysokiego ryzyka? Ścieżka produktowa
+## Krok 2b. Czy wysokiego ryzyka? Ścieżka produktowa
 
 Czy to komponent bezpieczeństwa aparatu USG (art. 3 pkt 14 + art. 6 ust. 1)? Nie, bo system:
 - nie steruje bezpieczeństwem aparatu,
@@ -246,11 +246,11 @@ Czy to komponent bezpieczeństwa aparatu USG (art. 3 pkt 14 + art. 6 ust. 1)? Ni
 
 Czy to wyrób medyczny (MDR/IVDR z Zał. I)? Nie. MDR obejmuje wyroby do stosowania u ludzi, a to jest oprogramowanie do USG wyłącznie weterynaryjnego. Fakt, że technicznie analogiczny software mógłby działać u ludzi, nie czyni go wyrobem medycznym. Warunku (b) z art. 6 ust. 1 (ocena zgodności przez jednostkę notyfikowaną) nie trzeba badać, bo warunek (a) nie jest spełniony.
 
-> **Notatka:** Główna lekcja tego slajdu: kwalifikacja idzie za przeznaczeniem (*intended purpose*), nie za teoretyczną możliwością zastosowania. To częsty błąd w analizach.
+> **Notatka:** Główna lekcja tego slajdu: kwalifikacja idzie za przeznaczeniem (*intended purpose*), nie za teoretyczną możliwością zastosowania. Pomylenie jednego z drugim to częsty błąd w analizach.
 
 ---
 
-## Krok 2. Czy wysokiego ryzyka? Ścieżka obszarowa (Zał. III)
+## Krok 2b. Czy wysokiego ryzyka? Ścieżka obszarowa (Zał. III)
 
 Załącznik III chroni osoby fizyczne i ich prawa. Vet-View:
 - nie identyfikuje ani nie kategoryzuje ludzi,
@@ -268,19 +268,19 @@ System dotyczy zwierząt, więc leży poza zakresem Załącznika III.
 
 ---
 
-## Krok 3. Kwalifikacja końcowa: ograniczone ryzyko
+## Krok 2c. Kwalifikacja końcowa: ograniczone ryzyko
 
 System nie jest wysokiego ryzyka, ale nie jest też czysto minimalnego ryzyka, bo aktualizuje się art. 50 ust. 2:
 
-- Generowany opis tekstowy wklejany do dokumentacji klinicznej to syntetyczny tekst. Streszczenie generowane przez AI nie mieści się w wyjątku „standardowej edycji", więc powstaje obowiązek maszynowo czytelnego oznaczenia. To jest twardy punkt zaczepienia.
+- Generowany opis tekstowy wklejany do dokumentacji klinicznej to syntetyczny tekst. Streszczenie generowane przez AI nie mieści się w wyjątku „standardowej edycji”, więc powstaje obowiązek maszynowo czytelnego oznaczenia i to na nim opiera się kwalifikacja.
 - Ramki, maski, heatmapy i wskaźnik prawdopodobieństwa to wyniki analityczne (detekcja, klasyfikacja), nie syntetyczny obraz. Wytyczne Komisji i Kodeks postępowania nie traktują adnotacji jako treści syntetycznej. Ich oznaczenie to rekomendowana dobra praktyka, nie obowiązek.
 - Art. 50 ust. 1 (bezpośrednia interakcja) jest przypadkiem granicznym. Narzędzie obsługiwane przez lekarza w GUI to nie chatbot, a dla przeszkolonego profesjonalisty użycie AI jest oczywiste. Informowanie w interfejsie warto utrzymać, ale nie na nim opiera się kwalifikacja.
 
-**Wniosek: system AI objęty obowiązkami transparentności z art. 50 („ograniczone ryzyko").**
+**Wniosek: system AI objęty obowiązkami transparentności z art. 50 („ograniczone ryzyko”).**
 
 Dostawca musi stale monitorować zmiany funkcjonalne pod kątem możliwej rekwalifikacji.
 
-> **Notatka:** To puenta całej ścieżki klasyfikacyjnej. Podkreśl, że „limited risk" to nie „brak obowiązków": art. 50 ust. 2 jest tu sercem zgodności. Zaznacz uczciwie, że kwalifikacja wisi na generatorze tekstu. Gdyby produkt zwracał tylko ramkę i klasę, byłby bliżej minimalnego ryzyka, z art. 4 nadal w mocy.
+> **Notatka:** Tu kończy się ścieżka klasyfikacyjna. Podkreśl, że „limited risk” nie oznacza braku obowiązków: w tym produkcie zgodność sprowadza się głównie do art. 50 ust. 2. Zaznacz, że kwalifikacja wisi na generatorze tekstu. Gdyby produkt zwracał tylko ramkę i klasę, byłby bliżej minimalnego ryzyka, z art. 4 nadal w mocy.
 
 ---
 
@@ -303,7 +303,7 @@ Dostawca musi stale monitorować zmiany funkcjonalne pod kątem możliwej rekwal
 
 **Transparentność (art. 50)** na trzech poziomach:
 1. Wynik tekstowy (obowiązek, ust. 2). Opis generowany przez AI jest oznaczony maszynowo czytelnie (metadane pochodzenia, np. C2PA) i wykrywalny jako AI; oznaczenie nie znika po wklejeniu do dokumentacji.
-2. Interfejs (dobra praktyka; ust. 1 na granicy). Przy każdym wyniku: „wygenerowane przez AI, pomocnicze, nie zastępuje diagnozy, wymaga weryfikacji".
+2. Interfejs (dobra praktyka; ust. 1 na granicy). Przy każdym wyniku: „wygenerowane przez AI, pomocnicze, nie zastępuje diagnozy, wymaga weryfikacji”.
 3. Dokumentacja i warstwy graficzne (dobra praktyka). Przeznaczenie, zakres (pies, nerki, USG przezpowłokowe), ograniczenia, nadzór człowieka, zgłaszanie błędów; heatmapa i kontur jako odróżnialne warstwy AI.
 
 Obowiązki deployera z art. 50 ust. 3–4 (emocje, deepfake, teksty publiczne) nie mają zastosowania.
@@ -319,11 +319,11 @@ Obowiązki deployera z art. 50 ust. 3–4 (emocje, deepfake, teksty publiczne) n
 Komunikat ma być spójny w dokumentacji technicznej, instrukcji, regulaminie SaaS, umowie, marketingu, na stronie www, w prezentacjach i komunikatach w aplikacji.
 
 **Sformułowania zakazane** (wprowadzające w błąd lub przesuwające produkt w stronę wyrobu medycznego):
-- „system diagnozuje choroby nerek", „automatyczna diagnoza"
-- „zastępuje lekarza", „wykrywa nowotwory"
-- „medyczny system AI", „dla USG" bez dookreślenia, że weterynaryjnego
+- „system diagnozuje choroby nerek”, „automatyczna diagnoza”
+- „zastępuje lekarza”, „wykrywa nowotwory”
+- „medyczny system AI”, „dla USG” bez dookreślenia, że weterynaryjnego
 
-> **Notatka:** To pokazuje, że język marketingu ma skutki prawne. Nieostrożny copywriting może zmienić kwalifikację produktu. Dobry punkt styku prawa z praktyką biznesową.
+> **Notatka:** Tu widać, że język marketingu ma skutki prawne: nieostrożny copywriting może zmienić kwalifikację produktu.
 
 ---
 
@@ -340,17 +340,17 @@ System ma umożliwiać śledzenie historii badań w czasie, a zmiana modelu mię
 
 **GPAI.** Jeśli opis tekstowy generuje zewnętrzny model ogólnego przeznaczenia (API), obowiązki z art. 53 spoczywają na dostawcy modelu. Vet-View S.A. pozostaje dostawcą systemu, chyba że istotnie zmodyfikuje model; wtedy sam staje się dostawcą GPAI.
 
-> **Notatka:** Dobry przykład, że dobre praktyki wykraczają poza minimum prawne. Domknij wykład ostrzeżeniem: każda istotna zmiana funkcji może wymagać ponownej kwalifikacji w piramidzie ryzyka.
+> **Notatka:** Przykład na to, że dobre praktyki wykraczają poza minimum prawne. Domknij wykład ostrzeżeniem: każda istotna zmiana funkcji może wymagać ponownej kwalifikacji w piramidzie ryzyka.
 
 ---
 
 ## Wnioski: czego uczy ten case
 
 1. Metoda jest zawsze ta sama: system AI? → kategoria ryzyka (eliminacja od góry) → role → obowiązki.
-2. Kwalifikacja idzie za przeznaczeniem, nie za technicznymi możliwościami („mogłoby działać u ludzi" nie czyni z niego wyrobu medycznego).
-3. „Ograniczone ryzyko" to nie brak obowiązków: transparentność (art. 50) i AI literacy (art. 4) obowiązują.
+2. Kwalifikacja idzie za przeznaczeniem, nie za technicznymi możliwościami („mogłoby działać u ludzi” nie czyni z niego wyrobu medycznego).
+3. „Ograniczone ryzyko” to nie brak obowiązków: transparentność (art. 50) i AI literacy (art. 4) obowiązują.
 4. Język produktu ma skutki prawne, marketing może przesunąć produkt w górę piramidy.
 5. Kwalifikacja jest dynamiczna, nowe funkcje (ocena ludzi, profilowanie) mogą wymagać rekwalifikacji.
-6. Odpowiedzialność cywilna idzie osobno. Dyrektywa o odpowiedzialności za AI została wycofana w lutym 2025, ale nowa dyrektywa o odpowiedzialności za produkty (UE) 2024/2853 obejmuje oprogramowanie i AI od 9 grudnia 2026.
+6. Kwalifikacja wisi na konkretnym wyniku: art. 50 ust. 2 uruchamia generator opisu, nie ramki i heatmapy.
 
-> **Notatka:** Slajd domykający. Jeśli zostaje czas, ćwiczenie: poproś studentów, by wymyślili jedną nową funkcję, która przeniosłaby Vet-View do wysokiego ryzyka lub kategorii zakazanej (np. rozpoznawanie emocji właściciela zwierzęcia w poczekalni).
+> **Notatka:** Slajd domykający. Gdy padnie pytanie o odpowiedzialność cywilną: idzie ona osobno. Dyrektywa o odpowiedzialności za AI została wycofana w 2025, a nowa dyrektywa o odpowiedzialności za produkty (UE) 2024/2853 obejmuje oprogramowanie i AI. Państwa członkowskie mają ją wdrożyć do 9 grudnia 2026, a nowe zasady dotyczą produktów wprowadzonych do obrotu po tej dacie; polski projekt wdrożenia (UC163, zmiana KC i KPC) był w listopadzie 2026 na etapie prac rządowych. Jeśli zostaje czas, ćwiczenie: poproś studentów, by wymyślili jedną nową funkcję, która przeniosłaby Vet-View do wysokiego ryzyka lub kategorii zakazanej (np. rozpoznawanie emocji właściciela zwierzęcia w poczekalni).

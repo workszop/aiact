@@ -2,9 +2,9 @@
 
 ## Przykład: weterynaryjny system Vet-View
 
-> **Charakter materiału.** Poniższy tekst jest dydaktycznym studium przypadku. Na przykładzie projektu Vet-View pokazuje, jak krok po kroku przeprowadzić analizę zgodności konkretnego systemu z rozporządzeniem (UE) 2024/1689, czyli AI Act. Nazwa produktu i spółki są przykładowe. Celem jest pokazanie metody rozumowania, a nie wydanie opinii o rzeczywistym podmiocie.
+> **Charakter materiału.** To dydaktyczne studium przypadku. Na przykładzie projektu Vet-View pokazuje, jak krok po kroku przeprowadzić analizę zgodności konkretnego systemu z rozporządzeniem (UE) 2024/1689, czyli AI Act. Nazwa produktu i spółki są przykładowe. Celem jest pokazanie metody rozumowania, a nie wydanie opinii o rzeczywistym podmiocie.
 >
-> **Stan prawny:** wrzesień 2026. AI Act ze zmianami z rozporządzenia (UE) 2026/1744 (Digital Omnibus on AI, w mocy od 27 lipca 2026) oraz polska ustawa o systemach sztucznej inteligencji (w mocy od 11 sierpnia 2026).
+> **Stan prawny:** listopad 2026. AI Act ze zmianami z rozporządzenia (UE) 2026/1744 (Digital Omnibus on AI, w mocy od 27 lipca 2026) oraz polska ustawa o systemach sztucznej inteligencji (w mocy od 11 sierpnia 2026).
 
 ---
 
@@ -12,10 +12,10 @@
 
 Po przeanalizowaniu przykładu czytelnik powinien umieć:
 
-1. ustalić, czy dane oprogramowanie jest „systemem AI" w rozumieniu art. 3 pkt 1 AI Act;
+1. ustalić, czy dane oprogramowanie jest „systemem AI” w rozumieniu art. 3 pkt 1 AI Act;
 2. zaklasyfikować system do właściwej kategorii ryzyka (zakazane, wysokie, ograniczone, minimalne);
 3. rozpoznać role podmiotów na gruncie AI Act (dostawca vs podmiot stosujący);
-4. ocenić, czy i w jakim zakresie AI Act znajduje zastosowanie;
+4. ocenić, czy i w jakim zakresie AI Act ma zastosowanie;
 5. wyprowadzić konkretne obowiązki prawne z przyjętej kwalifikacji;
 6. umiejscowić analizę w kalendarzu stosowania AI Act i wskazać organ nadzoru w Polsce.
 
@@ -32,15 +32,13 @@ Vet-View to oprogramowanie oferowane w modelu SaaS przez spółkę Vet-View S.A.
 
 Zakres przeznaczenia w analizowanej wersji: gatunek pies, narząd nerki, badanie USG przezpowłokowe. Producent zamierza trenować, testować i walidować model na danych klientów, a system ma umożliwiać śledzenie historii badań i porównywanie wyników w czasie.
 
-Mając te fakty, przechodzimy do analizy.
-
 ---
 
-## KROK 1. Czy Vet-View jest „systemem AI"?
+## KROK 1. Czy Vet-View jest „systemem AI”?
 
 **Podstawa prawna:** art. 3 pkt 1 AI Act.
 
-**Definicja.** „System AI" oznacza system maszynowy zaprojektowany do działania z różnym poziomem autonomii, który może wykazywać adaptacyjność po wdrożeniu i który, dla celów wyraźnych lub dorozumianych, wnioskuje z otrzymanych danych wejściowych, jak generować wyniki (przewidywania, treści, rekomendacje lub decyzje) mogące wpływać na środowiska fizyczne lub wirtualne.
+**Definicja.** „System AI” oznacza system maszynowy zaprojektowany do działania z różnym poziomem autonomii, który może wykazywać adaptacyjność po wdrożeniu i który, dla celów wyraźnych lub dorozumianych, wnioskuje z otrzymanych danych wejściowych, jak generować wyniki (przewidywania, treści, rekomendacje lub decyzje) mogące wpływać na środowiska fizyczne lub wirtualne.
 
 **Analiza.** Vet-View spełnia kryteria tej definicji, ponieważ:
 
@@ -70,11 +68,11 @@ Bezwzględnie zakazane są systemy o nieakceptowalnym poziomie ingerencji w chro
 - rozpoznające emocje w miejscu pracy i w edukacji, z wyjątkiem celów medycznych i bezpieczeństwa (lit. f);
 - kategoryzujące biometrycznie w celu wnioskowania o rasie, poglądach politycznych, przynależności związkowej, przekonaniach religijnych lub światopoglądowych, życiu seksualnym lub orientacji seksualnej (lit. g); inna kategoryzacja biometryczna jest systemem wysokiego ryzyka (Zał. III pkt 1) i podlega art. 50 ust. 3;
 - zdalnej identyfikacji biometrycznej w czasie rzeczywistym w przestrzeni publicznej do celów ścigania przestępstw, z wąskimi wyjątkami (lit. h); RBI w innych celach jest systemem wysokiego ryzyka;
-- nowość po Omnibusie 2026: systemy, których przewidywalnym i powtarzalnym wynikiem jest generowanie treści intymnych bez zgody lub materiałów przedstawiających wykorzystywanie seksualne dzieci (okres przejściowy do 2 grudnia 2026).
+- nowość po Omnibusie 2026 (lit. ba i bb): systemy, których przewidywalnym i powtarzalnym wynikiem jest generowanie treści intymnych bez zgody lub materiałów przedstawiających wykorzystywanie seksualne dzieci (zakaz stosuje się od 2 grudnia 2026).
 
 Interpretacja: Wytyczne Komisji w sprawie praktyk zakazanych, C(2025) 5052 final z 29 lipca 2025.
 
-**Wniosek:** Vet-View nie realizuje żadnej z tych praktyk, więc nie jest systemem zakazanym.
+**Wniosek:** Vet-View nie stosuje żadnej z tych praktyk, więc nie jest systemem zakazanym.
 
 ### 2b. Czy to system wysokiego ryzyka? (art. 6 oraz Załączniki I i III AI Act)
 
@@ -90,17 +88,17 @@ Analiza prowadzi do wniosku negatywnego.
 
 ### 2c. Która kategoria łagodniejsza? (art. 50 AI Act)
 
-Uwaga terminologiczna: „ograniczone ryzyko" to skrót dydaktyczny, nie kategoria ustawowa. Rozporządzenie zna praktyki zakazane, systemy wysokiego ryzyka, systemy objęte obowiązkami z art. 50 oraz modele GPAI. Obowiązki z art. 50 kumulują się także z reżimem wysokiego ryzyka. Wytyczne Komisji mówią o „transparency risk".
+Uwaga terminologiczna: „ograniczone ryzyko” to skrót dydaktyczny, nie kategoria ustawowa. Rozporządzenie zna praktyki zakazane, systemy wysokiego ryzyka, systemy objęte obowiązkami z art. 50 oraz modele GPAI. Obowiązki z art. 50 kumulują się także z reżimem wysokiego ryzyka. Wytyczne Komisji mówią o „transparency risk”.
 
 Vet-View nie jest systemem wysokiego ryzyka, ale nie jest też czystym systemem minimalnego ryzyka, ponieważ spełnia przesłankę z art. 50 ust. 2:
 
-- Generuje syntetyczny tekst. Podsumowanie wstawiane do dokumentacji klinicznej jest treścią wygenerowaną przez AI. Wytyczne Komisji do art. 50 (20 lipca 2026) wskazują, że streszczenia i przeredagowania generowane przez AI nie korzystają z wyjątku „funkcji pomocniczej przy standardowej edycji". To rozstrzygający punkt zaczepienia.
+- Generuje syntetyczny tekst. Podsumowanie wstawiane do dokumentacji klinicznej jest treścią wygenerowaną przez AI. Wytyczne Komisji do art. 50 (20 lipca 2026) wskazują, że streszczenia i przeredagowania generowane przez AI nie korzystają z wyjątku „funkcji pomocniczej przy standardowej edycji”, i to rozstrzyga o kwalifikacji.
 - Ramki, maski, heatmapy i wskaźnik prawdopodobieństwa są wynikami analitycznymi (detekcja, klasyfikacja), a nie syntetycznym obrazem w rozumieniu ust. 2. Ani wytyczne, ani Kodeks postępowania w sprawie oznaczania treści generowanych przez AI nie obejmują adnotacji obrazu. Ich oznaczanie należy traktować jako rekomendowaną dobrą praktykę, nie obowiązek.
 - Art. 50 ust. 1 (systemy przeznaczone do bezpośredniej interakcji z osobami fizycznymi) celuje w chatboty, asystentów i agentów. Narzędzie obsługiwane przez lekarza przez interfejs graficzny jest przypadkiem granicznym, a dla przeszkolonego profesjonalisty fakt użycia AI jest oczywisty w rozumieniu wyjątku z ust. 1. Informacja w interfejsie pozostaje dobrą praktyką, ale nie na niej opiera się kwalifikacja.
 
-**Wniosek:** Vet-View należy kwalifikować jako system objęty obowiązkami transparentności z art. 50 („ograniczone ryzyko"). Kwalifikacja zależy od generatora opisu tekstowego. Produkt zwracający wyłącznie ramkę i klasę byłby bliżej minimalnego ryzyka, z art. 4 nadal w mocy. Dostawca musi stale monitorować zmiany funkcjonalne pod kątem możliwej rekwalifikacji.
+**Wniosek:** Vet-View należy kwalifikować jako system objęty obowiązkami transparentności z art. 50 („ograniczone ryzyko”). Kwalifikacja zależy od generatora opisu tekstowego. Produkt zwracający wyłącznie ramkę i klasę byłby bliżej minimalnego ryzyka, z art. 4 nadal w mocy. Dostawca musi stale monitorować zmiany funkcjonalne pod kątem możliwej rekwalifikacji.
 
-> **Lekcja z Kroku 2.** Rozstrzygający okazał się kontekst: zwierzęta, nie ludzie. Ta sama architektura modelu zastosowana w USG dla ludzi prowadziłaby do zupełnie innej kwalifikacji, bo wyrób medyczny to potencjalnie wysokie ryzyko.
+> **Lekcja z Kroku 2.** Rozstrzygający okazał się kontekst: zwierzęta, nie ludzie. Ta sama architektura modelu zastosowana w USG dla ludzi prowadziłaby do innej kwalifikacji, bo wyrób medyczny to potencjalnie wysokie ryzyko.
 
 ---
 
@@ -110,7 +108,7 @@ Obowiązki zależą od kategorii ryzyka i od roli podmiotu.
 
 ### Dostawca: Vet-View S.A. (art. 3 pkt 3)
 
-„Dostawca" to podmiot, który rozwija system AI (lub zleca jego rozwój) i wprowadza go do obrotu albo oddaje do używania pod własną nazwą lub znakiem towarowym, odpłatnie lub nieodpłatnie. Vet-View S.A. jest dostawcą, ponieważ:
+„Dostawca” to podmiot, który rozwija system AI (lub zleca jego rozwój) i wprowadza go do obrotu albo oddaje do używania pod własną nazwą lub znakiem towarowym, odpłatnie lub nieodpłatnie. Vet-View S.A. jest dostawcą, ponieważ:
 
 - sam rozwija moduł AI;
 - oferuje produkt jako SaaS pod własną marką;
@@ -118,15 +116,15 @@ Obowiązki zależą od kategorii ryzyka i od roli podmiotu.
 
 ### Podmioty stosujące (*deployers*): klienci (art. 3 pkt 4)
 
-„Podmiot stosujący" to podmiot, który wykorzystuje system AI pod swoją kontrolą, poza osobistą działalnością pozazawodową. Gabinety, przychodnie, lecznice, kliniki i laboratoria weterynaryjne będą co do zasady deployerami.
+„Podmiot stosujący” to podmiot, który wykorzystuje system AI pod swoją kontrolą, poza osobistą działalnością pozazawodową. Gabinety, przychodnie, lecznice, kliniki i laboratoria weterynaryjne będą co do zasady deployerami.
 
-Niuans: gdy podmiotem stosującym jest osoba prawna sprawująca kontrolę nad wykorzystaniem systemu (klinika), za podmiot stosujący nie uznaje się poszczególnych pracowników (weterynarzy) działających w ramach procedur i pod kontrolą tego podmiotu (zob. Wytyczne Komisji w sprawie praktyk zakazanych, C(2025) 5052 final, sekcja 2.4 „Personal scope: responsible actors", pkt 17–18).
+Niuans: gdy podmiotem stosującym jest osoba prawna sprawująca kontrolę nad wykorzystaniem systemu (klinika), za podmiot stosujący nie uznaje się poszczególnych pracowników (weterynarzy) działających w ramach procedur i pod kontrolą tego podmiotu (zob. Wytyczne Komisji w sprawie praktyk zakazanych, C(2025) 5052 final, sekcja 2.4 „Personal scope: responsible actors”, pkt 17–18).
 
 ---
 
 ## KROK 4. Czy AI Act w ogóle ma zastosowanie?
 
-**Podstawa:** art. 2 ust. 1 lit. a AI Act. Rozporządzenie stosuje się do dostawców wprowadzających do obrotu lub oddających do użytku systemy AI w Unii, niezależnie od ich siedziby. To dokładnie sytuacja Vet-View S.A. jako dostawcy SaaS. Kliniki jako deployerzy podlegają rozporządzeniu na podstawie art. 2 ust. 1 lit. b (siedziba w Unii).
+**Podstawa:** art. 2 ust. 1 lit. a AI Act. Rozporządzenie stosuje się do dostawców wprowadzających do obrotu lub oddających do użytku systemy AI w Unii, niezależnie od ich siedziby. Tak jest w przypadku Vet-View S.A. jako dostawcy SaaS. Kliniki jako deployerzy podlegają rozporządzeniu na podstawie art. 2 ust. 1 lit. b (siedziba w Unii).
 
 Częsty błąd: wskazywanie lit. e (producenci produktów, którzy pod własną marką wraz ze swoim produktem wprowadzają system AI). Ta podstawa dotyczy np. producenta aparatu USG z wbudowanym modułem AI. Vet-View S.A. nie wytwarza żadnego produktu fizycznego, więc lit. e nie ma tu zastosowania.
 
@@ -135,19 +133,19 @@ Częsty błąd: wskazywanie lit. e (producenci produktów, którzy pod własną 
 - Prywatne, nieprofesjonalne użycie: wyłączenie nie działa, bo produkt jest używany przez przedsiębiorców w ramach profesjonalnej działalności weterynaryjnej.
 - Badania i rozwój przed wprowadzeniem do obrotu: wyłączenie nie działa, bo analiza dotyczy produktu oferowanego komercyjnie. AI Act nie obejmuje tym wyłączeniem testowania w warunkach rzeczywistych ani komercyjnego udostępniania systemu.
 
-**Wniosek:** AI Act znajduje zastosowanie do Vet-View.
+**Wniosek:** AI Act ma zastosowanie do Vet-View.
 
 ---
 
 ## KROK 5. Jakie obowiązki z tego wynikają?
 
-Z kwalifikacji „system ograniczonego ryzyka + rola dostawcy" wynika następujący zestaw obowiązków.
+Z kwalifikacji „system ograniczonego ryzyka + rola dostawcy” wynika następujący zestaw obowiązków.
 
-### 5.1. Kompetencje w zakresie AI (*AI literacy*), art. 4
+### 5.1. Kompetencje AI (*AI literacy*), art. 4
 
-Po Omnibusie (rozp. 2026/1744) art. 4 stanowi, że dostawcy i deployerzy podejmują środki wspierające rozwój kompetencji AI swojego personelu i osób obsługujących system w ich imieniu, z uwzględnieniem ich wiedzy, doświadczenia, wykształcenia i kontekstu użycia. Przepis wprost nie wymaga zagwarantowania określonego poziomu kompetencji u konkretnej osoby. Wcześniejsze brzmienie („zapewniają wystarczający poziom") nie obowiązuje. Obowiązek pozostaje w mocy od 2 lutego 2025 i dotyczy obu ról: klinika jako deployer ma własny obowiązek z art. 4 wobec swoich lekarzy.
+Po Omnibusie (rozp. 2026/1744) art. 4 stanowi, że dostawcy i deployerzy podejmują środki wspierające rozwój kompetencji AI swojego personelu i osób obsługujących system w ich imieniu, z uwzględnieniem ich wiedzy, doświadczenia, wykształcenia i kontekstu użycia. Przepis wprost nie wymaga zagwarantowania określonego poziomu kompetencji u konkretnej osoby. Wcześniejsze brzmienie („zapewniają wystarczający poziom”) nie obowiązuje. Obowiązek pozostaje w mocy od 2 lutego 2025 i dotyczy obu ról: klinika jako deployer ma własny obowiązek z art. 4 wobec swoich lekarzy.
 
-Dla Vet-View S.A. oznacza to, że osoby zaangażowane w projektowanie, rozwój, walidację, sprzedaż, wsparcie techniczne i obsługę reklamacji powinny rozumieć co najmniej:
+Dla Vet-View S.A. oznacza to, że osoby zajmujące się projektowaniem, rozwojem, walidacją, sprzedażą, wsparciem technicznym i obsługą reklamacji powinny rozumieć co najmniej:
 
 - a) podstawowe zasady działania modułu AI;
 - b) ograniczenia modelu;
@@ -169,15 +167,15 @@ Vet-View powinien zapewnić transparentność na trzech poziomach, o różnej mo
 
 - W treści wyniku tekstowego (obowiązek, art. 50 ust. 2). Generowany opis ma być oznaczony w formacie maszynowo czytelnym i wykrywalnym jako wygenerowany przez AI, np. metadanymi pochodzenia w standardzie C2PA albo oznaczeniem w strukturze dokumentu, tak aby oznaczenie nie znikało po wklejeniu do dokumentacji klinicznej. Prawdopodobieństwo należy opisywać jako parametr modelu, nie potwierdzenie diagnozy.
 - W interfejsie (dobra praktyka; ust. 1 jest tu przypadkiem granicznym). Przy każdym wyniku należy wskazać, że został wygenerowany przez AI, ma charakter pomocniczy, nie jest samodzielną diagnozą, wymaga weryfikacji przez lekarza, jego jakość zależy od jakości obrazu wejściowego, a prawdopodobieństwo nie jest równoznaczne z pewnością diagnostyczną.
-- W dokumentacji i warstwach graficznych (dobra praktyka). Instrukcja używania powinna opisywać przeznaczenie (jednoznacznie: produkt dla zwierząt, nie dla ludzi), zakres gatunkowy (pies), anatomiczny (nerki) i badania (USG przezpowłokowe), obsługiwane formaty i minimalną jakość obrazu, ograniczenia skuteczności, znane przypadki gorszego działania, interpretację wskaźnika pewności, zasady nadzoru człowieka (*human oversight*) oraz sposób zgłaszania błędów. Heatmapa i kontur powinny być odróżnialnymi warstwami AI, choć jako wyniki analityczne nie są „syntetycznym obrazem" w rozumieniu ust. 2.
+- W dokumentacji i warstwach graficznych (dobra praktyka). Instrukcja używania powinna opisywać przeznaczenie (jednoznacznie: produkt dla zwierząt, nie dla ludzi), zakres gatunkowy (pies), anatomiczny (nerki) i badania (USG przezpowłokowe), obsługiwane formaty i minimalną jakość obrazu, ograniczenia skuteczności, znane przypadki gorszego działania, interpretację wskaźnika pewności, zasady nadzoru człowieka (*human oversight*) oraz sposób zgłaszania błędów. Heatmapa i kontur powinny być odróżnialnymi warstwami AI, choć jako wyniki analityczne nie są „syntetycznym obrazem” w rozumieniu ust. 2.
 
 Obowiązki deployera z art. 50 ust. 3 (rozpoznawanie emocji, kategoryzacja biometryczna) i ust. 4 (deepfake, teksty publikowane w celu informowania o sprawach publicznych) nie mają zastosowania do klinik używających Vet-View.
 
 ### 5.3. Utrzymanie prawidłowego przeznaczenia (*intended purpose*), art. 3 pkt 12
 
-„Intended purpose" to użycie, do którego dostawca przeznaczył system, określone w instrukcjach, materiałach promocyjnych i dokumentacji. Wymaga to spójności między dokumentacją techniczną, instrukcją używania, regulaminem SaaS, umową z klientem, materiałami marketingowymi, stroną WWW, prezentacjami sprzedażowymi, komunikatami w aplikacji i szkoleniami.
+„Intended purpose” to użycie, do którego dostawca przeznaczył system, określone w instrukcjach, materiałach promocyjnych i dokumentacji. Wymaga to spójności między dokumentacją techniczną, instrukcją używania, regulaminem SaaS, umową z klientem, materiałami marketingowymi, stroną WWW, prezentacjami sprzedażowymi, komunikatami w aplikacji i szkoleniami.
 
-Sformułowania mylące są zakazane, np.: „system diagnozuje choroby nerek", „automatyczna diagnoza", „zastępuje lekarza", „wykrywa nowotwory", „medyczny system AI", „dla USG" bez zaznaczenia, że chodzi wyłącznie o USG weterynaryjne.
+Sformułowania mylące są zakazane, np.: „system diagnozuje choroby nerek”, „automatyczna diagnoza”, „zastępuje lekarza”, „wykrywa nowotwory”, „medyczny system AI”, „dla USG” bez zaznaczenia, że chodzi wyłącznie o USG weterynaryjne.
 
 ### 5.4. Niestosowanie zakazanych praktyk, art. 5
 
@@ -185,11 +183,11 @@ Obecnie Vet-View nie wykazuje cech praktyki zakazanej. Produkt nie powinien być
 
 ### 5.5. Zarządzanie zmianami modelu
 
-AI Act nie ustanawia uniwersalnego obowiązku zgodności „lifecycle-based". Jest to centralny element reżimu wyłącznie dla systemów wysokiego ryzyka (art. 8–17, art. 72). Mimo to, z uwagi na charakter SaaS i zamiar trenowania modelu na danych klientów, rekomendowana jest procedura kontroli zmian obejmująca dokumentowanie:
+AI Act nie ustanawia uniwersalnego obowiązku zgodności „lifecycle-based”. Taki obowiązek mają wyłącznie systemy wysokiego ryzyka (art. 8–17, art. 72). Ponieważ jednak Vet-View działa jako SaaS, a model ma być trenowany na danych klientów, warto wprowadzić procedurę kontroli zmian i dokumentować:
 
-1. wersji modelu; 2. dat wdrożeń; 3. zmian architektury; 4. zmian zbiorów treningowych; 5. zmian kategorii klasyfikacji; 6. zmian progów decyzyjnych; 7. wpływu na dokładność, czułość i swoistość; 8. wpływu na interpretację historycznych wyników; 9. procedury rollback; 10. komunikowania klientom istotnych aktualizacji.
+1. wersję modelu; 2. daty wdrożeń; 3. zmiany architektury; 4. zmiany zbiorów treningowych; 5. zmiany kategorii klasyfikacji; 6. zmiany progów decyzyjnych; 7. wpływ na dokładność, czułość i swoistość; 8. wpływ na interpretację historycznych wyników; 9. procedurę rollback; 10. komunikowanie klientom istotnych aktualizacji.
 
-To ważne, bo system ma umożliwiać porównywanie wyników w czasie. Jeśli model zmieni się między pierwszym a kolejnym badaniem, porównywalność wyników może być ograniczona.
+System ma umożliwiać porównywanie wyników w czasie, a jeśli model zmieni się między pierwszym a kolejnym badaniem, ich porównywalność może być ograniczona.
 
 ### 5.6. Modele ogólnego przeznaczenia (GPAI), art. 53
 
@@ -204,15 +202,15 @@ Jeśli opis tekstowy generuje zewnętrzny model ogólnego przeznaczenia udostęp
 | 2 lutego 2025 | praktyki zakazane (art. 5), AI literacy (art. 4), przepisy ogólne |
 | 2 sierpnia 2025 | modele GPAI (rozdz. V), organy nadzoru, kary (art. 99) |
 | 2 sierpnia 2026 | transparentność (art. 50) i większość pozostałych przepisów |
-| 2 grudnia 2026 | koniec okresu przejściowego na oznaczanie z art. 50 ust. 2 (systemy sprzed 2.08.2026) oraz na nowy zakaz z art. 5 |
+| 2 grudnia 2026 | koniec okresu przejściowego na oznaczanie z art. 50 ust. 2 (systemy sprzed 2.08.2026); początek stosowania nowego zakazu z art. 5 |
 | 2 grudnia 2027 | systemy wysokiego ryzyka z Załącznika III (Omnibus przesunął z 2.08.2026) |
 | 2 sierpnia 2028 | systemy wysokiego ryzyka z Załącznika I (Omnibus przesunął z 2.08.2027) |
 
 Dla Vet-View oznacza to, że obowiązki z art. 4 i art. 50 już obowiązują. Odroczenia z Omnibusu dotyczą wyłącznie reżimu wysokiego ryzyka, z którego produkt i tak wypadł.
 
-**Polska.** Ustawa o systemach sztucznej inteligencji (uchwalona 3 lipca 2026, podpisana 24 lipca 2026, ogłoszona 27 lipca 2026) weszła w życie 11 sierpnia 2026. Tworzy Komisję Rozwoju i Bezpieczeństwa Sztucznej Inteligencji (KRiBSI) jako organ nadzoru rynku, przewiduje piaskownice regulacyjne oraz procedurę uzyskania opinii przed wdrożeniem. Kontrole i kary KRiBSI od 28 października 2026.
+**Polska.** Ustawa o systemach sztucznej inteligencji (uchwalona 3 lipca 2026, podpisana 24 lipca 2026, ogłoszona 27 lipca 2026) weszła w życie 11 sierpnia 2026. Tworzy Komisję Rozwoju i Bezpieczeństwa Sztucznej Inteligencji (KRiBSI) jako organ nadzoru rynku, przewiduje piaskownice regulacyjne oraz procedurę uzyskania opinii przed wdrożeniem. Od 28 października 2026 KRiBSI może prowadzić kontrole, nakładać kary i wydawać opinie indywidualne. Przewodniczącą Komisji jest Pamela Krzypkowska, wybrana przez Sejm we wrześniu 2026.
 
-**Kary (art. 99 AI Act).** Do 35 mln EUR lub 7% światowego obrotu za praktyki zakazane; do 15 mln EUR lub 3% za naruszenie innych obowiązków, w tym art. 50; do 7,5 mln EUR lub 1% za nieprawdziwe lub wprowadzające w błąd informacje. Dla MŚP stosuje się niższą z kwot.
+**Kary (art. 99 AI Act).** Do 35 mln EUR lub 7% światowego obrotu za praktyki zakazane; do 15 mln EUR lub 3% za naruszenie innych obowiązków, w tym art. 50; do 7,5 mln EUR lub 1% za nieprawdziwe lub wprowadzające w błąd informacje. Dla MŚP stosuje się niższą z kwot (ust. 6). Omnibus rozszerzył tę zasadę na małe spółki o średniej kapitalizacji, ale tylko w dwóch niższych progach, czyli nie przy praktykach zakazanych (ust. 6a).
 
 ---
 
@@ -223,7 +221,7 @@ Dla Vet-View oznacza to, że obowiązki z art. 4 i art. 50 już obowiązują. Od
 | 1 | Czy to system AI? | art. 3 pkt 1 | Tak |
 | 2a | Czy zakazany? | art. 5 | Nie |
 | 2b | Czy wysokiego ryzyka? | art. 6, zał. I i III | Nie |
-| 2c | Która kategoria? | art. 50 ust. 2 | Obowiązki transparentności („ograniczone ryzyko") |
+| 2c | Która kategoria? | art. 50 ust. 2 | Obowiązki transparentności („ograniczone ryzyko”) |
 | 3 | Kto jest kim? | art. 3 pkt 3 i 4 | Dostawca: Vet-View S.A.; deployer: klinika |
 | 4 | Czy AI Act ma zastosowanie? | art. 2 ust. 1 lit. a (dostawca), lit. b (deployer) | Tak, bez wyłączeń |
 | 5 | Jakie obowiązki? | art. 4, 50 ust. 2, 3 pkt 12, 53 | Literacy (obie role), oznaczanie tekstu AI, intended purpose, kontrola zmian |
@@ -234,11 +232,11 @@ Dla Vet-View oznacza to, że obowiązki z art. 4 i art. 50 już obowiązują. Od
 ## Czego uczy ten przykład. Wnioski dydaktyczne
 
 1. Kwalifikacja ryzyka wyznacza zakres obowiązków. Najpierw ustalamy kategorię, potem dopiero obowiązki, nie odwrotnie.
-2. Kontekst potrafi być rozstrzygający. „Zwierzęta vs ludzie" zadecydowało o wyjściu poza reżim wyrobu medycznego i Załącznika III.
-3. „Ograniczone ryzyko" to nie „brak obowiązków". Transparentność i AI literacy obowiązują również tutaj.
+2. Kontekst potrafi być rozstrzygający. „Zwierzęta vs ludzie” zadecydowało o wyjściu poza reżim wyrobu medycznego i Załącznika III.
+3. „Ograniczone ryzyko” to nie „brak obowiązków”. Transparentność i AI literacy obowiązują również tutaj.
 4. Język marketingu ma skutki prawne. Sposób opisu produktu współtworzy jego *intended purpose*.
-5. Kwalifikacja jest dynamiczna. Nowe funkcje mogą zmienić kategorię, więc compliance to proces, nie jednorazowa czynność.
-6. Kwalifikacja wisi na konkretnym wyniku. To generator opisu tekstowego, a nie ramki i heatmapy, uruchamia art. 50 ust. 2. Warto wiedzieć, który element produktu „ciągnie" obowiązki.
+5. Kwalifikacja jest dynamiczna. Nowe funkcje mogą zmienić kategorię, więc zgodność trzeba sprawdzać ponownie po każdej istotnej zmianie produktu.
+6. Kwalifikacja wisi na konkretnym wyniku. To generator opisu tekstowego, a nie ramki i heatmapy, uruchamia art. 50 ust. 2. Trzeba wiedzieć, który element produktu pociąga za sobą obowiązki.
 
 ---
 
@@ -248,9 +246,9 @@ Dla Vet-View oznacza to, że obowiązki z art. 4 i art. 50 już obowiązują. Od
 2. Jakie konkretne funkcje przesunęłyby produkt do kategorii wysokiego ryzyka lub zakazanej?
 3. Trenowanie modelu na danych klientów: jakie obowiązki rodzi to dodatkowo na gruncie RODO, niezależnie od AI Act?
 4. Jak w praktyce technicznie oznaczyć opis tekstowy (obowiązek) i heatmapę (dobra praktyka) jako treść wygenerowaną przez AI w formacie maszynowo czytelnym, tak aby oznaczenie przetrwało wklejenie do systemu dokumentacji kliniki?
-5. Kto ponosi odpowiedzialność, gdy lekarz bezkrytycznie zaufa błędnemu wynikowi (*automation bias*): dostawca czy podmiot stosujący? Wskazówka: dyrektywa o odpowiedzialności za AI została wycofana w lutym 2025, ale nowa dyrektywa o odpowiedzialności za produkty (UE) 2024/2853 obejmuje oprogramowanie i AI od 9 grudnia 2026.
+5. Kto ponosi odpowiedzialność, gdy lekarz bezkrytycznie zaufa błędnemu wynikowi (*automation bias*): dostawca czy podmiot stosujący? Wskazówka: dyrektywa o odpowiedzialności za AI została wycofana w 2025, a nowa dyrektywa o odpowiedzialności za produkty (UE) 2024/2853 obejmuje oprogramowanie i AI. Państwa członkowskie mają ją wdrożyć do 9 grudnia 2026, a nowe zasady dotyczą produktów wprowadzonych do obrotu po tej dacie; polski projekt wdrożenia (UC163, zmiana KC i KPC) był w listopadzie 2026 na etapie prac rządowych.
 6. Gdyby Vet-View zwracał wyłącznie ramkę i klasę zmiany, bez opisu tekstowego, czy art. 50 nadal miałby zastosowanie? Które obowiązki by pozostały?
 
 ---
 
-*Materiał dydaktyczny. Stan prawny: wrzesień 2026, rozporządzenie (UE) 2024/1689 (AI Act) ze zmianami z rozporządzenia (UE) 2026/1744, ustawa o systemach sztucznej inteligencji. Przykład ma charakter ilustracyjny i nie stanowi porady prawnej.*
+*Materiał dydaktyczny. Stan prawny: listopad 2026, rozporządzenie (UE) 2024/1689 (AI Act) ze zmianami z rozporządzenia (UE) 2026/1744, ustawa o systemach sztucznej inteligencji. Przykład ma charakter ilustracyjny i nie stanowi porady prawnej.*

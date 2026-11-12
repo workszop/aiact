@@ -13,7 +13,7 @@
 
 <style>
 /* ============================================================
-   edulab — Colors & Type foundation
+   edulab – Colors & Type foundation
    Fonts loaded from Google Fonts (CDN). See README "Visual
    Foundations" for substitution notes.
    ============================================================ */
@@ -29,13 +29,13 @@
      RAW COLOR TOKENS
      ============================================================ */
 
-  /* Paper — page background is white; the sand steps are wells/alternating sections */
+  /* Paper – page background is white; the sand steps are wells/alternating sections */
   --paper:    #FFFFFF;   /* page background (white)    */
   --paper-2:  #F5F3F0;   /* alternating section        */
   --paper-3:  #EAE6E0;   /* deepest sand / wells       */
   --surface:  #FFFFFF;   /* cards & sheets             */
 
-  /* Ink — warm near-black text & lines */
+  /* Ink – warm near-black text & lines */
   --ink:      #1C1917;   /* primary text               */
   --ink-2:    #44403C;   /* secondary text             */
   --ink-3:    #625B53;   /* muted / placeholder        */
@@ -49,37 +49,37 @@
      (no green text on green); the saturated colour itself goes only on
      white or black. */
 
-  /* Yellow — primary (buttons, progress, values on dark panels) */
+  /* Yellow – primary (buttons, progress, values on dark panels) */
   --yellow:      #FFD500;
   --yellow-600:  #F0C800;  /* hover / press          */
   --yellow-soft: #FFD500;  /* chip / panel fill      */
   --yellow-ink:  #1C1917;  /* text on yellow         */
 
-  /* Blue — secondary (panels, chips, correct / selected state) */
+  /* Blue – secondary (panels, chips, correct / selected state) */
   --blue:      #1E8FC2;
   --blue-600:  #177AA8;
   --blue-soft: #177AA8;
   --blue-ink:  #FFFFFF;
 
-  /* Green — secondary support (chips, success) */
+  /* Green – secondary support (chips, success) */
   --green:      #00A651;
   --green-600:  #078342;
   --green-soft: #078342;
   --green-ink:  #FFFFFF;
 
-  /* Red — danger / important / wrong (use sparingly) */
+  /* Red – danger / important / wrong (use sparingly) */
   --red:      #E5322D;
   --red-600:  #C92823;
   --red-soft: #C92823;
   --red-ink:  #FFFFFF;
 
-  /* Legacy role aliases — older edulab apps use these names */
+  /* Legacy role aliases – older edulab apps use these names */
   --marigold: var(--yellow); --marigold-600: var(--yellow-600); --marigold-soft: var(--yellow-soft); --marigold-ink: var(--yellow-ink);
   --teal:     var(--blue);   --teal-600:     var(--blue-600);   --teal-soft:     var(--blue-soft);   --teal-ink:     var(--blue-ink);
   --sky:      var(--green);                                     --sky-soft:      var(--green-soft);  --sky-ink:      var(--green-ink);
   --coral:    var(--red);    --coral-600:    var(--red-600);    --coral-soft:    var(--red-soft);    --coral-ink:    var(--red-ink);
 
-  /* Play palette — subject/category colours in the kids app */
+  /* Play palette – subject/category colours in the kids app */
   --play-sun:    #FFD500;
   --play-grass:  #00A651;
   --play-berry:  #C6478B;
@@ -111,7 +111,7 @@
   /* ---- Radii (friendly, generous) ---- */
   --r-xs: 6px; --r-sm: 10px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
 
-  /* ---- Elevation — warm, low, soft ---- */
+  /* ---- Elevation – warm, low, soft ---- */
   --shadow-sm: 0 1px 2px rgba(33,30,26,.10), 0 2px 6px rgba(33,30,26,.06);
   --shadow-md: 0 6px 18px rgba(33,30,26,.12), 0 1px 3px rgba(33,30,26,.08);
   --shadow-lg: 0 16px 40px rgba(33,30,26,.12), 0 3px 8px rgba(33,30,26,.06);
@@ -169,7 +169,7 @@
 .edu-small  { font-family: var(--font-sans); font-size: var(--body-sm); line-height: 1.5; color: var(--ink-2); }
 .edu-caption{ font-family: var(--font-sans); font-size: var(--caption); line-height: 1.45; color: var(--ink-3); }
 
-/* Overline — mono, tracked; functional labels only (never above page/section titles) */
+/* Overline – mono, tracked; functional labels only (never above page/section titles) */
 .edu-overline {
   font-family: var(--font-mono);
   font-weight: 500; font-size: var(--overline);
@@ -292,7 +292,9 @@ html, body { background: var(--paper); }
   padding: var(--sp-4) var(--sp-5);
   font-size: 0.94em; line-height: 1.45;
 }
-.callout .ico { font-style: normal; margin-right: .4em; }
+/* Lucide icons: inline SVG, stroke follows the text colour */
+.ico { display: inline-block; flex: none; width: 1.15em; height: 1.15em; vertical-align: -0.2em; margin-right: .4em; stroke-width: 2; }
+.verdict .ico { margin-right: 0; }
 .callout.warn   { background: var(--red-soft);    color: var(--red-ink); }
 .callout.lesson { background: var(--blue-soft);   color: var(--blue-ink); }
 .callout.key    { background: var(--yellow-soft); color: var(--yellow-ink); }
@@ -313,9 +315,10 @@ html, body { background: var(--paper); }
 .reveal ul li::marker { color: var(--yellow-600); }
 .reveal ol li::marker { color: var(--blue-600); font-family: var(--font-mono); }
 .tick li { list-style: none; position: relative; padding-left: 1.5em; }
-.tick li::before { content: "✓"; position: absolute; left: 0; color: var(--green-600); font-weight: 700; }
+/* list markers: Lucide check / x as CSS masks */
+.tick li::before { content: ""; position: absolute; left: 0; top: .2em; width: 1em; height: 1em; background: var(--green-600); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat; }
 .cross li { list-style: none; position: relative; padding-left: 1.5em; }
-.cross li::before { content: "✕"; position: absolute; left: 0; color: var(--red-600); font-weight: 700; }
+.cross li::before { content: ""; position: absolute; left: 0; top: .2em; width: 1em; height: 1em; background: var(--red-600); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E%3C/svg%3E") center / contain no-repeat; }
 
 /* Tables */
 /* Ruled data table: stone head with mono labels, zebra rows, first column bold ink */
@@ -485,7 +488,7 @@ html, body { background: var(--paper); }
     <div class="brand"><img class="edu-logo" alt="edulab" src="data:image/png;base64,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"><span class="edu-wordmark">edulab</span></div>
     <h1>AI&nbsp;Act w&nbsp;praktyce</h1>
     <p class="subtitle">Od ogólnych ram regulacyjnych do kwalifikacji systemu wspierającego diagnostykę</p>
-    <p class="meta">Rozporządzenie (UE) 2024/1689 · stan prawny: wrzesień 2026 (po Digital Omnibus 2026/1744)</p>
+    <p class="meta">Rozporządzenie (UE) 2024/1689 · stan prawny: listopad 2026 (po Digital Omnibus 2026/1744)</p>
     <div><span class="case-pill">Case study · Vet-View</span></div>
   </div>
 </section>
@@ -519,7 +522,7 @@ html, body { background: var(--paper); }
       </div>
     </div>
   </div>
-  <p class="callout key small" style="margin-top:var(--sp-5)"><span class="ico">💡</span>Część II nie wprowadza nowych przepisów, tylko stosuje te z Części I do konkretnego produktu.</p>
+  <p class="callout key small" style="margin-top:var(--sp-5)"><i data-lucide="lightbulb" class="ico" aria-hidden="true"></i>Część II nie wprowadza nowych przepisów, tylko stosuje te z Części I do konkretnego produktu.</p>
 </section>
 
 <!-- 3 · DIVIDER I -->
@@ -537,9 +540,9 @@ html, body { background: var(--paper); }
   <div class="row c2-wide">
     <div>
       <ul class="small">
-        <li><strong>Rozporządzenie UE</strong>, pierwszy na świecie kompleksowy reżim prawny dla AI</li>
+        <li><strong>Rozporządzenie UE</strong>, pierwsza na świecie całościowa regulacja AI</li>
         <li>Obowiązuje <strong>bezpośrednio</strong> we wszystkich państwach członkowskich (nie wymaga implementacji jak dyrektywa)</li>
-        <li>Łączy <strong>bezpieczeństwo produktów i prawa podstawowe</strong>: reguluje <em>ryzyko zastosowań</em>, nie „AI jako taką"</li>
+        <li>Łączy <strong>bezpieczeństwo produktów i prawa podstawowe</strong>: reguluje <em>ryzyko zastosowań</em>, nie „AI jako taką”</li>
       </ul>
     </div>
     <div class="card">
@@ -567,7 +570,7 @@ html, body { background: var(--paper); }
         <li><strong>wnioskuje</strong> z danych wejściowych, jak generować wyniki: <em>przewidywania, treści, rekomendacje, decyzje</em>,</li>
         <li>a wyniki <strong>wpływają na środowiska fizyczne lub wirtualne</strong>.</li>
       </ul>
-      <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Słowo <strong>„wnioskuje"</strong> (<em>infers</em>) odróżnia system AI od zwykłego oprogramowania regułowego.</p>
+      <p class="callout key smaller" style="margin-top:var(--sp-4)"><i data-lucide="key-round" class="ico" aria-hidden="true"></i>Słowo <strong>„wnioskuje”</strong> (<em>infers</em>) odróżnia system AI od zwykłego oprogramowania regułowego.</p>
     </div>
     <div class="card">
       <div class="card-head"><p class="eyebrow">Test praktyczny: 5 pytań</p></div>
@@ -601,8 +604,8 @@ html, body { background: var(--paper); }
         <li><strong class="chip" style="background:var(--blue-soft);color:var(--blue-ink)">Ograniczone</strong> (nazwa umowna): art. 50 → <strong>obowiązki transparentności</strong></li>
         <li><strong class="chip" style="background:var(--green-soft);color:var(--green-ink)">Minimalne</strong>: reszta → brak obowiązków szczególnych</li>
       </ul>
-      <p class="smaller muted" style="margin-top:var(--sp-3)">„Ograniczone ryzyko" to skrót dydaktyczny, nie kategoria ustawowa. Art. 50 <strong>kumuluje się</strong> z reżimem wysokiego ryzyka; art. 4 dotyczy wszystkich poziomów.</p>
-      <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span>Nasz case przejdzie tę piramidę <strong>od góry do dołu</strong> metodą eliminacji.</p>
+      <p class="smaller muted" style="margin-top:var(--sp-3)">„Ograniczone ryzyko” to skrót dydaktyczny, nie kategoria ustawowa. Art. 50 <strong>kumuluje się</strong> z reżimem wysokiego ryzyka; art. 4 dotyczy wszystkich poziomów.</p>
+      <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><i data-lucide="target" class="ico" aria-hidden="true"></i>Nasz case przejdzie tę piramidę <strong>od góry do dołu</strong> metodą eliminacji.</p>
     </div>
   </div>
 </section>
@@ -613,7 +616,7 @@ html, body { background: var(--paper); }
     <span class="legal-ref">art. 5</span>
   </div>
   <h2>Praktyki zakazane</h2>
-  <p class="small">Bezwzględny zakaz, bo ryzyko dla <strong>godności, autonomii i praw podstawowych</strong> jest nieusuwalne. Uwaga na kwalifikatory: poza wąskim wariantem wiele z tych zastosowań to „tylko" wysokie ryzyko.</p>
+  <p class="small">Bezwzględny zakaz, bo ryzyko dla <strong>godności, autonomii i praw podstawowych</strong> jest nieusuwalne. Uwaga na kwalifikatory: poza wąskim wariantem wiele z tych zastosowań to „tylko” wysokie ryzyko.</p>
   <div class="row c2">
     <ul class="cross smaller tight">
       <li>techniki <strong>podprogowe</strong> / manipulacyjne powodujące poważną szkodę <span class="mono">(a)</span></li>
@@ -626,10 +629,10 @@ html, body { background: var(--paper); }
       <li><strong>rozpoznawanie emocji</strong> w pracy i edukacji, poza celami medycznymi / bezpieczeństwa <span class="mono">(f)</span></li>
       <li><strong>kategoryzacja biometryczna</strong> wnioskująca o rasie, poglądach, wierze, orientacji <span class="mono">(g)</span>; inna: wysokie ryzyko</li>
       <li>zdalna <strong>identyfikacja biometryczna</strong> w czasie rzeczywistym <strong>do celów ścigania</strong> <span class="mono">(h)</span>; inna: wysokie ryzyko</li>
-      <li><strong>nowość 2026:</strong> generowanie treści intymnych bez zgody / CSAM (okres przejściowy do 2.12.2026)</li>
+      <li><strong>nowość 2026</strong> <span class="mono">(ba, bb)</span>: generowanie treści intymnych bez zgody / CSAM (stosuje się od 2.12.2026)</li>
     </ul>
   </div>
-  <p class="callout key smaller" style="margin-top:var(--sp-3)"><span class="ico">🔑</span>Wspólny mianownik: wszystkie dotyczą <strong>ludzi</strong>. W case'ie weterynaryjnym brak „człowieka jako przedmiotu oceny" będzie głównym argumentem. Interpretacja: Wytyczne Komisji ws. praktyk zakazanych, C(2025) 5052.</p>
+  <p class="callout key smaller" style="margin-top:var(--sp-3)"><i data-lucide="key-round" class="ico" aria-hidden="true"></i>Wspólny mianownik: wszystkie dotyczą <strong>ludzi</strong>. W case'ie weterynaryjnym brak „człowieka jako przedmiotu oceny” będzie głównym argumentem. Interpretacja: Wytyczne Komisji ws. praktyk zakazanych, C(2025) 5052.</p>
 </section>
 
 <!-- 8 · WYSOKIE RYZYKO -->
@@ -655,7 +658,7 @@ html, body { background: var(--paper); }
       </div>
     </div>
   </div>
-  <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Obie ścieżki chronią <strong>ludzi</strong>. „Technicznie mogłoby działać u ludzi" to za mało. Wyrób medyczny klasy I bez jednostki notyfikowanej nie przechodzi warunku (b).</p>
+  <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><i data-lucide="target" class="ico" aria-hidden="true"></i>Obie ścieżki chronią <strong>ludzi</strong>. „Technicznie mogłoby działać u ludzi” to za mało. Wyrób medyczny klasy I bez jednostki notyfikowanej nie przechodzi warunku (b).</p>
 </section>
 
 <!-- 9 · OGRANICZONE RYZYKO -->
@@ -667,20 +670,20 @@ html, body { background: var(--paper); }
   <p class="small">Stosuje się <strong>od 2 sierpnia 2026</strong>, niezależnie od kategorii ryzyka. Obowiązki <strong>dostawcy</strong> (ust. 1–2) i <strong>deployera</strong> (ust. 3–4):</p>
   <div class="row c2">
     <div class="card">
-      <div class="card-head"><h3>🗣 Bezpośrednia interakcja <span class="mono smaller">ust. 1 · dostawca</span></h3></div>
+      <div class="card-head"><h3><i data-lucide="message-circle" class="ico" aria-hidden="true"></i>Bezpośrednia interakcja <span class="mono smaller">ust. 1 · dostawca</span></h3></div>
       <div class="card-body">
         <p class="smaller">Chatboty, asystenci, agenci → osoba ma wiedzieć, że ma do czynienia z AI, <strong>chyba że jest to oczywiste</strong> dla rozsądnie poinformowanego użytkownika.</p>
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><h3>🏷 Treści syntetyczne <span class="mono smaller">ust. 2 · dostawca</span></h3></div>
+      <div class="card-head"><h3><i data-lucide="tag" class="ico" aria-hidden="true"></i>Treści syntetyczne <span class="mono smaller">ust. 2 · dostawca</span></h3></div>
       <div class="card-body">
         <p class="smaller">Syntetyczny obraz / dźwięk / wideo / tekst → oznaczony <strong>maszynowo czytelnie</strong> i wykrywalny. Wyjątki: standardowa edycja (korekta, tłumaczenie), brak istotnej zmiany wejścia. <strong>Streszczenia AI nie korzystają z wyjątku.</strong></p>
       </div>
     </div>
   </div>
   <p class="smaller muted" style="margin-top:var(--sp-3)"><strong>Deployer:</strong> ust. 3, informowanie o rozpoznawaniu emocji lub kategoryzacji biometrycznej; ust. 4, ujawnianie deepfake'ów i tekstów AI publikowanych w sprawach publicznych. Okres przejściowy (Omnibus): oznaczanie z ust. 2 dla systemów sprzed 2.08.2026 do <strong>2.12.2026</strong>. Interpretacja: Wytyczne Komisji do art. 50 (20.07.2026) + Kodeks postępowania ws. oznaczania.</p>
-  <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>To „trzecia półka" piramidy, a <strong>nie</strong> „brak obowiązków". W case'ie zaczepem będzie <strong>generowany opis tekstowy</strong> (ust. 2).</p>
+  <p class="callout warn smaller" style="margin-top:var(--sp-3)"><i data-lucide="triangle-alert" class="ico" aria-hidden="true"></i>To „trzecia półka” piramidy, a <strong>nie</strong> „brak obowiązków”. W case'ie zaczepem będzie <strong>generowany opis tekstowy</strong> (ust. 2).</p>
 </section>
 
 <!-- 10 · ROLE -->
@@ -699,7 +702,7 @@ html, body { background: var(--paper); }
       <tr><td><strong>Wyłączenie</strong></td><td>–</td><td>użycie w ramach <strong>osobistej działalności pozazawodowej</strong></td></tr>
     </tbody>
   </table>
-  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Gdy deployerem jest osoba prawna, <em>poszczególni pracownicy</em> działający pod jej kontrolą <strong>nie są</strong> odrębnymi deployerami (Wytyczne Komisji ws. praktyk zakazanych, C(2025) 5052, sekcja 2.4, pkt 17–18). Najwięcej obowiązków spoczywa na dostawcy.</p>
+  <p class="callout key smaller" style="margin-top:var(--sp-4)"><i data-lucide="key-round" class="ico" aria-hidden="true"></i>Gdy deployerem jest osoba prawna, <em>poszczególni pracownicy</em> działający pod jej kontrolą <strong>nie są</strong> odrębnymi deployerami (Wytyczne Komisji ws. praktyk zakazanych, C(2025) 5052, sekcja 2.4, pkt 17–18). Najwięcej obowiązków spoczywa na dostawcy.</p>
 </section>
 
 <!-- 11 · AI LITERACY -->
@@ -720,7 +723,7 @@ html, body { background: var(--paper); }
       <li>zasady <strong>eskalacji błędów</strong> i komunikowania ograniczeń.</li>
     </ul>
   </div>
-  <p class="callout warn smaller" style="margin-top:var(--sp-4)"><span class="ico">⚠</span>Art. 4 obowiązuje od 2 lutego 2025, dotyczy <strong>wszystkich</strong> kategorii i <strong>obu ról</strong> (klinika-deployer też). Omnibus złagodził brzmienie, ale nie uchylił przepisu. Częsty „ślepy punkt".</p>
+  <p class="callout warn smaller" style="margin-top:var(--sp-4)"><i data-lucide="triangle-alert" class="ico" aria-hidden="true"></i>Art. 4 obowiązuje od 2 lutego 2025, dotyczy <strong>wszystkich</strong> kategorii i <strong>obu ról</strong> (klinika-deployer też). Omnibus złagodził brzmienie, ale nie uchylił przepisu. Często się o nim zapomina.</p>
 </section>
 
 <!-- 12 · ZAKRES ZASTOSOWANIA -->
@@ -748,7 +751,7 @@ html, body { background: var(--paper); }
       </div>
     </div>
   </div>
-  <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Nasz case: lit. a dla Vet-View S.A. (dostawca SaaS) i lit. b dla klinik. Lit. e wchodziłaby w grę, gdyby moduł sprzedawał producent aparatu USG.</p>
+  <p class="callout key smaller" style="margin-top:var(--sp-4)"><i data-lucide="key-round" class="ico" aria-hidden="true"></i>Nasz case: lit. a dla Vet-View S.A. (dostawca SaaS) i lit. b dla klinik. Lit. e wchodziłaby w grę, gdyby moduł sprzedawał producent aparatu USG.</p>
 </section>
 
 <!-- 12b · KALENDARZ, NADZÓR, KARY -->
@@ -764,7 +767,7 @@ html, body { background: var(--paper); }
         <tr><td class="refcell">2.02.2025</td><td>zakazy (art. 5), AI literacy (art. 4)</td></tr>
         <tr><td class="refcell">2.08.2025</td><td>modele GPAI, organy nadzoru, kary</td></tr>
         <tr><td class="refcell">2.08.2026</td><td><strong>transparentność (art. 50)</strong> i większość reszty</td></tr>
-        <tr><td class="refcell">2.12.2026</td><td>koniec okresu przejściowego: oznaczanie (50 ust. 2) i nowy zakaz</td></tr>
+        <tr><td class="refcell">2.12.2026</td><td>koniec okresu przejściowego na oznaczanie (50 ust. 2); nowy zakaz zaczyna obowiązywać</td></tr>
         <tr><td class="refcell">2.12.2027</td><td>wysokie ryzyko <strong>Zał. III</strong> (Omnibus: z 2.08.2026)</td></tr>
         <tr><td class="refcell">2.08.2028</td><td>wysokie ryzyko <strong>Zał. I</strong> (Omnibus: z 2.08.2027)</td></tr>
       </tbody>
@@ -779,12 +782,12 @@ html, body { background: var(--paper); }
       <div class="card">
         <div class="card-head"><p class="eyebrow">Kary · art. 99</p></div>
         <div class="card-body">
-          <p class="smaller">do 35 mln EUR / 7%: praktyki zakazane<br>do 15 mln EUR / 3%: inne obowiązki (w tym art. 50)<br>do 7,5 mln EUR / 1%: informacje wprowadzające w błąd<br><span class="muted">MŚP: niższa z kwot</span></p>
+          <p class="smaller">do 35 mln EUR / 7%: praktyki zakazane<br>do 15 mln EUR / 3%: inne obowiązki (w tym art. 50)<br>do 7,5 mln EUR / 1%: informacje wprowadzające w błąd<br><span class="muted">MŚP: niższa z kwot; małe spółki o średniej kapitalizacji: tak samo, poza zakazami (ust. 6a)</span></p>
         </div>
       </div>
     </div>
   </div>
-  <p class="callout key smaller" style="margin-top:var(--sp-3)"><span class="ico">🔑</span>Wykład odbywa się po 2.08.2026: art. 4 i art. 50 <strong>już obowiązują</strong>. Omnibus odroczył tylko reżim wysokiego ryzyka.</p>
+  <p class="callout key smaller" style="margin-top:var(--sp-3)"><i data-lucide="key-round" class="ico" aria-hidden="true"></i>Wykład odbywa się po 2.08.2026: art. 4 i art. 50 <strong>już obowiązują</strong>. Omnibus odroczył tylko reżim wysokiego ryzyka.</p>
 </section>
 
 <!-- 13 · DIVIDER II (vertical stack root) -->
@@ -794,7 +797,7 @@ html, body { background: var(--paper); }
       <div class="big-num alt">II</div>
       <h2>Case: system wspierający diagnostykę</h2>
       <p class="sub"><strong>Vet-View</strong>, oprogramowanie AI do analizy obrazów USG w weterynarii</p>
-      <p class="smaller muted" style="margin-top:var(--sp-4)">↓ ścieżka subsumpcji: czy to system AI → kategoria ryzyka → role → obowiązki</p>
+      <p class="smaller muted" style="margin-top:var(--sp-4)"><i data-lucide="arrow-down" class="ico" aria-hidden="true"></i>ścieżka subsumpcji: czy to system AI → kategoria ryzyka → role → obowiązki</p>
     </div>
   </section>
 
@@ -815,20 +818,20 @@ html, body { background: var(--paper); }
         <div class="card-head"><p class="eyebrow">Zakres przeznaczenia</p></div>
         <div class="card-body">
           <ul class="smaller tight" style="list-style:none;margin-left:0">
-            <li>🐕 gatunek – <strong>pies</strong></li>
-            <li>🫘 narząd – <strong>nerki</strong></li>
-            <li>📡 badanie – <strong>USG przezpowłokowe</strong></li>
+            <li><i data-lucide="dog" class="ico" aria-hidden="true"></i>gatunek – <strong>pies</strong></li>
+            <li><i data-lucide="bean" class="ico" aria-hidden="true"></i>narząd – <strong>nerki</strong></li>
+            <li><i data-lucide="audio-waveform" class="ico" aria-hidden="true"></i>badanie – <strong>USG przezpowłokowe</strong></li>
           </ul>
           <p class="smaller muted" style="margin-top:var(--sp-3)">Model trenowany / walidowany na danych klientów; śledzenie historii badań w czasie.</p>
         </div>
       </div>
     </div>
-    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">💡</span>Wynik jest <strong>pomocniczy</strong>, decyduje lekarz weterynarii.</p>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><i data-lucide="lightbulb" class="ico" aria-hidden="true"></i>Wynik jest <strong>pomocniczy</strong>, decyduje lekarz weterynarii.</p>
   </section>
 
-  <!-- 15 · KROK 0 -->
+  <!-- 15 · KROK 1 -->
   <section>
-    <div class="step-head"><span class="knum">Krok 0</span><span class="legal-ref">art. 3 pkt 1</span></div>
+    <div class="step-head"><span class="knum">Krok 1</span><span class="legal-ref">art. 3 pkt 1</span></div>
     <h2>Czy to w ogóle system AI?</h2>
     <div class="row c2-wide">
       <ul class="small tick tight">
@@ -839,15 +842,15 @@ html, body { background: var(--paper); }
         <li>zawiera <strong>komponent AI</strong> trenowany na danych</li>
       </ul>
       <div style="text-align:center">
-        <span class="verdict yes">✅ TAK, to system AI</span>
+        <span class="verdict yes"><i data-lucide="circle-check" class="ico" aria-hidden="true"></i>TAK, to system AI</span>
         <p class="smaller muted" style="margin-top:var(--sp-3)">Pozytywna odpowiedź otwiera pytanie o kategorię ryzyka.</p>
       </div>
     </div>
   </section>
 
-  <!-- 16 · KROK 1 -->
+  <!-- 16 · KROK 2a -->
   <section>
-    <div class="step-head"><span class="knum">Krok 1</span><span class="legal-ref">art. 5</span></div>
+    <div class="step-head"><span class="knum">Krok 2a</span><span class="legal-ref">art. 5</span></div>
     <h2>Czy zakazany?</h2>
     <div class="row c2-wide">
       <ul class="small cross tight">
@@ -859,14 +862,14 @@ html, body { background: var(--paper); }
       </ul>
       <div style="text-align:center">
         <span class="verdict no">NIE jest zakazany</span>
-        <p class="smaller muted" style="margin-top:var(--sp-3)">Wszystkie zakazy z art. 5 dotyczą ludzi, a tu „obiektem" jest nerka psa. Schodzimy piętro niżej.</p>
+        <p class="smaller muted" style="margin-top:var(--sp-3)">Wszystkie zakazy z art. 5 dotyczą ludzi, a tu „obiektem” jest nerka psa. Schodzimy piętro niżej.</p>
       </div>
     </div>
   </section>
 
-  <!-- 17 · KROK 2 produktowa -->
+  <!-- 17 · KROK 2b produktowa -->
   <section>
-    <div class="step-head"><span class="knum">Krok 2 · ścieżka produktowa</span><span class="legal-ref">art. 3 pkt 14 + art. 6</span></div>
+    <div class="step-head"><span class="knum">Krok 2b · ścieżka produktowa</span><span class="legal-ref">art. 3 pkt 14 + art. 6</span></div>
     <h2>Czy wysokiego ryzyka?</h2>
     <div class="row c2">
       <div class="card">
@@ -887,12 +890,12 @@ html, body { background: var(--paper); }
         </div>
       </div>
     </div>
-    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Kwalifikacja idzie za <strong>przeznaczeniem</strong> (<em>intended purpose</em>), nie za „teoretyczną możliwością".</p>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><i data-lucide="target" class="ico" aria-hidden="true"></i>Kwalifikacja idzie za <strong>przeznaczeniem</strong> (<em>intended purpose</em>), nie za „teoretyczną możliwością”.</p>
   </section>
 
-  <!-- 18 · KROK 2 obszarowa -->
+  <!-- 18 · KROK 2b obszarowa -->
   <section>
-    <div class="step-head"><span class="knum">Krok 2 · ścieżka obszarowa</span><span class="legal-ref">Załącznik III</span></div>
+    <div class="step-head"><span class="knum">Krok 2b · ścieżka obszarowa</span><span class="legal-ref">Załącznik III</span></div>
     <h2>Czy wysokiego ryzyka?</h2>
     <p class="small">Załącznik III chroni <strong>osoby fizyczne i ich prawa</strong>. Vet-View:</p>
     <div class="row c2">
@@ -908,14 +911,14 @@ html, body { background: var(--paper); }
       </ul>
     </div>
     <div style="text-align:center;margin-top:var(--sp-4)"><span class="verdict no">System dotyczy zwierząt → NIE jest wysokiego ryzyka</span></div>
-    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><span class="ico">🎯</span>Rozstrzygnął <strong>kontekst: zwierzęta, nie ludzie</strong>. Ta sama architektura w USG dla ludzi → wyrób medyczny → potencjalnie wysokie ryzyko.</p>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-4)"><i data-lucide="target" class="ico" aria-hidden="true"></i>Rozstrzygnął <strong>kontekst: zwierzęta, nie ludzie</strong>. Ta sama architektura w USG dla ludzi → wyrób medyczny → potencjalnie wysokie ryzyko.</p>
   </section>
 
-  <!-- 19 · KROK 3 descent -->
+  <!-- 19 · KROK 2c descent -->
   <section>
-    <div class="step-head"><span class="knum">Krok 3 · kwalifikacja końcowa</span><span class="legal-ref">art. 50</span></div>
-    <h2>Ląduje na: ograniczone ryzyko</h2>
-    <div class="row c2-wide">
+    <div class="step-head"><span class="knum">Krok 2c · kwalifikacja końcowa</span><span class="legal-ref">art. 50</span></div>
+    <h2>Wynik: ograniczone ryzyko</h2>
+    <div class="row c2-wide" style="grid-template-columns:.8fr 1.2fr">
       <div class="pyramid">
         <div class="tier t1 fragment elim" data-fragment-index="1"><span class="tier-label">Niedopuszczalne</span></div>
         <div class="tier t2 fragment elim" data-fragment-index="2"><span class="tier-label">Wysokie ryzyko</span></div>
@@ -925,19 +928,19 @@ html, body { background: var(--paper); }
       <div>
         <p class="small">Nie wysokiego ryzyka, ale też <strong>nie</strong> czysto minimalnego, bo aktualizuje się <strong>art. 50 ust. 2</strong>:</p>
         <ul class="smaller tight">
-          <li class="tick"><strong>opis tekstowy</strong> do dokumentacji = syntetyczny tekst; streszczenie AI nie mieści się w wyjątku „standardowej edycji" → <strong>obowiązek oznaczenia</strong>,</li>
+          <li class="tick"><strong>opis tekstowy</strong> do dokumentacji = syntetyczny tekst; streszczenie AI nie mieści się w wyjątku „standardowej edycji” → <strong>obowiązek oznaczenia</strong>,</li>
           <li><strong>ramki / maski / heatmapy / prawdopodobieństwo</strong> = wyniki analityczne, nie syntetyczny obraz → oznaczenie jako <em>dobra praktyka</em>,</li>
           <li><strong>ust. 1</strong> (interakcja): GUI dla lekarza to nie chatbot, a użycie AI jest dla profesjonalisty <em>oczywiste</em> → nie na tym opiera się kwalifikacja.</li>
         </ul>
-        <p class="callout key small fragment" data-fragment-index="3" style="margin-top:var(--sp-3)"><span class="ico">➡</span><strong>Obowiązki transparentności z art. 50</strong> („ograniczone ryzyko").</p>
+        <p class="callout key smaller fragment" data-fragment-index="3" style="margin-top:var(--sp-3)"><i data-lucide="arrow-right" class="ico" aria-hidden="true"></i><strong>Obowiązki transparentności z art. 50</strong> („ograniczone ryzyko”).</p>
       </div>
     </div>
-    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>Kwalifikacja wisi na generatorze tekstu: sama ramka + klasa byłyby bliżej minimalnego ryzyka. Dostawca musi <strong>stale monitorować zmiany funkcjonalne</strong>.</p>
+    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><i data-lucide="triangle-alert" class="ico" aria-hidden="true"></i>Kwalifikacja wisi na generatorze tekstu: sama ramka + klasa byłyby bliżej minimalnego ryzyka. Dostawca musi <strong>stale monitorować zmiany funkcjonalne</strong>.</p>
   </section>
 
-  <!-- 20 · ROLE W WDROŻENIU -->
+  <!-- 20 · ROLE WE WDROŻENIU -->
   <section>
-    <div class="step-head"><span class="knum">Role w wdrożeniu</span><span class="legal-ref">art. 3 pkt 3 i 4</span></div>
+    <div class="step-head"><span class="knum">Role we wdrożeniu</span><span class="legal-ref">art. 3 pkt 3 i 4</span></div>
     <h2>Kto jest kim?</h2>
     <div class="row c2">
       <div class="card" style="border:2px solid var(--yellow)">
@@ -960,7 +963,7 @@ html, body { background: var(--paper); }
         </div>
       </div>
     </div>
-    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Większość obowiązków spoczywa na <strong>dostawcy</strong>, czyli Vet-View S.A.</p>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><i data-lucide="key-round" class="ico" aria-hidden="true"></i>Większość obowiązków spoczywa na <strong>dostawcy</strong>, czyli Vet-View S.A.</p>
   </section>
 
   <!-- 21 · OBOWIĄZKI 1/3 -->
@@ -979,29 +982,29 @@ html, body { background: var(--paper); }
         <div class="card-body">
           <ol class="smaller tight">
             <li><strong>opis tekstowy</strong> (obowiązek, ust. 2): oznaczony maszynowo czytelnie (metadane / C2PA), trwale po wklejeniu do dokumentacji,</li>
-            <li><strong>interfejs</strong> (dobra praktyka): „wygenerowane przez AI, pomocnicze, wymaga weryfikacji",</li>
+            <li><strong>interfejs</strong> (dobra praktyka): „wygenerowane przez AI, pomocnicze, wymaga weryfikacji”,</li>
             <li><strong>dokumentacja i warstwy graficzne</strong> (dobra praktyka): przeznaczenie, ograniczenia, human oversight; heatmapa i kontur jako warstwy AI.</li>
           </ol>
         </div>
       </div>
     </div>
-    <p class="callout key smaller" style="margin-top:var(--sp-4)"><span class="ico">🔑</span>Poziom 1 to wprost obowiązek oznaczania treści syntetycznych; 2–3 to ostrożnościowa nadwyżka. Obowiązki deployera z art. 50 ust. 3–4 nie mają zastosowania.</p>
+    <p class="callout key smaller" style="margin-top:var(--sp-4)"><i data-lucide="key-round" class="ico" aria-hidden="true"></i>Poziom 1 to wprost obowiązek oznaczania treści syntetycznych; 2–3 to ostrożnościowa nadwyżka. Obowiązki deployera z art. 50 ust. 3–4 nie mają zastosowania.</p>
   </section>
 
   <!-- 22 · OBOWIĄZKI 2/3 -->
   <section>
     <div class="step-head"><span class="knum">Obowiązki dostawcy · 2/3</span><span class="legal-ref">art. 3 pkt 12</span></div>
     <h2>Utrzymanie przeznaczenia (intended purpose)</h2>
-    <p class="small">Pełna <strong>spójność komunikatu</strong> między: dokumentacją techniczną, instrukcją, regulaminem SaaS, umową, marketingiem, stroną www, prezentacjami i komunikatami w aplikacji.</p>
+    <p class="small">Komunikat ma być <strong>spójny</strong> w dokumentacji technicznej, instrukcji, regulaminie SaaS, umowie, marketingu, na stronie www, w prezentacjach i komunikatach w aplikacji.</p>
     <div class="callout warn small" style="margin-top:var(--sp-3)">
-      <p style="margin:0 0 .4em"><span class="ico">🚫</span><strong>Zakazane sformułowania</strong> (przesuwające produkt w stronę wyrobu medycznego):</p>
+      <p style="margin:0 0 .4em"><i data-lucide="ban" class="ico" aria-hidden="true"></i><strong>Zakazane sformułowania</strong> (przesuwające produkt w stronę wyrobu medycznego):</p>
       <ul class="smaller tight" style="margin-left:1.4em">
-        <li>„system diagnozuje choroby nerek", „automatyczna diagnoza"</li>
-        <li>„zastępuje lekarza", „wykrywa nowotwory"</li>
-        <li>„medyczny system AI", „dla USG" (bez dookreślenia: <strong>weterynaryjnego</strong>)</li>
+        <li>„system diagnozuje choroby nerek”, „automatyczna diagnoza”</li>
+        <li>„zastępuje lekarza”, „wykrywa nowotwory”</li>
+        <li>„medyczny system AI”, „dla USG” (bez dookreślenia: <strong>weterynaryjnego</strong>)</li>
       </ul>
     </div>
-    <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><span class="ico">🎯</span><em>Język marketingu</em> ma skutki prawne. Nieostrożny copywriting może zmienić kwalifikację produktu.</p>
+    <p class="callout lesson smaller" style="margin-top:var(--sp-3)"><i data-lucide="target" class="ico" aria-hidden="true"></i><em>Język marketingu</em> ma skutki prawne. Nieostrożny copywriting może zmienić kwalifikację produktu.</p>
   </section>
 
   <!-- 23 · OBOWIĄZKI 3/3 -->
@@ -1019,7 +1022,7 @@ html, body { background: var(--paper); }
         <li>wpływ na porównywalność wyników historycznych, procedurę <strong>rollback</strong>, komunikację do klientów.</li>
       </ul>
     </div>
-    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><span class="ico">⚠</span>System ma umożliwiać <strong>śledzenie historii badań w czasie</strong>, bo zmiana modelu między badaniami może ograniczyć porównywalność wyników.</p>
+    <p class="callout warn smaller" style="margin-top:var(--sp-3)"><i data-lucide="triangle-alert" class="ico" aria-hidden="true"></i>System ma umożliwiać <strong>śledzenie historii badań w czasie</strong>, a zmiana modelu między badaniami może ograniczyć porównywalność wyników.</p>
     <p class="smaller muted" style="margin-top:var(--sp-3)"><strong>GPAI (art. 53):</strong> jeśli opis generuje zewnętrzny model przez API, obowiązki modelu spoczywają na jego dostawcy; Vet-View pozostaje dostawcą <em>systemu</em>, chyba że istotnie zmodyfikuje model.</p>
   </section>
 
@@ -1036,7 +1039,7 @@ html, body { background: var(--paper); }
       <tr><td>1</td><td>Czy to system AI?</td><td class="refcell">art. 3 pkt 1</td><td><strong>Tak</strong></td></tr>
       <tr><td>2a</td><td>Czy zakazany?</td><td class="refcell">art. 5</td><td>Nie</td></tr>
       <tr><td>2b</td><td>Czy wysokiego ryzyka?</td><td class="refcell">art. 6, zał. I i III</td><td>Nie</td></tr>
-      <tr><td>2c</td><td>Która kategoria?</td><td class="refcell">art. 50 ust. 2</td><td><strong>Transparentność („ograniczone ryzyko")</strong></td></tr>
+      <tr><td>2c</td><td>Która kategoria?</td><td class="refcell">art. 50 ust. 2</td><td><strong>Transparentność („ograniczone ryzyko”)</strong></td></tr>
       <tr><td>3</td><td>Kto jest kim?</td><td class="refcell">art. 3 pkt 3 i 4</td><td>Dostawca = Vet-View S.A.; deployer = klinika</td></tr>
       <tr><td>4</td><td>Czy AI Act ma zastosowanie?</td><td class="refcell">art. 2 ust. 1 lit. a / b</td><td><strong>Tak</strong>, bez wyłączeń</td></tr>
       <tr><td>5</td><td>Jakie obowiązki?</td><td class="refcell">art. 4, 50 ust. 2, 3 pkt 12, 53</td><td>Literacy (obie role), oznaczanie tekstu AI, intended purpose, kontrola zmian</td></tr>
@@ -1050,8 +1053,8 @@ html, body { background: var(--paper); }
   <h2>Czego uczy ten case</h2>
   <ol class="small">
     <li class="fragment"><strong>Metoda zawsze ta sama:</strong> system AI? → kategoria ryzyka (eliminacja od góry) → role → obowiązki.</li>
-    <li class="fragment"><strong>Kwalifikacja idzie za przeznaczeniem</strong>, nie za technicznymi możliwościami („mogłoby działać u ludzi" nie czyni z niego wyrobu medycznego).</li>
-    <li class="fragment"><strong>„Ograniczone ryzyko" to nie brak obowiązków</strong>: transparentność (art. 50) i AI literacy (art. 4) obowiązują.</li>
+    <li class="fragment"><strong>Kwalifikacja idzie za przeznaczeniem</strong>, nie za technicznymi możliwościami („mogłoby działać u ludzi” nie czyni z niego wyrobu medycznego).</li>
+    <li class="fragment"><strong>„Ograniczone ryzyko” to nie brak obowiązków</strong>: transparentność (art. 50) i AI literacy (art. 4) obowiązują.</li>
     <li class="fragment"><strong>Język produktu ma skutki prawne</strong>, marketing może przesunąć produkt w górę piramidy.</li>
     <li class="fragment"><strong>Kwalifikacja jest dynamiczna</strong>, nowe funkcje (ocena ludzi, profilowanie) mogą wymagać rekwalifikacji.</li>
     <li class="fragment"><strong>Kwalifikacja wisi na konkretnym wyniku</strong>: art. 50 ust. 2 uruchamia generator opisu, nie ramki i heatmapy.</li>
@@ -1066,7 +1069,7 @@ html, body { background: var(--paper); }
     <li>Jakie funkcje przesunęłyby produkt do kategorii <strong>wysokiego ryzyka</strong> lub <strong>zakazanej</strong>?</li>
     <li>Trenowanie modelu na danych klientów: jakie obowiązki rodzi to dodatkowo na gruncie <strong>RODO</strong>?</li>
     <li>Jak technicznie oznaczyć opis (obowiązek) i heatmapę (dobra praktyka) jako <strong>treść wygenerowaną przez AI</strong>, tak by oznaczenie przetrwało wklejenie do dokumentacji?</li>
-    <li>Kto odpowiada, gdy lekarz bezkrytycznie zaufa błędnemu wynikowi (<em>automation bias</em>)? Wskazówka: dyrektywa AI Liability wycofana (2025); nowa dyrektywa produktowa (UE) 2024/2853 obejmuje AI od 9.12.2026.</li>
+    <li>Kto odpowiada, gdy lekarz bezkrytycznie zaufa błędnemu wynikowi (<em>automation bias</em>)? Wskazówka: dyrektywa AI Liability wycofana (2025); nowa dyrektywa produktowa (UE) 2024/2853 obejmuje oprogramowanie i AI w produktach wprowadzonych do obrotu po 9.12.2026 (termin wdrożenia).</li>
     <li>Gdyby Vet-View zwracał tylko ramkę i klasę, bez opisu, czy art. 50 nadal by obowiązywał?</li>
   </ol>
 </section>
@@ -1076,8 +1079,8 @@ html, body { background: var(--paper); }
   <div class="slide-title" style="color:var(--paper)">
     <div class="brand"><img class="edu-logo" alt="edulab" src="data:image/png;base64,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"><span class="edu-wordmark" style="color:var(--paper)">edulab</span></div>
     <p class="smaller" style="color:var(--yellow);font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase">Dziękuję za uwagę</p>
-    <h1 style="color:var(--paper);font-size:2.2em">Compliance to proces, nie<br>jednorazowa czynność</h1>
-    <p class="smaller" style="color:var(--yellow);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: wrzesień 2026 · rozporządzenie (UE) 2024/1689 ze zm. 2026/1744 · ustawa o systemach AI</p>
+    <h1 style="color:var(--paper);font-size:2.2em">Każda istotna zmiana funkcji może wymagać ponownej kwalifikacji</h1>
+    <p class="smaller" style="color:var(--yellow);margin-top:var(--sp-6);font-family:var(--font-mono)">Stan prawny: listopad 2026 · rozporządzenie (UE) 2024/1689 ze zm. 2026/1744 · ustawa o systemach AI</p>
     <p class="smaller" style="color:color-mix(in srgb, var(--paper) 72%, transparent)">Materiał dydaktyczny · przykład ilustracyjny · nie stanowi porady prawnej</p>
   </div>
 </section>
@@ -1086,7 +1089,9 @@ html, body { background: var(--paper); }
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <script>
+  if (window.lucide) lucide.createIcons();
   Reveal.initialize({
     hash: true,
     slideNumber: 'c/t',
